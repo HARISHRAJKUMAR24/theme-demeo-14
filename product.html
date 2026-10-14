@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Archery Asia - Product Details</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-white font-sans text-gray-800">
+    <!-- ================================================== -->
+    <!-- TOP BAR                                             -->
+    <!-- ================================================== -->
+
+    <div class="bg-[#252a35] text-white">
+        <div
+            class="mx-auto flex h-[30px] max-w-[1360px] items-center justify-between px-4 text-[9px] font-semibold sm:px-8">
+
+            <div class="flex items-center gap-2">
+                <a href="mailto:support@archeryasia.com" class="hover:text-gray-300">
+                    SUPPORT@ARCHERYASIA.COM
+                </a>
+
+                <span>/</span>
+
+                <a href="https://wa.me/919345665181" class="hover:text-gray-300">
+                    WHATSAPP: +91 9345665181
+                </a>
+            </div>
+
+            <a href="#coach-account" class="hidden hover:text-gray-300 sm:block">
+                OPEN COACH ACCOUNT
+            </a>
+
+        </div>
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- MAIN HEADER                                         -->
+    <!-- ================================================== -->
+
+    <header class="relative z-40 bg-white">
+
+        <div class="mx-auto max-w-[1360px] px-5 sm:px-8">
+
+            <div class="flex h-[100px] items-center justify-between gap-4 lg:h-[132px]">
+
+                <!-- LOGO -->
+                <a href="/" class="shrink-0">
+                    <img src="https://www.archeryasia.com/cdn/shop/files/Logo.png?v=1696172342" alt="Archery Asia"
+                        class="w-[140px] object-contain sm:w-[175px]">
+                </a>
+
+
+                <!-- DESKTOP NAVIGATION -->
+                <nav class="hidden items-center gap-4 xl:flex 2xl:gap-5">
+
+                    <a href="/collections/bows"
+                        class="text-[11px] font-semibold uppercase transition hover:text-red-600">
+                        Bows
+                    </a>
+
+                    <a href="/collections/arrows"
+                        class="text-[11px] font-semibold uppercase transition hover:text-red-600">
+                        Arrows
+                    </a>
+
+
+                    <!-- ACCESSORIES DROPDOWN -->
+                    <div class="group relative">
+
+                        <a href="/collections/accessories"
+                            class="flex items-center gap-1 text-[11px] font-semibold uppercase hover:text-red-600">
+                            Accessories
+
+                            <svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="m5 7 5 5 5-5" />
+                            </svg>
+                        </a>
+
+                        <div
+                            class="invisible absolute left-0 top-full z-50 mt-3 w-48 translate-y-2 bg-white py-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+
+                            <a href="/collections/accessories"
+                                class="block px-5 py-3 text-xs hover:bg-gray-50 hover:text-red-600">
+                                All Accessories
+                            </a>
+
+                            <a href="/collections/stabilizers"
+                                class="block px-5 py-3 text-xs hover:bg-gray-50 hover:text-red-600">
+                                Stabilizers
+                            </a>
+
+                            <a href="/collections/bowstrings"
+                                class="block px-5 py-3 text-xs hover:bg-gray-50 hover:text-red-600">
+                                Bowstrings
+                            </a>
+
+                        </div>
+                    </div>
+
+
+                    <!-- QUICK SHOP DROPDOWN -->
+                    <div class="group relative">
+
+                        <a href="/collections/quick-shop"
+                            class="flex items-center gap-1 text-[11px] font-semibold uppercase hover:text-red-600">
+                            Quick Shop
+
+                            <svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="m5 7 5 5 5-5" />
+                            </svg>
+                        </a>
+
+                        <div
+                            class="invisible absolute left-0 top-full z-50 mt-3 w-48 translate-y-2 bg-white py-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+
+                            <a href="/collections/best-sellers"
+                                class="block px-5 py-3 text-xs hover:bg-gray-50 hover:text-red-600">
+                                Best Sellers
+                            </a>
+
+                            <a href="/collections/new-arrivals"
+                                class="block px-5 py-3 text-xs hover:bg-gray-50 hover:text-red-600">
+                                New Arrivals
+                            </a>
+
+                        </div>
+                    </div>
+
+                </nav>
+
+
+                <!-- RIGHT HEADER ACTIONS -->
+                <div class="flex shrink-0 items-center gap-3 sm:gap-4">
+
+                    <!-- LOGIN -->
+                    <a href="/account/login"
+                        class="hidden whitespace-nowrap text-[11px] font-semibold hover:text-red-600 lg:block">
+                        Login / Register
+                    </a>
+
+                    <div class="hidden h-[60px] w-px bg-gray-200 lg:block"></div>
+
+
+                    <!-- ACCOUNT -->
+                    <a href="/account" aria-label="Account" class="hidden hover:text-red-600 sm:block">
+
+                        <svg class="h-[17px] w-[17px]" viewBox="0 0 24 24" fill="currentColor">
+                            <circle cx="12" cy="7" r="4" />
+                            <path d="M4.5 21v-2a7.5 7.5 0 0 1 15 0v2z" />
+                        </svg>
+
+                    </a>
+
+
+                    <!-- SEARCH -->
+                    <a href="/search" aria-label="Search" class="hover:text-red-600">
+
+                        <svg class="h-[17px] w-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.6">
+                            <circle cx="10.8" cy="10.8" r="6.3" />
+                            <path d="m16 16 4 4" stroke-linecap="round" />
+                        </svg>
+
+                    </a>
+
+
+                    <!-- WISHLIST -->
+                    <a href="/pages/wishlist" aria-label="Wishlist" class="hidden hover:text-red-600 sm:block">
+
+                        <svg class="h-[17px] w-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.6">
+                            <path
+                                d="M20.8 8.8c0 4.2-8.8 10-8.8 10S3.2 13 3.2 8.8A4.3 4.3 0 0 1 12 6.6a4.3 4.3 0 0 1 8.8 2.2Z" />
+                        </svg>
+
+                    </a>
+
+
+                    <!-- COMPARE -->
+                    <a href="/pages/compare" aria-label="Compare" class="hidden hover:text-red-600 md:block">
+
+                        <svg class="h-[17px] w-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.6">
+                            <rect x="3.5" y="4" width="8" height="11" rx="1" />
+                            <rect x="12.5" y="9" width="8" height="11" rx="1" />
+                        </svg>
+
+                    </a>
+
+
+                    <!-- CART -->
+                    <a href="/cart" aria-label="Shopping cart" class="relative hover:text-red-600">
+
+                        <svg class="h-[19px] w-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.6">
+                            <path d="M2.5 3.5h2l2.4 12h11.8l2.2-8.5H5.3" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <circle cx="9" cy="19.5" r="1.2" />
+                            <circle cx="17" cy="19.5" r="1.2" />
+                        </svg>
+
+                        <span class="absolute -right-2 -top-2 text-[9px]">0</span>
+
+                    </a>
+
+
+                    <!-- CURRENCY -->
+                    <button class="hidden items-center gap-1 text-[10px] font-medium md:flex">
+                        INR
+
+                        <svg class="h-3 w-3" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="m5 7 5 5 5-5" />
+                        </svg>
+                    </button>
+
+
+                    <!-- MOBILE MENU BUTTON -->
+                    <button id="mobileMenuButton" aria-label="Open navigation menu" aria-expanded="false"
+                        class="xl:hidden">
+                        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                            <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" />
+                        </svg>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- MOBILE NAVIGATION -->
+            <nav id="mobileMenu" class="hidden flex-col gap-4 border-t border-gray-100 py-4 xl:hidden">
+
+                <a href="/collections/bows" class="text-xs font-semibold uppercase hover:text-red-600">
+                    Bows
+                </a>
+
+                <a href="/collections/arrows" class="text-xs font-semibold uppercase hover:text-red-600">
+                    Arrows
+                </a>
+
+                <a href="/collections/accessories" class="text-xs font-semibold uppercase hover:text-red-600">
+                    Accessories
+                </a>
+
+                <a href="/collections/quick-shop" class="text-xs font-semibold uppercase hover:text-red-600">
+                    Quick Shop
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+    <!-- ================= PRODUCT PAGE ================= -->
+    <section class="mx-auto max-w-[1400px] px-5 py-10 sm:px-8 lg:px-12">
+
+        <div class="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-16">
+
+            <!-- ================= PRODUCT IMAGE ================= -->
+            <div class="w-full">
+
+                <div id="imageZoom"
+                    class="group relative flex h-[400px] cursor-crosshair items-center justify-center overflow-hidden bg-white sm:h-[520px] lg:h-[650px]">
+
+                    <img
+                        id="mainProductImage"
+                        src="https://www.archeryasia.com/cdn/shop/files/5220010_1024x_13561cdd-794b-417d-820e-512c8c9d1b88_2000x.jpg?v=1781802525"
+                        alt="MK Korea Limbs Zest Carbon Wood ILF 2025"
+                        class="h-full w-full object-contain transition-transform duration-300 ease-out group-hover:scale-[1.8]"
+                    >
+
+                    <!-- IMAGE ZOOM ICON -->
+                    <div class="absolute bottom-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-gray-700 shadow-sm transition group-hover:opacity-0">
+
+                        <svg class="h-5 w-5" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="1.6">
+
+                            <circle cx="10.8" cy="10.8" r="6.5"></circle>
+                            <path d="m16 16 4 4M10.8 8v5.6M8 10.8h5.6"
+                                stroke-linecap="round"></path>
+
+                        </svg>
+
+                    </div>
+
+                </div>
+
+              
+
+            </div>
+
+
+            <!-- ================= PRODUCT DETAILS ================= -->
+            <div class="w-full pt-2 lg:pt-5">
+
+                <!-- LABEL -->
+                <p class="mb-4 text-[11px] font-bold uppercase tracking-[2px] text-red-600">
+                    Archery Asia · Professional Gear
+                </p>
+
+                <!-- PRODUCT TITLE -->
+                <h1 class="mb-5 text-2xl font-normal leading-tight text-gray-800 sm:text-3xl lg:text-[34px]">
+                    MK Korea | Limbs Zest Carbon/Wood ILF 2025
+                </h1>
+
+
+                <!-- PRICE -->
+                <div class="mb-7 flex flex-wrap items-center gap-x-12 gap-y-2">
+
+                    <span class="text-sm font-medium text-gray-700">
+                        Price:
+                    </span>
+
+                    <span class="text-base font-semibold text-red-600">
+                        Rs. 140,000.00
+                    </span>
+
+                </div>
+
+
+                <!-- LENGTH SELECTION -->
+                <div class="mb-6 flex flex-wrap items-center gap-x-8 gap-y-3">
+
+                    <span class="w-[80px] shrink-0 text-sm font-medium text-gray-700">
+                        Length:
+                    </span>
+
+                    <div class="flex flex-wrap gap-2">
+
+                        <button type="button"
+                            class="product-option selected-option rounded-md border border-red-500 px-4 py-2 text-sm text-red-600 transition hover:border-red-500"
+                            data-group="length"
+                            data-value="68">
+                            68"
+                        </button>
+
+                        <button type="button"
+                            class="product-option rounded-md border border-gray-200 px-4 py-2 text-sm text-gray-700 transition hover:border-red-500 hover:text-red-600"
+                            data-group="length"
+                            data-value="66">
+                            66"
+                        </button>
+
+                        <button type="button"
+                            class="product-option rounded-md border border-gray-200 px-4 py-2 text-sm text-gray-700 transition hover:border-red-500 hover:text-red-600"
+                            data-group="length"
+                            data-value="70">
+                            70"
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DRAW WEIGHT -->
+                <div class="mb-7 flex flex-wrap items-center gap-x-8 gap-y-3">
+
+                    <span class="w-[80px] shrink-0 text-sm font-medium text-gray-700">
+                        Draw Weight:
+                    </span>
+
+                    <div class="flex flex-wrap gap-2">
+
+                        <button type="button"
+                            class="product-option rounded-md border border-gray-200 px-4 py-2 text-sm text-gray-700 transition hover:border-red-500 hover:text-red-600"
+                            data-group="weight"
+                            data-value="36lb">
+                            36lb
+                        </button>
+
+                        <button type="button"
+                            class="product-option rounded-md border border-gray-200 px-4 py-2 text-sm text-gray-700 transition hover:border-red-500 hover:text-red-600"
+                            data-group="weight"
+                            data-value="38lb">
+                            38lb
+                        </button>
+
+                        <button type="button"
+                            class="product-option selected-option rounded-md border border-red-500 px-4 py-2 text-sm text-red-600 transition hover:border-red-500"
+                            data-group="weight"
+                            data-value="40lb">
+                            40lb
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT INFORMATION -->
+                <div class="mb-7 space-y-4">
+
+                    <div class="flex items-center gap-8 text-sm">
+                        <span class="w-[80px] shrink-0 font-medium text-gray-700">
+                            Vendor:
+                        </span>
+                        <span class="text-gray-600">MK Korea</span>
+                    </div>
+
+                    <div class="flex items-center gap-8 text-sm">
+                        <span class="w-[80px] shrink-0 font-medium text-gray-700">
+                            Type:
+                        </span>
+                        <span class="text-gray-600">Bows</span>
+                    </div>
+
+                    <div class="flex items-center gap-8 text-sm">
+                        <span class="w-[80px] shrink-0 font-medium text-gray-700">
+                            Availability:
+                        </span>
+                        <span class="font-medium text-green-600">
+                            In stock!
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <!-- QUANTITY SELECTOR -->
+                <div class="mb-8 flex flex-wrap items-center gap-x-8 gap-y-3">
+
+                    <label for="quantity"
+                        class="w-[80px] shrink-0 text-sm font-medium text-gray-700">
+                        Quantity:
+                    </label>
+
+                    <div class="inline-flex h-[42px] overflow-hidden rounded-md border border-gray-200">
+
+                        <!-- MINUS -->
+                        <button
+                            type="button"
+                            id="quantityMinus"
+                            aria-label="Decrease quantity"
+                            class="flex w-10 items-center justify-center bg-red-600 text-lg font-medium text-white transition hover:bg-red-700">
+                            −
+                        </button>
+
+                        <!-- QUANTITY INPUT -->
+                        <input
+                            type="number"
+                            id="quantity"
+                            value="1"
+                            min="1"
+                            max="99"
+                            inputmode="numeric"
+                            aria-label="Product quantity"
+                            class="h-full w-14 appearance-none border-0 bg-white text-center text-sm text-gray-800 outline-none focus:ring-0"
+                        >
+
+                        <!-- PLUS -->
+                        <button
+                            type="button"
+                            id="quantityPlus"
+                            aria-label="Increase quantity"
+                            class="flex w-10 items-center justify-center bg-red-600 text-lg font-medium text-white transition hover:bg-red-700">
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACTION BUTTONS -->
+                <div class="flex flex-col gap-3 sm:flex-row">
+
+                    <button
+                        type="button"
+                        id="addToCart"
+                        class="flex h-12 w-full items-center justify-center rounded-md bg-red-600 px-8 text-sm font-semibold text-white transition duration-300 hover:bg-red-700 sm:w-[200px]">
+                        Add to Cart
+                    </button>
+
+                    <button
+                        type="button"
+                        id="buyNow"
+                        class="flex h-12 w-full items-center justify-center rounded-md border border-red-600 bg-white px-8 text-sm font-semibold text-red-600 transition duration-300 hover:bg-red-600 hover:text-white sm:w-[200px]">
+                        Buy It Now
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // -----------------------------------
+            // PRODUCT OPTIONS
+            // -----------------------------------
+
+            const selectedOptions = {
+                length: "68",
+                weight: "40lb"
+            };
+
+            document.querySelectorAll(".product-option").forEach(function (button) {
+
+                button.addEventListener("click", function () {
+
+                    const group = this.dataset.group;
+
+                    document.querySelectorAll(
+                        '.product-option[data-group="' + group + '"]'
+                    ).forEach(function (option) {
+
+                        option.classList.remove(
+                            "border-red-500",
+                            "text-red-600",
+                            "selected-option"
+                        );
+
+                        option.classList.add(
+                            "border-gray-200",
+                            "text-gray-700"
+                        );
+
+                    });
+
+                    this.classList.remove(
+                        "border-gray-200",
+                        "text-gray-700"
+                    );
+
+                    this.classList.add(
+                        "border-red-500",
+                        "text-red-600",
+                        "selected-option"
+                    );
+
+                    selectedOptions[group] = this.dataset.value;
+
+                });
+
+            });
+
+
+            // -----------------------------------
+            // QUANTITY SELECTOR
+            // -----------------------------------
+
+            const quantityInput = document.getElementById("quantity");
+            const quantityMinus = document.getElementById("quantityMinus");
+            const quantityPlus = document.getElementById("quantityPlus");
+
+            function getQuantity() {
+
+                let quantity = parseInt(quantityInput.value, 10);
+
+                if (isNaN(quantity)) {
+                    quantity = 1;
+                }
+
+                quantity = Math.max(1, Math.min(99, quantity));
+
+                quantityInput.value = quantity;
+
+                return quantity;
+
+            }
+
+            quantityMinus.addEventListener("click", function () {
+
+                quantityInput.value = getQuantity() - 1;
+
+                if (parseInt(quantityInput.value, 10) < 1) {
+                    quantityInput.value = 1;
+                }
+
+            });
+
+            quantityPlus.addEventListener("click", function () {
+
+                quantityInput.value = Math.min(99, getQuantity() + 1);
+
+            });
+
+            quantityInput.addEventListener("change", getQuantity);
+
+            quantityInput.addEventListener("blur", getQuantity);
+
+
+            // -----------------------------------
+            // PRODUCT IMAGE ZOOM
+            // -----------------------------------
+
+            const imageZoom = document.getElementById("imageZoom");
+            const mainProductImage = document.getElementById("mainProductImage");
+
+            imageZoom.addEventListener("mousemove", function (event) {
+
+                if (window.innerWidth < 1024) return;
+
+                const rect = imageZoom.getBoundingClientRect();
+
+                const x = ((event.clientX - rect.left) / rect.width) * 100;
+                const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+                mainProductImage.style.transformOrigin = x + "% " + y + "%";
+
+            });
+
+            imageZoom.addEventListener("mouseleave", function () {
+
+                mainProductImage.style.transformOrigin = "center center";
+
+            });
+
+
+            // -----------------------------------
+            // DEMO BUTTON ACTIONS
+            // -----------------------------------
+
+            document.getElementById("addToCart").addEventListener("click", function () {
+
+                const quantity = getQuantity();
+
+                alert(
+                    "Selected product: MK Korea Limbs Zest Carbon/Wood ILF 2025\n" +
+                    "Length: " + selectedOptions.length + '"\n' +
+                    "Draw Weight: " + selectedOptions.weight + "\n" +
+                    "Quantity: " + quantity
+                );
+
+            });
+
+            document.getElementById("buyNow").addEventListener("click", function () {
+
+                const quantity = getQuantity();
+
+                alert(
+                    "Ready to buy:\n" +
+                    "Length: " + selectedOptions.length + '"\n' +
+                    "Draw Weight: " + selectedOptions.weight + "\n" +
+                    "Quantity: " + quantity
+                );
+
+            });
+
+        });
+    </script>
+<!-- ================= PRODUCT DETAILS & REVIEWS ================= -->
+<section class="w-full bg-white px-4 py-10 sm:px-8 lg:px-12">
+
+    <div class="mx-auto max-w-[1350px]">
+
+        <!-- TABS -->
+        <div class="flex items-center gap-1 border-b border-gray-200">
+
+            <button
+                type="button"
+                onclick="showProductTab('description')"
+                id="descriptionTab"
+                class="product-tab bg-[#252a35] px-5 py-3 text-xs font-medium text-white transition-colors duration-300 sm:px-8">
+                About This Product
+            </button>
+
+            <button
+                type="button"
+                onclick="showProductTab('reviews')"
+                id="reviewsTab"
+                class="product-tab bg-[#ed0a2f] px-5 py-3 text-xs font-medium text-white transition-colors duration-300 hover:bg-[#252a35] sm:px-8">
+                The Reviews
+            </button>
+
+        </div>
+
+        <!-- DESCRIPTION CONTENT -->
+        <div
+            id="descriptionContent"
+            class="rounded-b border border-t-0 border-gray-200 px-5 py-6 text-sm leading-7 text-gray-700 sm:px-6 sm:py-7">
+
+            <p class="mb-3">
+                2025 MK Korea flagship limbs. Strong brand presence — India national archers use MK equipment.
+                New model draws immediate attention. JVD Code: 121152. EUR retail: €899/pair.
+            </p>
+
+            <p class="mb-3">
+                <span class="font-semibold text-gray-900">Lengths:</span>
+                66" / 68" / 70" | 28–46lb | ILF
+            </p>
+
+            <p class="italic text-gray-600">
+                GST invoice available.
+            </p>
+
+        </div>
+
+        <!-- REVIEWS CONTENT -->
+        <div
+            id="reviewsContent"
+            class="hidden rounded-b border border-t-0 border-gray-200 px-5 py-6 sm:px-6 sm:py-7">
+
+            <h3 class="mb-3 text-lg font-semibold text-[#252a35]">
+                Customer Reviews
+            </h3>
+
+            <p class="mb-5 text-sm text-gray-500">
+                Share your experience with this product.
+            </p>
+
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+
+                <p class="text-sm text-gray-600">
+                    No reviews yet. Be the first to review this product.
+                </p>
+
+                <button
+                    type="button"
+                    onclick="alert('Connect your review form here.')"
+                    class="inline-flex items-center justify-center bg-[#ed0a2f] px-6 py-3 text-xs font-semibold uppercase tracking-wide text-white transition-colors duration-300 hover:bg-[#252a35]">
+                    Write a Review
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+    function showProductTab(tab) {
+        const descriptionContent = document.getElementById('descriptionContent');
+        const reviewsContent = document.getElementById('reviewsContent');
+
+        const descriptionTab = document.getElementById('descriptionTab');
+        const reviewsTab = document.getElementById('reviewsTab');
+
+        if (tab === 'description') {
+            descriptionContent.classList.remove('hidden');
+            reviewsContent.classList.add('hidden');
+
+            descriptionTab.classList.remove('bg-[#ed0a2f]');
+            descriptionTab.classList.add('bg-[#252a35]');
+
+            reviewsTab.classList.remove('bg-[#252a35]');
+            reviewsTab.classList.add('bg-[#ed0a2f]');
+        } else {
+            descriptionContent.classList.add('hidden');
+            reviewsContent.classList.remove('hidden');
+
+            reviewsTab.classList.remove('bg-[#ed0a2f]');
+            reviewsTab.classList.add('bg-[#252a35]');
+
+            descriptionTab.classList.remove('bg-[#252a35]');
+            descriptionTab.classList.add('bg-[#ed0a2f]');
+        }
+    }
+</script>
+<!-- ================= END PRODUCT DETAILS & REVIEWS ================= -->
+
+    <!-- ================= ARCHERY ASIA FOOTER ================= -->
+    <footer class="w-full bg-[#1b1919] text-white">
+
+        <div class="mx-auto max-w-[1100px] px-5 pb-8 pt-12 sm:px-8">
+
+            <!-- LOGO & SOCIAL MEDIA -->
+            <div class="mb-12 flex justify-center">
+
+                <div class="flex w-[300px] flex-col items-center border border-[#484444] p-[6px]">
+
+                    <div class="flex w-full flex-col items-center border border-[#383434] px-5 py-5">
+
+                        <a href="/" class="mb-3">
+                            <img src="https://www.archeryasia.com/cdn/shop/files/Asset_1_x86@2x.svg?v=1694454685"
+                                alt="Archery Asia" class="w-[210px] object-contain">
+                        </a>
+
+                        <!-- SOCIAL ICONS -->
+                        <div class="flex items-center gap-5 text-[#858585]">
+
+                            <a href="#" aria-label="Facebook" class="transition-colors duration-300 hover:text-white">
+                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M13.4 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.2V13H10v8z" />
+                                </svg>
+                            </a>
+
+                            <a href="#" aria-label="Twitter" class="transition-colors duration-300 hover:text-white">
+                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M22 5.9a8 8 0 0 1-2.4.7 4.2 4.2 0 0 0 1.8-2.3 8.4 8.4 0 0 1-2.7 1 4.2 4.2 0 0 0-7.2 3.8 11.9 11.9 0 0 1-8.6-4.4 4.2 4.2 0 0 0 1.3 5.6 4.1 4.1 0 0 1-1.9-.5v.1a4.2 4.2 0 0 0 3.4 4.1 4.2 4.2 0 0 1-1.9.1 4.2 4.2 0 0 0 3.9 2.9A8.4 8.4 0 0 1 2.5 19a11.9 11.9 0 0 0 18.3-10c0-.2 0-.4-.1-.6A8.5 8.5 0 0 0 22 5.9z" />
+                                </svg>
+                            </a>
+
+                            <a href="#" aria-label="Pinterest" class="transition-colors duration-300 hover:text-white">
+                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 2a10 10 0 0 0-3.6 19.3c0-.8 0-1.9.2-2.8l1.3-5.5s-.3-.7-.3-1.6c0-1.5.9-2.6 2-2.6.9 0 1.3.7 1.3 1.5 0 .9-.6 2.3-.9 3.6-.3 1.1.5 2 1.6 2 1.9 0 3.3-2.4 3.3-5.2 0-2.1-1.4-3.7-3.9-3.7-2.8 0-4.5 2.1-4.5 4.4 0 .8.2 1.5.6 2 .2.2.2.3.1.6l-.2.8c-.1.3-.3.4-.6.3-1.3-.5-1.9-1.9-1.9-3.4 0-2.5 2.1-5.6 6.4-5.6 3.4 0 5.6 2.5 5.6 5.1 0 3.5-2 6.2-4.9 6.2-1 0-2-.6-2.3-1.3l-.7 2.8c-.2 1-.8 2-1.2 2.7A10 10 0 1 0 12 2z" />
+                                </svg>
+                            </a>
+
+                            <a href="#" aria-label="Instagram" class="transition-colors duration-300 hover:text-white">
+                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                                    <circle cx="12" cy="12" r="4" />
+                                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                                </svg>
+                            </a>
+
+                            <a href="#" aria-label="LinkedIn" class="transition-colors duration-300 hover:text-white">
+                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M5.2 8.5H2V22h3.2zM3.6 2a1.9 1.9 0 1 0 0 3.8 1.9 1.9 0 0 0 0-3.8zM22 13.8c0-4.1-2.2-6-5.2-6a4.5 4.5 0 0 0-4 2.2V8.5H9.6V22h3.2v-6.7c0-1.8.3-3.5 2.5-3.5s2.2 2 2.2 3.6V22H22z" />
+                                </svg>
+                            </a>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- FOOTER COLUMNS -->
+            <div class="grid grid-cols-1 gap-x-8 gap-y-9 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_0.9fr_1.15fr_1.65fr]">
+
+                <!-- INFORMATION -->
+                <div>
+                    <h3 class="mb-5 text-lg font-bold uppercase">
+                        Information
+                        <span class="mt-1.5 block h-[2px] w-[30px] bg-[#ed1234]"></span>
+                    </h3>
+
+                    <ul class="space-y-3 text-[15px] text-[#858585]">
+                        <li><a href="/pages/about-us" class="transition hover:text-white">» About Archery Asia</a></li>
+                        <li><a href="/pages/careers" class="transition hover:text-white">» Careers</a></li>
+                        <li><a href="/pages/influencers" class="transition hover:text-white">» Influencers</a></li>
+                        <li><a href="/pages/coaches-program" class="transition hover:text-white">» Coaches Program</a>
+                        </li>
+                        <li><a href="/pages/sitemap" class="transition hover:text-white">» Sitemap</a></li>
+                    </ul>
+                </div>
+
+
+                <!-- QUICK SHOP -->
+                <div>
+                    <h3 class="mb-5 text-lg font-bold uppercase">
+                        Quick Shop
+                        <span class="mt-1.5 block h-[2px] w-[30px] bg-[#ed1234]"></span>
+                    </h3>
+
+                    <ul class="space-y-3 text-[15px] text-[#858585]">
+                        <li><a href="/collections/all" class="transition hover:text-white">» Catalog</a></li>
+                        <li><a href="/collections/starter-pack" class="transition hover:text-white">» Starter Pack</a>
+                        </li>
+                        <li><a href="/collections/new-arrivals" class="transition hover:text-white">» New Arrivals</a>
+                        </li>
+                        <li><a href="/collections/left-hand" class="transition hover:text-white">» Left Hand</a></li>
+                        <li><a href="/collections/right-hand" class="transition hover:text-white">» Right Hand</a></li>
+                        <li><a href="/collections/clothing" class="transition hover:text-white">» Clothing</a></li>
+                    </ul>
+                </div>
+
+
+                <!-- SERVICE -->
+                <div>
+                    <h3 class="mb-5 text-lg font-bold uppercase">
+                        Service
+                        <span class="mt-1.5 block h-[2px] w-[30px] bg-[#ed1234]"></span>
+                    </h3>
+
+                    <ul class="space-y-3 text-[15px] text-[#858585]">
+                        <li><a href="/search" class="transition hover:text-white">» Search</a></li>
+                        <li><a href="/blogs/news" class="transition hover:text-white">» News</a></li>
+                        <li><a href="/pages/help" class="transition hover:text-white">» Help</a></li>
+                        <li><a href="/pages/contact" class="transition hover:text-white">» Contact Us</a></li>
+                        <li><a href="/pages/dealer-login" class="transition hover:text-white">» Dealer Login</a></li>
+                    </ul>
+                </div>
+
+
+                <!-- USEFUL LINKS -->
+                <div>
+                    <h3 class="mb-5 text-lg font-bold uppercase">
+                        Useful Links
+                        <span class="mt-1.5 block h-[2px] w-[30px] bg-[#ed1234]"></span>
+                    </h3>
+
+                    <ul class="space-y-3 text-[15px] text-[#858585]">
+                        <li><a href="/policies/privacy-policy" class="transition hover:text-white">» Privacy Policy</a>
+                        </li>
+                        <li><a href="/policies/refund-policy" class="transition hover:text-white">» Returns</a></li>
+                        <li><a href="/policies/shipping-policy" class="transition hover:text-white">» Shipping &amp;
+                                Delivery</a></li>
+                        <li><a href="/policies/terms-of-service" class="transition hover:text-white">» Terms of
+                                Service</a></li>
+                        <li><a href="/pages/support" class="transition hover:text-white">» Support</a></li>
+                        <li><a href="/pages/become-a-supplier" class="transition hover:text-white">» Become a
+                                Supplier</a></li>
+                    </ul>
+                </div>
+
+
+                <!-- ABOUT THE STORE -->
+                <div>
+                    <h3 class="mb-5 text-lg font-bold uppercase">
+                        About the Store
+                        <span class="mt-1.5 block h-[2px] w-[30px] bg-[#ed1234]"></span>
+                    </h3>
+
+                    <p class="mb-5 text-[15px] leading-[2.3] text-[#858585]">
+                        India's professional archery store. Present in Thanjavur, Chennai, Bangalore &amp; Mumbai.
+                        Delivering all over India, Singapore and the US.
+                    </p>
+
+                    <div class="space-y-3 text-[14px] leading-relaxed text-[#858585]">
+
+                        <a href="#" class="flex items-start gap-2 transition hover:text-white">
+                            <svg class="mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="m12 3 10 9h-3v9h-6v-6h-2v6H5v-9H2z" />
+                            </svg>
+                            <span>Thanjavur &amp; Chennai, Tamil Nadu, India</span>
+                        </a>
+
+                        <a href="https://wa.me/919345665181"
+                            class="flex items-center gap-2 transition hover:text-white">
+                            <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M6.6 2h10.8A2.6 2.6 0 0 1 20 4.6v14.8a2.6 2.6 0 0 1-2.6 2.6H6.6A2.6 2.6 0 0 1 4 19.4V4.6A2.6 2.6 0 0 1 6.6 2ZM12 19.5a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Z" />
+                            </svg>
+                            <span>+91 93456 65181 (WhatsApp)</span>
+                        </a>
+
+                        <a href="mailto:support@archeryasia.com"
+                            class="flex items-center gap-2 transition hover:text-white">
+                            <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M2 5h20v14H2z" />
+                                <path d="m2 6 10 7 10-7" fill="none" stroke="#1b1919" stroke-width="1.5" />
+                            </svg>
+                            <span class="break-all">support@archeryasia.com</span>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- COPYRIGHT -->
+            <div class="mt-10 border-t border-white/10 pt-5 text-center text-xs text-[#777777]">
+                © 2026 Archery Asia. All rights reserved.
+            </div>
+
+        </div>
+
+    </footer>
+    <!-- ================= END ARCHERY ASIA FOOTER ================= -->
+</body>
+
+</html>

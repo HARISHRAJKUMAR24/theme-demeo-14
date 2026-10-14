@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Archery Asia - Shop</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-white font-sans text-[#292d38]">
+    <!-- ================================================== -->
+    <!-- TOP BAR                                             -->
+    <!-- ================================================== -->
+
+    <div class="bg-[#252a35] text-white">
+        <div
+            class="mx-auto flex h-[30px] max-w-[1360px] items-center justify-between px-4 text-[9px] font-semibold sm:px-8">
+
+            <div class="flex items-center gap-2">
+                <a href="mailto:support@archeryasia.com" class="hover:text-gray-300">
+                    SUPPORT@ARCHERYASIA.COM
+                </a>
+
+                <span>/</span>
+
+                <a href="https://wa.me/919345665181" class="hover:text-gray-300">
+                    WHATSAPP: +91 9345665181
+                </a>
+            </div>
+
+            <a href="#coach-account" class="hidden hover:text-gray-300 sm:block">
+                OPEN COACH ACCOUNT
+            </a>
+
+        </div>
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- MAIN HEADER                                         -->
+    <!-- ================================================== -->
+
+    <header class="relative z-40 bg-white">
+
+        <div class="mx-auto max-w-[1360px] px-5 sm:px-8">
+
+            <div class="flex h-[100px] items-center justify-between gap-4 lg:h-[132px]">
+
+                <!-- LOGO -->
+                <a href="/" class="shrink-0">
+                    <img src="https://www.archeryasia.com/cdn/shop/files/Logo.png?v=1696172342" alt="Archery Asia"
+                        class="w-[140px] object-contain sm:w-[175px]">
+                </a>
+
+
+                <!-- DESKTOP NAVIGATION -->
+                <nav class="hidden items-center gap-4 xl:flex 2xl:gap-5">
+
+                    <a href="/collections/bows"
+                        class="text-[11px] font-semibold uppercase transition hover:text-red-600">
+                        Bows
+                    </a>
+
+                    <a href="/collections/arrows"
+                        class="text-[11px] font-semibold uppercase transition hover:text-red-600">
+                        Arrows
+                    </a>
+
+
+                    <!-- ACCESSORIES DROPDOWN -->
+                    <div class="group relative">
+
+                        <a href="/collections/accessories"
+                            class="flex items-center gap-1 text-[11px] font-semibold uppercase hover:text-red-600">
+                            Accessories
+
+                            <svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="m5 7 5 5 5-5" />
+                            </svg>
+                        </a>
+
+                        <div
+                            class="invisible absolute left-0 top-full z-50 mt-3 w-48 translate-y-2 bg-white py-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+
+                            <a href="/collections/accessories"
+                                class="block px-5 py-3 text-xs hover:bg-gray-50 hover:text-red-600">
+                                All Accessories
+                            </a>
+
+                            <a href="/collections/stabilizers"
+                                class="block px-5 py-3 text-xs hover:bg-gray-50 hover:text-red-600">
+                                Stabilizers
+                            </a>
+
+                            <a href="/collections/bowstrings"
+                                class="block px-5 py-3 text-xs hover:bg-gray-50 hover:text-red-600">
+                                Bowstrings
+                            </a>
+
+                        </div>
+                    </div>
+
+
+                    <!-- QUICK SHOP DROPDOWN -->
+                    <div class="group relative">
+
+                        <a href="/collections/quick-shop"
+                            class="flex items-center gap-1 text-[11px] font-semibold uppercase hover:text-red-600">
+                            Quick Shop
+
+                            <svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="m5 7 5 5 5-5" />
+                            </svg>
+                        </a>
+
+                        <div
+                            class="invisible absolute left-0 top-full z-50 mt-3 w-48 translate-y-2 bg-white py-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+
+                            <a href="/collections/best-sellers"
+                                class="block px-5 py-3 text-xs hover:bg-gray-50 hover:text-red-600">
+                                Best Sellers
+                            </a>
+
+                            <a href="/collections/new-arrivals"
+                                class="block px-5 py-3 text-xs hover:bg-gray-50 hover:text-red-600">
+                                New Arrivals
+                            </a>
+
+                        </div>
+                    </div>
+
+                </nav>
+
+
+                <!-- RIGHT HEADER ACTIONS -->
+                <div class="flex shrink-0 items-center gap-3 sm:gap-4">
+
+                    <!-- LOGIN -->
+                    <a href="/account/login"
+                        class="hidden whitespace-nowrap text-[11px] font-semibold hover:text-red-600 lg:block">
+                        Login / Register
+                    </a>
+
+                    <div class="hidden h-[60px] w-px bg-gray-200 lg:block"></div>
+
+
+                    <!-- ACCOUNT -->
+                    <a href="/account" aria-label="Account" class="hidden hover:text-red-600 sm:block">
+
+                        <svg class="h-[17px] w-[17px]" viewBox="0 0 24 24" fill="currentColor">
+                            <circle cx="12" cy="7" r="4" />
+                            <path d="M4.5 21v-2a7.5 7.5 0 0 1 15 0v2z" />
+                        </svg>
+
+                    </a>
+
+
+                    <!-- SEARCH -->
+                    <a href="/search" aria-label="Search" class="hover:text-red-600">
+
+                        <svg class="h-[17px] w-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.6">
+                            <circle cx="10.8" cy="10.8" r="6.3" />
+                            <path d="m16 16 4 4" stroke-linecap="round" />
+                        </svg>
+
+                    </a>
+
+
+                    <!-- WISHLIST -->
+                    <a href="/pages/wishlist" aria-label="Wishlist" class="hidden hover:text-red-600 sm:block">
+
+                        <svg class="h-[17px] w-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.6">
+                            <path
+                                d="M20.8 8.8c0 4.2-8.8 10-8.8 10S3.2 13 3.2 8.8A4.3 4.3 0 0 1 12 6.6a4.3 4.3 0 0 1 8.8 2.2Z" />
+                        </svg>
+
+                    </a>
+
+
+                    <!-- COMPARE -->
+                    <a href="/pages/compare" aria-label="Compare" class="hidden hover:text-red-600 md:block">
+
+                        <svg class="h-[17px] w-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.6">
+                            <rect x="3.5" y="4" width="8" height="11" rx="1" />
+                            <rect x="12.5" y="9" width="8" height="11" rx="1" />
+                        </svg>
+
+                    </a>
+
+
+                    <!-- CART -->
+                    <a href="/cart" aria-label="Shopping cart" class="relative hover:text-red-600">
+
+                        <svg class="h-[19px] w-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.6">
+                            <path d="M2.5 3.5h2l2.4 12h11.8l2.2-8.5H5.3" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <circle cx="9" cy="19.5" r="1.2" />
+                            <circle cx="17" cy="19.5" r="1.2" />
+                        </svg>
+
+                        <span class="absolute -right-2 -top-2 text-[9px]">0</span>
+
+                    </a>
+
+
+                    <!-- CURRENCY -->
+                    <button class="hidden items-center gap-1 text-[10px] font-medium md:flex">
+                        INR
+
+                        <svg class="h-3 w-3" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="m5 7 5 5 5-5" />
+                        </svg>
+                    </button>
+
+
+                    <!-- MOBILE MENU BUTTON -->
+                    <button id="mobileMenuButton" aria-label="Open navigation menu" aria-expanded="false"
+                        class="xl:hidden">
+                        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                            <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" />
+                        </svg>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- MOBILE NAVIGATION -->
+            <nav id="mobileMenu" class="hidden flex-col gap-4 border-t border-gray-100 py-4 xl:hidden">
+
+                <a href="/collections/bows" class="text-xs font-semibold uppercase hover:text-red-600">
+                    Bows
+                </a>
+
+                <a href="/collections/arrows" class="text-xs font-semibold uppercase hover:text-red-600">
+                    Arrows
+                </a>
+
+                <a href="/collections/accessories" class="text-xs font-semibold uppercase hover:text-red-600">
+                    Accessories
+                </a>
+
+                <a href="/collections/quick-shop" class="text-xs font-semibold uppercase hover:text-red-600">
+                    Quick Shop
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+    <!-- MAIN SHOP SECTION -->
+    <main class="mx-auto max-w-[1360px] px-4 py-8 sm:px-6 lg:px-8">
+
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-[245px_minmax(0,1fr)] lg:gap-8">
+
+            <!-- ================= SIDEBAR ================= -->
+            <aside class="space-y-8">
+
+                <!-- AVAILABILITY -->
+                <section>
+                    <h2 class="border-b-2 border-[#ed0033] pb-3 text-lg font-medium">
+                        Availability
+                    </h2>
+
+                    <div class="mt-4 space-y-4 text-sm">
+
+                        <label class="flex cursor-pointer items-center gap-3">
+                            <input type="radio" name="availability" value="all" checked
+                                class="h-4 w-4 accent-[#ed0033]">
+                            <span>All products</span>
+                        </label>
+
+                        <label class="flex cursor-pointer items-center gap-3">
+                            <input type="radio" name="availability" value="in-stock" class="h-4 w-4 accent-[#ed0033]">
+                            <span>In stock</span>
+                        </label>
+
+                        <label class="flex cursor-pointer items-center gap-3">
+                            <input type="radio" name="availability" value="out-of-stock"
+                                class="h-4 w-4 accent-[#ed0033]">
+                            <span>Out of stock</span>
+                        </label>
+
+                    </div>
+
+                    <div class="mt-5 flex items-center justify-between">
+
+                        <button type="button" id="clearAvailability"
+                            class="rounded bg-[#ed0033] px-5 py-2 text-xs font-medium text-white transition hover:bg-[#c9002b]">
+                            Clear
+                        </button>
+
+                        <button type="button" id="applyAvailability"
+                            class="rounded bg-[#ed0033] px-5 py-2 text-xs font-medium text-white transition hover:bg-[#c9002b]">
+                            Apply
+                        </button>
+
+                    </div>
+                </section>
+
+
+                <!-- PRICE FILTER -->
+                <section>
+
+                    <h2 class="border-b-2 border-[#ed0033] pb-3 text-lg font-medium">
+                        Price
+                    </h2>
+
+                    <p class="mt-4 text-sm text-gray-600">
+                        The highest price is Rs. 140,000.00
+                    </p>
+
+                    <div class="mt-4 space-y-4">
+
+                        <div>
+                            <label for="minPrice" class="mb-2 block text-sm">
+                                From ₹
+                            </label>
+
+                            <input type="number" id="minPrice" min="0" placeholder="Minimum price"
+                                class="w-full rounded border border-gray-200 px-3 py-3 text-sm outline-none transition focus:border-[#ed0033]">
+                        </div>
+
+                        <div>
+                            <label for="maxPrice" class="mb-2 block text-sm">
+                                To ₹
+                            </label>
+
+                            <input type="number" id="maxPrice" min="0" placeholder="Maximum price"
+                                class="w-full rounded border border-gray-200 px-3 py-3 text-sm outline-none transition focus:border-[#ed0033]">
+                        </div>
+
+                    </div>
+
+                    <div class="mt-5 flex items-center justify-between">
+
+                        <button type="button" id="clearPrice"
+                            class="rounded bg-[#ed0033] px-5 py-2 text-xs font-medium text-white transition hover:bg-[#c9002b]">
+                            Clear
+                        </button>
+
+                        <button type="button" id="applyPrice"
+                            class="rounded bg-[#ed0033] px-5 py-2 text-xs font-medium text-white transition hover:bg-[#c9002b]">
+                            Apply
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- CLEAR ALL -->
+                <button type="button" id="clearAll"
+                    class="w-full rounded bg-[#ed0033] px-4 py-3 text-sm font-medium text-white transition hover:bg-[#c9002b]">
+                    Clear All Filters
+                </button>
+
+            </aside>
+
+
+            <!-- ================= PRODUCTS AREA ================= -->
+            <section class="min-w-0">
+
+                <!-- TOOLBAR -->
+                <div class="mb-6 flex flex-wrap items-center justify-between gap-4 bg-[#f3f3f3] px-3 py-3 sm:px-4">
+
+                    <!-- GRID / LIST BUTTONS -->
+                    <div class="flex items-center gap-1">
+
+                        <button type="button" id="gridButton" aria-label="Grid view" aria-pressed="true"
+                            class="flex h-9 w-9 items-center justify-center rounded bg-[#ed0033] text-white transition hover:bg-[#c9002b]">
+
+                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 3h7v7H3V3zm11 0h7v7h-7V3zM3 14h7v7H3v-7zm11 0h7v7h-7v-7z" />
+                            </svg>
+
+                        </button>
+
+                        <button type="button" id="listButton" aria-label="List view" aria-pressed="false"
+                            class="flex h-9 w-9 items-center justify-center rounded bg-white text-gray-600 transition hover:text-[#ed0033]">
+
+                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M3 4h4v4H3V4zm6 0h12v4H9V4zM3 10h4v4H3v-4zm6 0h12v4H9v-4zM3 16h4v4H3v-4zm6 0h12v4H9v-4z" />
+                            </svg>
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- PAGINATION SIZE -->
+                    <div class="flex items-center gap-2 text-sm">
+
+                        <label for="pageSize">Paginate by</label>
+
+                        <select id="pageSize"
+                            class="cursor-pointer rounded border-0 bg-[#ed0033] px-3 py-2 text-white outline-none">
+
+                            <option value="3">3</option>
+                            <option value="6">6</option>
+                            <option value="9" selected>9</option>
+                            <option value="10">10</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- SORT -->
+                    <div class="flex items-center gap-2 text-sm">
+
+                        <label for="sortProducts">Sort by</label>
+
+                        <select id="sortProducts"
+                            class="max-w-[150px] cursor-pointer rounded border-0 bg-[#ed0033] px-3 py-2 text-white outline-none">
+
+                            <option value="featured">Featured</option>
+                            <option value="name-asc">Name, A to Z</option>
+                            <option value="name-desc">Name, Z to A</option>
+                            <option value="price-asc">Price, low to high</option>
+                            <option value="price-desc">Price, high to low</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT GRID -->
+                <div id="productGrid" class="grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2 xl:grid-cols-3">
+
+                    <!-- PRODUCT 1 -->
+                    <article class="product-card group min-w-0" data-name="Cartel Hip Quiver Competition"
+                        data-price="5000" data-stock="in-stock">
+
+                        <a href="/products/cartel-hip-quiver" class="block">
+
+                            <div class="flex aspect-square items-center justify-center overflow-hidden bg-white">
+
+                                <img src="https://placehold.co/600x600/f5f5f5/333333?text=Cartel+Hip+Quiver"
+                                    alt="Cartel Hip Quiver Competition"
+                                    class="h-full w-full object-contain p-3 transition duration-500 group-hover:scale-110">
+
+                            </div>
+
+                        </a>
+
+                        <div class="px-2 pt-4 text-center">
+
+                            <a href="/products/cartel-hip-quiver"
+                                class="text-sm font-semibold leading-6 transition-colors hover:text-[#ed0033]">
+                                Cartel | Hip Quiver (Competition)
+                            </a>
+
+                            <p class="mt-1 text-sm text-gray-500">
+                                Rs. 5,000.00
+                            </p>
+
+                            <div class="mt-3 flex justify-center gap-2">
+
+                                <button type="button" aria-label="Black"
+                                    class="h-6 w-6 border border-gray-300 bg-black ring-offset-2 transition hover:ring-2 hover:ring-[#ed0033]">
+                                </button>
+
+                                <button type="button" aria-label="Blue"
+                                    class="h-6 w-6 border border-gray-300 bg-blue-600 ring-offset-2 transition hover:ring-2 hover:ring-[#ed0033]">
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PRODUCT 2 -->
+                    <article class="product-card group min-w-0" data-name="JVD Target Face FITA" data-price="54.09"
+                        data-stock="in-stock">
+
+                        <a href="/products/jvd-target-face" class="block">
+
+                            <div class="flex aspect-square items-center justify-center overflow-hidden bg-white">
+
+                                <img src="https://placehold.co/600x600/f5f5f5/333333?text=JVD+Target+Face"
+                                    alt="JVD Target Face FITA"
+                                    class="h-full w-full object-contain p-3 transition duration-500 group-hover:scale-110">
+
+                            </div>
+
+                        </a>
+
+                        <div class="px-2 pt-4 text-center">
+
+                            <a href="/products/jvd-target-face"
+                                class="text-sm font-semibold leading-6 transition-colors hover:text-[#ed0033]">
+                                JVD Target Face FITA 60cm Centre 5-Ring
+                            </a>
+
+                            <p class="mt-1 text-sm text-gray-500">
+                                Rs. 54.09
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PRODUCT 3 -->
+                    <article class="product-card group min-w-0" data-name="MK Korea Limbs Zest Formula"
+                        data-price="140000" data-stock="in-stock">
+
+                        <a href="/products/mk-korea-limbs-zest" class="block">
+
+                            <div class="flex aspect-square items-center justify-center overflow-hidden bg-white">
+
+                                <img src="https://placehold.co/600x600/f5f5f5/333333?text=MK+Korea+Limbs"
+                                    alt="MK Korea Limbs Zest Formula"
+                                    class="h-full w-full object-contain p-3 transition duration-500 group-hover:scale-110">
+
+                            </div>
+
+                        </a>
+
+                        <div class="px-2 pt-4 text-center">
+
+                            <a href="/products/mk-korea-limbs-zest"
+                                class="text-sm font-semibold leading-6 transition-colors hover:text-[#ed0033]">
+                                MK Korea | Limbs Zest Formula Carbon/Wood
+                            </a>
+
+                            <p class="mt-1 text-sm text-gray-500">
+                                Rs. 140,000.00
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PRODUCT 4 -->
+                    <article class="product-card group min-w-0" data-name="RamRods Stabilizer Short Vektor"
+                        data-price="35000" data-stock="in-stock">
+
+                        <a href="/products/ramrods-stabilizer-short" class="block">
+
+                            <div class="flex aspect-square items-center justify-center overflow-hidden bg-white">
+
+                                <img src="https://placehold.co/600x600/f5f5f5/333333?text=RamRods+Short+Stabilizer"
+                                    alt="RamRods Stabilizer Short Vektor"
+                                    class="h-full w-full object-contain p-3 transition duration-500 group-hover:scale-110">
+
+                            </div>
+
+                        </a>
+
+                        <div class="px-2 pt-4 text-center">
+
+                            <a href="/products/ramrods-stabilizer-short"
+                                class="text-sm font-semibold leading-6 transition-colors hover:text-[#ed0033]">
+                                RamRods | Stabilizer Short Vektor 2 Tungsten
+                            </a>
+
+                            <p class="mt-1 text-sm text-gray-500">
+                                Rs. 35,000.00
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PRODUCT 5 -->
+                    <article class="product-card group min-w-0" data-name="RamRods Stabilizer Long Vektor"
+                        data-price="65000" data-stock="in-stock">
+
+                        <a href="/products/ramrods-stabilizer-long" class="block">
+
+                            <div class="flex aspect-square items-center justify-center overflow-hidden bg-white">
+
+                                <img src="https://placehold.co/600x600/f5f5f5/333333?text=RamRods+Long+Stabilizer"
+                                    alt="RamRods Stabilizer Long Vektor"
+                                    class="h-full w-full object-contain p-3 transition duration-500 group-hover:scale-110">
+
+                            </div>
+
+                        </a>
+
+                        <div class="px-2 pt-4 text-center">
+
+                            <a href="/products/ramrods-stabilizer-long"
+                                class="text-sm font-semibold leading-6 transition-colors hover:text-[#ed0033]">
+                                RamRods | Stabilizer Long Vektor 2 Tungsten
+                            </a>
+
+                            <p class="mt-1 text-sm text-gray-500">
+                                Rs. 65,000.00
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PRODUCT 6 -->
+                    <article class="product-card group min-w-0" data-name="Archery Competition Arrows" data-price="8500"
+                        data-stock="out-of-stock">
+
+                        <a href="/products/competition-arrows" class="block">
+
+                            <div class="flex aspect-square items-center justify-center overflow-hidden bg-white">
+
+                                <img src="https://placehold.co/600x600/f5f5f5/333333?text=Competition+Arrows"
+                                    alt="Archery Competition Arrows"
+                                    class="h-full w-full object-contain p-3 transition duration-500 group-hover:scale-110">
+
+                            </div>
+
+                        </a>
+
+                        <div class="px-2 pt-4 text-center">
+
+                            <a href="/products/competition-arrows"
+                                class="text-sm font-semibold leading-6 transition-colors hover:text-[#ed0033]">
+                                Competition Archery Arrows
+                            </a>
+
+                            <p class="mt-1 text-sm text-gray-500">
+                                Rs. 8,500.00
+                            </p>
+
+                            <p class="mt-2 text-xs text-gray-400">
+                                Out of stock
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PRODUCT 7 -->
+                    <article class="product-card group min-w-0" data-name="Professional Bow String" data-price="2500"
+                        data-stock="in-stock">
+
+                        <a href="/products/professional-bow-string" class="block">
+
+                            <div class="flex aspect-square items-center justify-center overflow-hidden bg-white">
+
+                                <img src="https://placehold.co/600x600/f5f5f5/333333?text=Bow+String"
+                                    alt="Professional Bow String"
+                                    class="h-full w-full object-contain p-3 transition duration-500 group-hover:scale-110">
+
+                            </div>
+
+                        </a>
+
+                        <div class="px-2 pt-4 text-center">
+
+                            <a href="/products/professional-bow-string"
+                                class="text-sm font-semibold leading-6 transition-colors hover:text-[#ed0033]">
+                                Professional Bow String
+                            </a>
+
+                            <p class="mt-1 text-sm text-gray-500">
+                                Rs. 2,500.00
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PRODUCT 8 -->
+                    <article class="product-card group min-w-0" data-name="Archery Arm Guard" data-price="1800"
+                        data-stock="in-stock">
+
+                        <a href="/products/archery-arm-guard" class="block">
+
+                            <div class="flex aspect-square items-center justify-center overflow-hidden bg-white">
+
+                                <img src="https://placehold.co/600x600/f5f5f5/333333?text=Archery+Arm+Guard"
+                                    alt="Archery Arm Guard"
+                                    class="h-full w-full object-contain p-3 transition duration-500 group-hover:scale-110">
+
+                            </div>
+
+                        </a>
+
+                        <div class="px-2 pt-4 text-center">
+
+                            <a href="/products/archery-arm-guard"
+                                class="text-sm font-semibold leading-6 transition-colors hover:text-[#ed0033]">
+                                Archery Arm Guard
+                            </a>
+
+                            <p class="mt-1 text-sm text-gray-500">
+                                Rs. 1,800.00
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PRODUCT 9 -->
+                    <article class="product-card group min-w-0" data-name="Professional Archery Finger Tab"
+                        data-price="3200" data-stock="in-stock">
+
+                        <a href="/products/archery-finger-tab" class="block">
+
+                            <div class="flex aspect-square items-center justify-center overflow-hidden bg-white">
+
+                                <img src="https://placehold.co/600x600/f5f5f5/333333?text=Archery+Finger+Tab"
+                                    alt="Professional Archery Finger Tab"
+                                    class="h-full w-full object-contain p-3 transition duration-500 group-hover:scale-110">
+
+                            </div>
+
+                        </a>
+
+                        <div class="px-2 pt-4 text-center">
+
+                            <a href="/products/archery-finger-tab"
+                                class="text-sm font-semibold leading-6 transition-colors hover:text-[#ed0033]">
+                                Professional Archery Finger Tab
+                            </a>
+
+                            <p class="mt-1 text-sm text-gray-500">
+                                Rs. 3,200.00
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- PAGINATION -->
+                <div id="pagination" class="mt-12 flex flex-wrap items-center justify-center gap-2">
+                </div>
+
+                <p id="resultsMessage" class="mt-4 text-center text-sm text-gray-500">
+                </p>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const productGrid = document.getElementById("productGrid");
+            const products = Array.from(document.querySelectorAll(".product-card"));
+
+            const gridButton = document.getElementById("gridButton");
+            const listButton = document.getElementById("listButton");
+
+            const pageSizeSelect = document.getElementById("pageSize");
+            const sortSelect = document.getElementById("sortProducts");
+
+            const pagination = document.getElementById("pagination");
+            const resultsMessage = document.getElementById("resultsMessage");
+
+            const minPriceInput = document.getElementById("minPrice");
+            const maxPriceInput = document.getElementById("maxPrice");
+
+            let currentView = "grid";
+            let currentPage = 1;
+
+            let activeAvailability = "all";
+            let activeMinPrice = "";
+            let activeMaxPrice = "";
+
+            function setView(view) {
+
+                currentView = view;
+
+                if (view === "grid") {
+
+                    productGrid.className =
+                        "grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2 xl:grid-cols-3";
+
+                    gridButton.className =
+                        "flex h-9 w-9 items-center justify-center rounded bg-[#ed0033] text-white transition";
+
+                    listButton.className =
+                        "flex h-9 w-9 items-center justify-center rounded bg-white text-gray-600 transition hover:text-[#ed0033]";
+
+                    gridButton.setAttribute("aria-pressed", "true");
+                    listButton.setAttribute("aria-pressed", "false");
+
+                    products.forEach(function (product) {
+
+                        product.classList.remove("sm:col-span-2");
+
+                        const imageLink = product.querySelector("a.block");
+                        const imageBox = imageLink.querySelector("div");
+
+                        imageLink.className = "block";
+
+                        imageBox.className =
+                            "flex aspect-square items-center justify-center overflow-hidden bg-white";
+
+                        product.querySelector(".px-2").className =
+                            "px-2 pt-4 text-center";
+
+                    });
+
+                } else {
+
+                    productGrid.className = "grid grid-cols-1 gap-6";
+
+                    gridButton.className =
+                        "flex h-9 w-9 items-center justify-center rounded bg-white text-gray-600 transition hover:text-[#ed0033]";
+
+                    listButton.className =
+                        "flex h-9 w-9 items-center justify-center rounded bg-[#ed0033] text-white transition";
+
+                    gridButton.setAttribute("aria-pressed", "false");
+                    listButton.setAttribute("aria-pressed", "true");
+
+                    products.forEach(function (product) {
+
+                        product.classList.add("sm:col-span-2");
+
+                        const imageLink = product.querySelector("a.block");
+                        const imageBox = imageLink.querySelector("div");
+
+                        imageLink.className =
+                            "block w-full shrink-0 sm:w-[220px]";
+
+                        imageBox.className =
+                            "flex aspect-square items-center justify-center overflow-hidden bg-white";
+
+                        product.className =
+                            "product-card group flex min-w-0 flex-col items-start gap-4 border-b border-gray-100 pb-6 sm:flex-row";
+
+                        product.querySelector(".px-2").className =
+                            "min-w-0 flex-1 px-2 pt-4 text-left";
+
+                    });
+
+                }
+
+                renderProducts();
+
+            }
+
+
+            function getFilteredProducts() {
+
+                let filtered = products.filter(function (product) {
+
+                    const price = Number(product.dataset.price);
+                    const stock = product.dataset.stock;
+
+                    const matchesAvailability =
+                        activeAvailability === "all" ||
+                        stock === activeAvailability;
+
+                    const matchesMin =
+                        activeMinPrice === "" ||
+                        price >= Number(activeMinPrice);
+
+                    const matchesMax =
+                        activeMaxPrice === "" ||
+                        price <= Number(activeMaxPrice);
+
+                    return matchesAvailability && matchesMin && matchesMax;
+
+                });
+
+                const sortValue = sortSelect.value;
+
+                if (sortValue === "name-asc") {
+                    filtered.sort((a, b) =>
+                        a.dataset.name.localeCompare(b.dataset.name)
+                    );
+                }
+
+                if (sortValue === "name-desc") {
+                    filtered.sort((a, b) =>
+                        b.dataset.name.localeCompare(a.dataset.name)
+                    );
+                }
+
+                if (sortValue === "price-asc") {
+                    filtered.sort((a, b) =>
+                        Number(a.dataset.price) - Number(b.dataset.price)
+                    );
+                }
+
+                if (sortValue === "price-desc") {
+                    filtered.sort((a, b) =>
+                        Number(b.dataset.price) - Number(a.dataset.price)
+                    );
+                }
+
+                return filtered;
+
+            }
+
+
+            function renderProducts() {
+
+                const filtered = getFilteredProducts();
+
+                const pageSize = Number(pageSizeSelect.value);
+
+                const totalPages = Math.max(
+                    1,
+                    Math.ceil(filtered.length / pageSize)
+                );
+
+                currentPage = Math.min(currentPage, totalPages);
+
+                const start = (currentPage - 1) * pageSize;
+
+                const visibleProducts = filtered.slice(
+                    start,
+                    start + pageSize
+                );
+
+                products.forEach(function (product) {
+                    product.style.display = "none";
+                });
+
+                visibleProducts.forEach(function (product) {
+
+                    product.style.display =
+                        currentView === "grid" ? "block" : "flex";
+
+                    productGrid.appendChild(product);
+
+                });
+
+                pagination.innerHTML = "";
+
+                if (totalPages > 1) {
+
+                    const previousButton = document.createElement("button");
+
+                    previousButton.type = "button";
+                    previousButton.textContent = "Previous";
+
+                    previousButton.className =
+                        "rounded border border-gray-200 px-4 py-2 text-sm transition hover:border-[#ed0033] hover:text-[#ed0033] disabled:cursor-not-allowed disabled:opacity-40";
+
+                    previousButton.disabled = currentPage === 1;
+
+                    previousButton.addEventListener("click", function () {
+
+                        if (currentPage > 1) {
+                            currentPage--;
+                            renderProducts();
+                        }
+
+                    });
+
+                    pagination.appendChild(previousButton);
+
+
+                    for (let page = 1; page <= totalPages; page++) {
+
+                        const button = document.createElement("button");
+
+                        button.type = "button";
+                        button.textContent = page;
+
+                        button.className = page === currentPage
+                            ? "h-9 w-9 rounded bg-[#ed0033] text-sm text-white"
+                            : "h-9 w-9 rounded border border-gray-200 text-sm transition hover:border-[#ed0033] hover:text-[#ed0033]";
+
+                        button.addEventListener("click", function () {
+
+                            currentPage = page;
+                            renderProducts();
+
+                        });
+
+                        pagination.appendChild(button);
+
+                    }
+
+
+                    const nextButton = document.createElement("button");
+
+                    nextButton.type = "button";
+                    nextButton.textContent = "Next";
+
+                    nextButton.className =
+                        "rounded border border-gray-200 px-4 py-2 text-sm transition hover:border-[#ed0033] hover:text-[#ed0033] disabled:cursor-not-allowed disabled:opacity-40";
+
+                    nextButton.disabled = currentPage === totalPages;
+
+                    nextButton.addEventListener("click", function () {
+
+                        if (currentPage < totalPages) {
+                            currentPage++;
+                            renderProducts();
+                        }
+
+                    });
+
+                    pagination.appendChild(nextButton);
+
+                }
+
+                resultsMessage.textContent = filtered.length
+                    ? "Showing " + (start + 1) + "–" +
+                    Math.min(start + pageSize, filtered.length) +
+                    " of " + filtered.length + " products"
+                    : "No products found. Try changing your filters.";
+
+            }
+
+
+            // GRID VIEW
+            gridButton.addEventListener("click", function () {
+                setView("grid");
+            });
+
+
+            // LIST VIEW
+            listButton.addEventListener("click", function () {
+                setView("list");
+            });
+
+
+            // AVAILABILITY FILTER
+            document.getElementById("applyAvailability")
+                .addEventListener("click", function () {
+
+                    activeAvailability =
+                        document.querySelector(
+                            'input[name="availability"]:checked'
+                        ).value;
+
+                    currentPage = 1;
+                    renderProducts();
+
+                });
+
+
+            document.getElementById("clearAvailability")
+                .addEventListener("click", function () {
+
+                    document.querySelector(
+                        'input[name="availability"][value="all"]'
+                    ).checked = true;
+
+                    activeAvailability = "all";
+
+                    currentPage = 1;
+                    renderProducts();
+
+                });
+
+
+            // PRICE FILTER
+            document.getElementById("applyPrice")
+                .addEventListener("click", function () {
+
+                    const min = minPriceInput.value.trim();
+                    const max = maxPriceInput.value.trim();
+
+                    if (min !== "" && Number(min) < 0 ||
+                        max !== "" && Number(max) < 0) {
+
+                        alert("Price cannot be negative.");
+                        return;
+
+                    }
+
+                    if (min !== "" && max !== "" &&
+                        Number(min) > Number(max)) {
+
+                        alert("Minimum price cannot exceed maximum price.");
+                        return;
+
+                    }
+
+                    activeMinPrice = min;
+                    activeMaxPrice = max;
+
+                    currentPage = 1;
+                    renderProducts();
+
+                });
+
+
+            document.getElementById("clearPrice")
+                .addEventListener("click", function () {
+
+                    minPriceInput.value = "";
+                    maxPriceInput.value = "";
+
+                    activeMinPrice = "";
+                    activeMaxPrice = "";
+
+                    currentPage = 1;
+                    renderProducts();
+
+                });
+
+
+            // CLEAR ALL FILTERS
+            document.getElementById("clearAll")
+                .addEventListener("click", function () {
+
+                    document.querySelector(
+                        'input[name="availability"][value="all"]'
+                    ).checked = true;
+
+                    minPriceInput.value = "";
+                    maxPriceInput.value = "";
+
+                    activeAvailability = "all";
+                    activeMinPrice = "";
+                    activeMaxPrice = "";
+
+                    sortSelect.value = "featured";
+
+                    currentPage = 1;
+                    renderProducts();
+
+                });
+
+
+            // PAGE SIZE
+            pageSizeSelect.addEventListener("change", function () {
+
+                currentPage = 1;
+                renderProducts();
+
+            });
+
+
+            // SORTING
+            sortSelect.addEventListener("change", function () {
+
+                currentPage = 1;
+                renderProducts();
+
+            });
+
+
+            // INITIAL RENDER
+            renderProducts();
+
+        });
+    </script>
+    <!-- ================= ARCHERY ASIA FOOTER ================= -->
+    <footer class="w-full bg-[#1b1919] text-white">
+
+        <div class="mx-auto max-w-[1100px] px-5 pb-8 pt-12 sm:px-8">
+
+            <!-- LOGO & SOCIAL MEDIA -->
+            <div class="mb-12 flex justify-center">
+
+                <div class="flex w-[300px] flex-col items-center border border-[#484444] p-[6px]">
+
+                    <div class="flex w-full flex-col items-center border border-[#383434] px-5 py-5">
+
+                        <a href="/" class="mb-3">
+                            <img src="https://www.archeryasia.com/cdn/shop/files/Asset_1_x86@2x.svg?v=1694454685"
+                                alt="Archery Asia" class="w-[210px] object-contain">
+                        </a>
+
+                        <!-- SOCIAL ICONS -->
+                        <div class="flex items-center gap-5 text-[#858585]">
+
+                            <a href="#" aria-label="Facebook" class="transition-colors duration-300 hover:text-white">
+                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M13.4 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.2V13H10v8z" />
+                                </svg>
+                            </a>
+
+                            <a href="#" aria-label="Twitter" class="transition-colors duration-300 hover:text-white">
+                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M22 5.9a8 8 0 0 1-2.4.7 4.2 4.2 0 0 0 1.8-2.3 8.4 8.4 0 0 1-2.7 1 4.2 4.2 0 0 0-7.2 3.8 11.9 11.9 0 0 1-8.6-4.4 4.2 4.2 0 0 0 1.3 5.6 4.1 4.1 0 0 1-1.9-.5v.1a4.2 4.2 0 0 0 3.4 4.1 4.2 4.2 0 0 1-1.9.1 4.2 4.2 0 0 0 3.9 2.9A8.4 8.4 0 0 1 2.5 19a11.9 11.9 0 0 0 18.3-10c0-.2 0-.4-.1-.6A8.5 8.5 0 0 0 22 5.9z" />
+                                </svg>
+                            </a>
+
+                            <a href="#" aria-label="Pinterest" class="transition-colors duration-300 hover:text-white">
+                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 2a10 10 0 0 0-3.6 19.3c0-.8 0-1.9.2-2.8l1.3-5.5s-.3-.7-.3-1.6c0-1.5.9-2.6 2-2.6.9 0 1.3.7 1.3 1.5 0 .9-.6 2.3-.9 3.6-.3 1.1.5 2 1.6 2 1.9 0 3.3-2.4 3.3-5.2 0-2.1-1.4-3.7-3.9-3.7-2.8 0-4.5 2.1-4.5 4.4 0 .8.2 1.5.6 2 .2.2.2.3.1.6l-.2.8c-.1.3-.3.4-.6.3-1.3-.5-1.9-1.9-1.9-3.4 0-2.5 2.1-5.6 6.4-5.6 3.4 0 5.6 2.5 5.6 5.1 0 3.5-2 6.2-4.9 6.2-1 0-2-.6-2.3-1.3l-.7 2.8c-.2 1-.8 2-1.2 2.7A10 10 0 1 0 12 2z" />
+                                </svg>
+                            </a>
+
+                            <a href="#" aria-label="Instagram" class="transition-colors duration-300 hover:text-white">
+                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                                    <circle cx="12" cy="12" r="4" />
+                                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                                </svg>
+                            </a>
+
+                            <a href="#" aria-label="LinkedIn" class="transition-colors duration-300 hover:text-white">
+                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M5.2 8.5H2V22h3.2zM3.6 2a1.9 1.9 0 1 0 0 3.8 1.9 1.9 0 0 0 0-3.8zM22 13.8c0-4.1-2.2-6-5.2-6a4.5 4.5 0 0 0-4 2.2V8.5H9.6V22h3.2v-6.7c0-1.8.3-3.5 2.5-3.5s2.2 2 2.2 3.6V22H22z" />
+                                </svg>
+                            </a>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- FOOTER COLUMNS -->
+            <div class="grid grid-cols-1 gap-x-8 gap-y-9 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_0.9fr_1.15fr_1.65fr]">
+
+                <!-- INFORMATION -->
+                <div>
+                    <h3 class="mb-5 text-lg font-bold uppercase">
+                        Information
+                        <span class="mt-1.5 block h-[2px] w-[30px] bg-[#ed1234]"></span>
+                    </h3>
+
+                    <ul class="space-y-3 text-[15px] text-[#858585]">
+                        <li><a href="/pages/about-us" class="transition hover:text-white">» About Archery Asia</a></li>
+                        <li><a href="/pages/careers" class="transition hover:text-white">» Careers</a></li>
+                        <li><a href="/pages/influencers" class="transition hover:text-white">» Influencers</a></li>
+                        <li><a href="/pages/coaches-program" class="transition hover:text-white">» Coaches Program</a>
+                        </li>
+                        <li><a href="/pages/sitemap" class="transition hover:text-white">» Sitemap</a></li>
+                    </ul>
+                </div>
+
+
+                <!-- QUICK SHOP -->
+                <div>
+                    <h3 class="mb-5 text-lg font-bold uppercase">
+                        Quick Shop
+                        <span class="mt-1.5 block h-[2px] w-[30px] bg-[#ed1234]"></span>
+                    </h3>
+
+                    <ul class="space-y-3 text-[15px] text-[#858585]">
+                        <li><a href="/collections/all" class="transition hover:text-white">» Catalog</a></li>
+                        <li><a href="/collections/starter-pack" class="transition hover:text-white">» Starter Pack</a>
+                        </li>
+                        <li><a href="/collections/new-arrivals" class="transition hover:text-white">» New Arrivals</a>
+                        </li>
+                        <li><a href="/collections/left-hand" class="transition hover:text-white">» Left Hand</a></li>
+                        <li><a href="/collections/right-hand" class="transition hover:text-white">» Right Hand</a></li>
+                        <li><a href="/collections/clothing" class="transition hover:text-white">» Clothing</a></li>
+                    </ul>
+                </div>
+
+
+                <!-- SERVICE -->
+                <div>
+                    <h3 class="mb-5 text-lg font-bold uppercase">
+                        Service
+                        <span class="mt-1.5 block h-[2px] w-[30px] bg-[#ed1234]"></span>
+                    </h3>
+
+                    <ul class="space-y-3 text-[15px] text-[#858585]">
+                        <li><a href="/search" class="transition hover:text-white">» Search</a></li>
+                        <li><a href="/blogs/news" class="transition hover:text-white">» News</a></li>
+                        <li><a href="/pages/help" class="transition hover:text-white">» Help</a></li>
+                        <li><a href="/pages/contact" class="transition hover:text-white">» Contact Us</a></li>
+                        <li><a href="/pages/dealer-login" class="transition hover:text-white">» Dealer Login</a></li>
+                    </ul>
+                </div>
+
+
+                <!-- USEFUL LINKS -->
+                <div>
+                    <h3 class="mb-5 text-lg font-bold uppercase">
+                        Useful Links
+                        <span class="mt-1.5 block h-[2px] w-[30px] bg-[#ed1234]"></span>
+                    </h3>
+
+                    <ul class="space-y-3 text-[15px] text-[#858585]">
+                        <li><a href="/policies/privacy-policy" class="transition hover:text-white">» Privacy Policy</a>
+                        </li>
+                        <li><a href="/policies/refund-policy" class="transition hover:text-white">» Returns</a></li>
+                        <li><a href="/policies/shipping-policy" class="transition hover:text-white">» Shipping &amp;
+                                Delivery</a></li>
+                        <li><a href="/policies/terms-of-service" class="transition hover:text-white">» Terms of
+                                Service</a></li>
+                        <li><a href="/pages/support" class="transition hover:text-white">» Support</a></li>
+                        <li><a href="/pages/become-a-supplier" class="transition hover:text-white">» Become a
+                                Supplier</a></li>
+                    </ul>
+                </div>
+
+
+                <!-- ABOUT THE STORE -->
+                <div>
+                    <h3 class="mb-5 text-lg font-bold uppercase">
+                        About the Store
+                        <span class="mt-1.5 block h-[2px] w-[30px] bg-[#ed1234]"></span>
+                    </h3>
+
+                    <p class="mb-5 text-[15px] leading-[2.3] text-[#858585]">
+                        India's professional archery store. Present in Thanjavur, Chennai, Bangalore &amp; Mumbai.
+                        Delivering all over India, Singapore and the US.
+                    </p>
+
+                    <div class="space-y-3 text-[14px] leading-relaxed text-[#858585]">
+
+                        <a href="#" class="flex items-start gap-2 transition hover:text-white">
+                            <svg class="mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="m12 3 10 9h-3v9h-6v-6h-2v6H5v-9H2z" />
+                            </svg>
+                            <span>Thanjavur &amp; Chennai, Tamil Nadu, India</span>
+                        </a>
+
+                        <a href="https://wa.me/919345665181"
+                            class="flex items-center gap-2 transition hover:text-white">
+                            <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M6.6 2h10.8A2.6 2.6 0 0 1 20 4.6v14.8a2.6 2.6 0 0 1-2.6 2.6H6.6A2.6 2.6 0 0 1 4 19.4V4.6A2.6 2.6 0 0 1 6.6 2ZM12 19.5a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Z" />
+                            </svg>
+                            <span>+91 93456 65181 (WhatsApp)</span>
+                        </a>
+
+                        <a href="mailto:support@archeryasia.com"
+                            class="flex items-center gap-2 transition hover:text-white">
+                            <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M2 5h20v14H2z" />
+                                <path d="m2 6 10 7 10-7" fill="none" stroke="#1b1919" stroke-width="1.5" />
+                            </svg>
+                            <span class="break-all">support@archeryasia.com</span>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- COPYRIGHT -->
+            <div class="mt-10 border-t border-white/10 pt-5 text-center text-xs text-[#777777]">
+                © 2026 Archery Asia. All rights reserved.
+            </div>
+
+        </div>
+
+    </footer>
+    <!-- ================= END ARCHERY ASIA FOOTER ================= -->
+</body>
+
+</html>
