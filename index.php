@@ -347,9 +347,11 @@
                             <!-- Highly compact content box on mobile -->
                             <div class="relative z-10 w-full max-w-none px-3 py-2 sm:px-8 sm:py-8 lg:px-12">
 
-                                <h2 class="mb-1 w-full max-w-none text-[8px] font-extrabold uppercase leading-tight tracking-tight text-white sm:text-2xl lg:text-[24px]">
+
+                                <h2 class="mb-1 w-full max-w-none text-[12px] font-extrabold uppercase leading-tight tracking-tight text-white sm:text-xl md:text-2xl lg:text-[24px]">
                                     <?= $titleHtml ?>
                                 </h2>
+
 
 
                                 <!-- Hide the redundant category name on mobile to save space -->
