@@ -11,37 +11,17 @@
             --hover-color: <?= htmlspecialchars(getData("hover_color", "seller_settings", "(seller_id='$sellerId' AND store_id='$storeId')") ?? '#ec4899') ?>;
         }
 
-        .category-scroll {
-            scroll-behavior: smooth;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        .category-scroll::-webkit-scrollbar {
-            display: none;
-        }
-
-        .category-card {
-            transition: all 0.3s ease;
-        }
-
-        .category-card:hover {
-            transform: translateY(-2px);
-        }
-
+        .category-scroll { scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; }
+        .category-scroll::-webkit-scrollbar { display: none; }
+        .category-card { transition: all 0.3s ease; }
+        .category-card:hover { transform: translateY(-2px); }
+        
         .active-category-card {
             background: linear-gradient(135deg, var(--primary), #f59e0b);
             color: white;
         }
-
-        .active-category-card .category-name {
-            color: white;
-            font-weight: 600;
-        }
-
-        .active-category-card .category-icon {
-            background: rgba(255, 255, 255, 0.2) !important;
-        }
+        .active-category-card .category-name { color: white; font-weight: 600; }
+        .active-category-card .category-icon { background: rgba(255, 255, 255, 0.2) !important; }
 
         .sort-dropdown select:focus {
             outline: none;
@@ -55,6 +35,102 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
+        }
+
+        /* ==================================================== */
+        /* DEFAULT GRID VIEW (Vertical)                         */
+        /* ==================================================== */
+        .product-card-wrapper {
+            height: 100%;
+        }
+        .product-card-inner {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .product-card-image {
+            width: 100%;
+            height: 220px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .product-card-content {
+            text-align: center;
+        }
+        /* Hide description in grid view */
+        .product-card-description {
+            display: none !important; 
+        }
+
+        /* ==================================================== */
+        /* ✅ LIST VIEW (Full Width + Horizontal Layout)        */
+        /* ==================================================== */
+        
+        /* Force the wrapper to span the full width of the grid */
+        .list-view .product-card-wrapper {
+            grid-column: 1 / -1 !important; 
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+
+        /* Make the inner layout horizontal */
+        .list-view .product-card-inner {
+            flex-direction: row !important;
+            align-items: stretch;
+        }
+
+        /* Image on the Left */
+        .list-view .product-card-image {
+            width: 250px !important; 
+            height: auto;
+            min-height: 220px;
+            border-bottom: none;
+            border-right: 1px solid #f3f4f6;
+        }
+
+        /* Content on the Right */
+        .list-view .product-card-content {
+            text-align: left !important;
+            padding: 1.5rem 2rem !important;
+            justify-content: flex-start !important; 
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Show description in list view */
+        .list-view .product-card-description {
+            display: -webkit-box !important; 
+            -webkit-line-clamp: 2; 
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Fix button and variant widths in list view so they don't stretch */
+        .list-view .product-card-variants,
+        .list-view .addToCartWrapper {
+            max-width: 300px;
+        }
+        
+        /* Adjust price and views alignment for list view */
+        .list-view .product-card-price {
+            justify-content: flex-start !important;
+            margin-top: 0.5rem;
+        }
+        .list-view .text-xs.text-gray-500 {
+            justify-content: flex-start !important;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Mobile adjustments for list view */
+        @media (max-width: 640px) {
+            .list-view .product-card-inner {
+                flex-direction: column !important;
+            }
+            .list-view .product-card-image {
+                width: 100% !important;
+                border-right: none;
+                border-bottom: 1px solid #f3f4f6;
+            }
         }
     </style>
 </head>
@@ -144,7 +220,6 @@
 
     <!-- Main Content -->
     <div class="py-8">
-        <!-- ✅ Wide Container -->
         <div class="w-full max-w-[1920px] mx-auto px-2 sm:px-4 lg:px-6">
             <div class="flex flex-col gap-4 lg:flex-row">
 
@@ -166,28 +241,44 @@
 
                 <!-- Right Products Section -->
                 <div class="flex-1 w-full min-w-0">
-                    <!-- Sorting -->
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
-                        <div class="text-sm text-gray-500">
-                            Showing <span class="font-bold text-gray-800"><?= $search_products_count ?></span> results
+                    
+                    <!-- Toolbar -->
+                    <div class="bg-white border border-gray-200 rounded-lg p-3 sm:p-4 mb-6 flex flex-wrap items-center justify-between gap-4">
+                        <!-- View Toggles -->
+                        <div class="flex items-center gap-1 bg-gray-100 p-1 rounded-md">
+                            <button id="gridButton" class="p-1.5 rounded text-white transition" style="background-color: var(--primary);">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M3 3h7v7H3V3zm11 0h7v7h-7V3zM3 14h7v7H3v-7zm11 0h7v7h-7v-7z"/></svg>
+                            </button>
+                            <button id="listButton" class="p-1.5 rounded text-gray-500 hover:text-gray-800 transition">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M3 4h4v4H3V4zm6 0h12v4H9V4zM3 10h4v4H3v-4zm6 0h12v4H9v-4zM3 16h4v4H3v-4zm6 0h12v4H9v-4z"/></svg>
+                            </button>
                         </div>
-                        <div class="sort-dropdown relative w-full sm:w-auto">
-                            <select id="sortSelect" class="w-full sm:w-48 pl-4 pr-8 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none bg-white cursor-pointer appearance-none">
-                                <option value="default">Sort By: Default</option>
-                                <option value="low-high">Price: Low to High</option>
-                                <option value="high-low">Price: High to Low</option>
-                                <option value="latest">Latest First</option>
-                                <option value="oldest">Oldest First</option>
-                            </select>
-                            <i class="bi bi-funnel absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-xs pointer-events-none"></i>
+
+                        <!-- Sorting -->
+                        <div class="flex items-center gap-4 text-sm">
+                            <div class="text-sm text-gray-500">
+                                Showing <span class="font-bold text-gray-800"><?= $search_products_count ?></span> results
+                            </div>
+                            <div class="sort-dropdown relative w-full sm:w-auto">
+                                <select id="sortSelect" class="w-full sm:w-48 pl-4 pr-8 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none bg-white cursor-pointer appearance-none">
+                                    <option value="default">Sort By: Default</option>
+                                    <option value="low-high">Price: Low to High</option>
+                                    <option value="high-low">Price: High to Low</option>
+                                    <option value="latest">Latest First</option>
+                                    <option value="oldest">Oldest First</option>
+                                </select>
+                                <i class="bi bi-funnel absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-xs pointer-events-none"></i>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Products Grid (Carousel Style) -->
+                    <!-- Products Grid -->
                     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-2 gap-y-4 w-full" id="content">
                         <?php if (!empty($search_products)): ?>
                             <?php foreach ($search_products as $product): ?>
-                                <?= getProductHtml($product['id']) ?>
+                                <div class="product-card" data-name="<?= htmlspecialchars($product['name']) ?>" data-price="<?= $product['price'] ?>">
+                                    <?= getProductHtml($product['id']) ?>
+                                </div>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <!-- Empty State -->
@@ -216,12 +307,13 @@
 
     <script>
         // ============================================
-        // SEARCH PAGE JS - VARIANT & CART LOGIC
+        // SEARCH PAGE JS - TOOLBAR, VARIANT & CART LOGIC
         // ============================================
         document.addEventListener('DOMContentLoaded', function() {
 
-            // 1. Price Filter Logic
-            const urlParams = new URLSearchParams(window.location.search);
+            // --------------------------------------------
+            // 1. PRICE FILTER
+            // --------------------------------------------
             document.getElementById('priceForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 const min = document.querySelector('input[name="min_price"]').value;
@@ -238,52 +330,79 @@
                 window.location.href = url.toString();
             });
 
-            // 2. Sorting Logic
+            // --------------------------------------------
+            // 2. GRID / LIST VIEW TOGGLE
+            // --------------------------------------------
+            const contentContainer = document.getElementById('content');
+            const products = Array.from(document.querySelectorAll(".product-card"));
+            const gridButton = document.getElementById("gridButton");
+            const listButton = document.getElementById("listButton");
+
+            gridButton.addEventListener('click', function() {
+                contentContainer.className = "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-2 gap-y-4 w-full";
+                gridButton.className = "p-1.5 rounded text-white transition";
+                gridButton.style.backgroundColor = "var(--primary)";
+                listButton.className = "p-1.5 rounded text-gray-500 hover:text-gray-800 transition";
+                listButton.style.backgroundColor = "transparent";
+
+                products.forEach(p => {
+                    p.classList.remove("list-view");
+                    p.querySelector(".group").classList.remove("flex-row");
+                });
+            });
+
+            listButton.addEventListener('click', function() {
+                contentContainer.className = "grid grid-cols-1 gap-4 w-full";
+                gridButton.className = "p-1.5 rounded text-gray-500 hover:text-gray-800 transition";
+                gridButton.style.backgroundColor = "transparent";
+                listButton.className = "p-1.5 rounded text-white transition";
+                listButton.style.backgroundColor = "var(--primary)";
+
+                products.forEach(p => {
+                    p.classList.add("list-view");
+                    p.querySelector(".group").classList.add("flex-row");
+                });
+            });
+
+            // --------------------------------------------
+            // 3. SORTING
+            // --------------------------------------------
             document.getElementById('sortSelect').addEventListener('change', function() {
                 sortProducts(this.value);
             });
 
             function sortProducts(sortType) {
-                const productsContainer = document.getElementById('content');
-                if (!productsContainer) return;
-                const products = Array.from(productsContainer.querySelectorAll('.group'));
+                if (!contentContainer) return;
+                const productItems = Array.from(contentContainer.querySelectorAll('.product-card'));
 
                 switch (sortType) {
                     case 'low-high':
-                        products.sort((a, b) => getProductPrice(a) - getProductPrice(b));
+                        productItems.sort((a, b) => Number(a.dataset.price) - Number(b.dataset.price));
                         break;
                     case 'high-low':
-                        products.sort((a, b) => getProductPrice(b) - getProductPrice(a));
+                        productItems.sort((a, b) => Number(b.dataset.price) - Number(a.dataset.price));
                         break;
                     case 'latest':
-                        products.sort((a, b) => getProductId(b) - getProductId(a));
+                        productItems.sort((a, b) => getProductId(b) - getProductId(a));
                         break;
                     case 'oldest':
-                        products.sort((a, b) => getProductId(a) - getProductId(b));
+                        productItems.sort((a, b) => getProductId(a) - getProductId(b));
                         break;
                     default:
                         return;
                 }
-                productsContainer.innerHTML = '';
-                products.forEach(product => productsContainer.appendChild(product));
-            }
-
-            function getProductPrice(element) {
-                const priceEl = element.querySelector('.productPrice');
-                if (priceEl) {
-                    const match = priceEl.textContent.match(/(\d+\.?\d*)/);
-                    if (match) return parseFloat(match[1]);
-                }
-                return 0;
+                contentContainer.innerHTML = '';
+                productItems.forEach(product => contentContainer.appendChild(product));
             }
 
             function getProductId(element) {
-                return parseInt(element.getAttribute('data-product-id')) || 0;
+                const card = element.querySelector('.group');
+                return parseInt(card.getAttribute('data-product-id')) || 0;
             }
 
-            // ============================================
-            // 3. VARIANT SELECTION & ADD TO CART LOGIC
-            // ============================================
+            // --------------------------------------------
+            // 4. VARIANT SELECTION & ADD TO CART LOGIC
+            // --------------------------------------------
             document.querySelectorAll('.variantSelect').forEach(select => {
                 select.addEventListener('change', function() {
                     const selected = this.options[this.selectedIndex];
@@ -318,7 +437,7 @@
                         }
                     }
 
-                    // Update Button State
+                    // Update Button Data Attributes
                     addBtn.dataset.variant = "";
                     addBtn.dataset.advancedvariant = "";
 
@@ -333,6 +452,7 @@
 
                     const isOutOfStock = stock <= 0 && unlimited !== 1;
 
+                    // Update Button State
                     if (inCart) {
                         addBtn.classList.add('hidden');
                         viewCartBtn.classList.remove('hidden');
@@ -355,9 +475,7 @@
                 });
             });
 
-            // ============================================
-            // 4. AJAX ADD TO CART
-            // ============================================
+            // Handle Add to Cart Click
             document.addEventListener('click', function(e) {
                 if (e.target.closest('.customAddToCartBtn')) {
                     const btn = e.target.closest('.customAddToCartBtn');
@@ -414,7 +532,9 @@
                 }
             });
 
-            // Custom Toast
+            // --------------------------------------------
+            // 5. TOAST & CART COUNTS
+            // --------------------------------------------
             function showCustomToast(message, type) {
                 const existing = document.querySelectorAll('.custom-toast');
                 existing.forEach(t => t.remove());
@@ -431,7 +551,6 @@
                 }, 3000);
             }
 
-            // Update Cart Counts
             function updateCartCounts() {
                 $.ajax({
                     url: 'shop/ajax/get-product-count-and-price.php',

@@ -127,13 +127,12 @@
     <!-- TOP BAR                                             -->
     <!-- ================================================== -->
     <div class="text-white" style="background: <?= htmlspecialchars($topBarBg) ?>;">
-        <div class="mx-auto flex h-[30px] max-w-[1360px] items-center justify-between px-4 text-[9px] font-semibold sm:px-8">
+        <div class="mx-auto flex h-[34px] max-w-[1360px] items-center justify-between px-4 text-[10px] font-semibold sm:px-8">
 
+            <!-- Left Side: Contact Info -->
             <div class="flex items-center gap-2 min-w-0">
-
                 <?php if (!empty($storeEmail)): ?>
-                    <a href="mailto:<?= htmlspecialchars($storeEmail) ?>"
-                        class="hover:text-gray-300 truncate">
+                    <a href="mailto:<?= htmlspecialchars($storeEmail) ?>" class="hover:text-gray-300 truncate transition-colors">
                         <?= htmlspecialchars(strtoupper($storeEmail)) ?>
                     </a>
                 <?php endif; ?>
@@ -143,18 +142,44 @@
                 <?php endif; ?>
 
                 <?php if (!empty($storeWhatsApp)): ?>
-                    <a href="<?= htmlspecialchars($whatsAppLink) ?>"
-                        target="_blank" rel="noopener"
-                        class="hover:text-gray-300 truncate">
+                    <a href="<?= htmlspecialchars($whatsAppLink) ?>" target="_blank" rel="noopener" class="hover:text-gray-300 truncate transition-colors">
                         WHATSAPP: <?= htmlspecialchars($storeWhatsApp) ?>
                     </a>
                 <?php endif; ?>
             </div>
 
-            <a href="<?= $storeUrl ?>login"
-                class="hidden hover:text-gray-300 sm:block whitespace-nowrap">
-                OPEN COACH ACCOUNT
-            </a>
+            <!-- Right Side: Social Media Icons -->
+            <div class="flex items-center gap-4">
+                <?php if (getSettings("facebook")): ?>
+                    <a href="<?= getSettings("facebook") ?>" target="_blank" rel="noopener" aria-label="Facebook" class="hover:text-gray-300 transition-colors">
+                        <i class="fab fa-facebook-f text-[12px]"></i>
+                    </a>
+                <?php endif; ?>
+
+                <?php if (getSettings("instagram")): ?>
+                    <a href="<?= getSettings("instagram") ?>" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-gray-300 transition-colors">
+                        <i class="fab fa-instagram text-[12px]"></i>
+                    </a>
+                <?php endif; ?>
+
+                <?php if (getSettings("youtube")): ?>
+                    <a href="<?= getSettings("youtube") ?>" target="_blank" rel="noopener" aria-label="YouTube" class="hover:text-gray-300 transition-colors">
+                        <i class="fab fa-youtube text-[12px]"></i>
+                    </a>
+                <?php endif; ?>
+
+                <?php if (getSettings("twitter")): ?>
+                    <a href="<?= getSettings("twitter") ?>" target="_blank" rel="noopener" aria-label="Twitter" class="hover:text-gray-300 transition-colors">
+                        <i class="fab fa-twitter text-[12px]"></i>
+                    </a>
+                <?php endif; ?>
+
+                <?php if (getSettings("linkedin")): ?>
+                    <a href="<?= getSettings("linkedin") ?>" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover:text-gray-300 transition-colors">
+                        <i class="fab fa-linkedin-in text-[12px]"></i>
+                    </a>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 
@@ -320,10 +345,12 @@
                             <div class="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-black/10"></div>
 
                             <!-- Highly compact content box on mobile -->
-                            <div class="relative z-10 w-full max-w-[320px] px-3 py-2 sm:px-8 sm:py-8 lg:px-12">
-                                <h2 class="mb-1 text-[13px] font-extrabold uppercase leading-tight tracking-tight text-white sm:text-2xl lg:text-[42px]">
+                            <div class="relative z-10 w-full max-w-none px-3 py-2 sm:px-8 sm:py-8 lg:px-12">
+
+                                <h2 class="mb-1 w-full max-w-none text-[8px] font-extrabold uppercase leading-tight tracking-tight text-white sm:text-2xl lg:text-[24px]">
                                     <?= $titleHtml ?>
                                 </h2>
+
 
                                 <!-- Hide the redundant category name on mobile to save space -->
                                 <p class="hidden sm:block mb-2 text-[10px] font-medium text-white/85 sm:mb-4 sm:text-sm lg:text-base">
@@ -390,7 +417,7 @@
 
                                 <!-- Date & Author (Smaller text) -->
                                 <p class="mb-3 text-[10px] sm:text-xs leading-relaxed text-[#666666] uppercase tracking-wider">
-                                    By <?= htmlspecialchars($author) ?> • <?= $date ?>
+                                    BLog Post On • <?= $date ?>
                                 </p>
 
                                 <!-- Title (Reduced from text-base to text-[15px]) -->

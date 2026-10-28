@@ -158,6 +158,9 @@ function getRandomProducts($limit = 3)
       $colorName = getData("color_name", "product_colors", "id='$colorId'");
       $colorCode = getData("color_code", "product_colors", "id='$colorId'") ?? '#ccc';
       $size = $bv['size'] ?? '';
+      
+      // ✅ CRITICAL FIX: If variant image is empty, fallback to main product image
+      $variantImage = !empty($bv['image']) ? UPLOADS_URL . $bv['image'] : UPLOADS_URL . $image;
 
       if (!isset($groupedVariants[$colorId])) {
         $groupedVariants[$colorId] = [
@@ -174,7 +177,7 @@ function getRandomProducts($limit = 3)
         'stock' => $bv['stock'] ?? 0,
         'unlimited_stock' => $bv['unlimited_stock'] ?? 0,
         'unit_type' => $bv['unit_type'] ?? $unit_type,
-        'image' => $bv['image'] ?? $image
+        'image' => $variantImage // Passed the resolved image here
       ];
     }
   }
@@ -314,7 +317,7 @@ function getRandomProducts($limit = 3)
           <div class="mb-4 flex flex-wrap items-center gap-x-6 gap-y-3 sm:gap-x-8">
             <span class="w-[70px] shrink-0 text-sm font-medium text-gray-700 sm:w-[80px]">Option:</span>
             <div class="flex flex-wrap gap-2">
-              <!-- ✅ Added data-in-cart properly for Main Product -->
+              <!-- Main Product Button -->
               <button class="variant-btn product-option rounded-md border px-3 py-2 text-sm transition hover:border-[var(--primary-color)] sm:px-4 <?= $inCartInitial && $initialVariantId === null ? 'bg-green-50 border-green-500 text-green-700' : 'bg-white text-gray-700 border-gray-200' ?>"
                 data-variant-id="main" data-variant-image="<?= UPLOADS_URL . $image ?>" data-variant-name="<?= htmlspecialchars(!empty($variation) ? $variation : $name) ?>" data-price="<?= $price ?>" data-mrp="<?= $mrp_price ?>" data-stock="<?= $mainStockDisplay ?>" data-in-cart="<?= in_array('main', $cartVariants) ? '1' : '0' ?>">
                 <?= htmlspecialchars(!empty($variation) ? $variation : $name) ?>
@@ -325,10 +328,12 @@ function getRandomProducts($limit = 3)
                 $variantId = $bv['id'];
                 $isInCart = in_array((string)$variantId, $cartVariants);
                 $variantLabel = $bv['variation'] ?? $bv['variant'] ?? ($bv['name'] ?? "Variant " . $variantId);
+                // ✅ FIX: Ensure basic variant images fall back to main image
+                $basicImage = !empty($bv['image']) ? UPLOADS_URL . $bv['image'] : UPLOADS_URL . $image;
               ?>
-                <!-- ✅ Added data-in-cart properly for basic variants -->
+                <!-- Basic Variant Buttons -->
                 <button class="variant-btn product-option rounded-md border px-3 py-2 text-sm transition hover:border-[var(--primary-color)] sm:px-4 <?= $initialVariantId == $variantId ? 'bg-green-50 border-green-500 text-green-700' : 'bg-white text-gray-700 border-gray-200' ?>"
-                  data-variant-id="<?= $variantId ?>" data-variant-image="<?= UPLOADS_URL . ($bv['image'] ?? $image) ?>" data-variant-name="<?= htmlspecialchars($variantLabel) ?>" data-price="<?= $bv['price'] ?>" data-mrp="<?= $bv['mrp_price'] ?>" data-stock="<?= $variantStocksDisplay[$variantId] ?? 'Out of stock' ?>" data-in-cart="<?= $isInCart ? '1' : '0' ?>">
+                  data-variant-id="<?= $variantId ?>" data-variant-image="<?= $basicImage ?>" data-variant-name="<?= htmlspecialchars($variantLabel) ?>" data-price="<?= $bv['price'] ?>" data-mrp="<?= $bv['mrp_price'] ?>" data-stock="<?= $variantStocksDisplay[$variantId] ?? 'Out of stock' ?>" data-in-cart="<?= $isInCart ? '1' : '0' ?>">
                   <?= htmlspecialchars($variantLabel) ?>
                 </button>
               <?php endwhile; ?>
@@ -360,7 +365,6 @@ function getRandomProducts($limit = 3)
 
         <!-- ACTION BUTTONS -->
         <div class="flex flex-col gap-3 sm:flex-row mt-2">
-          <!-- ✅ Check $inCartInitial properly -->
           <button id="addToCartBtn" class="flex h-12 w-full items-center justify-center rounded-md bg-[var(--primary-color)] px-8 text-sm font-semibold text-white transition duration-300 hover:opacity-90 sm:w-[200px] <?= $inCartInitial ? 'hidden' : '' ?>" data-id="<?= $id ?>">
             Add to Cart
           </button>
@@ -501,7 +505,7 @@ function getRandomProducts($limit = 3)
         sizeContainer.innerHTML = '';
         if (!groupedVariants[colorId] || !groupedVariants[colorId].sizes) return;
 
-        let hasAvailableSize = false; // ✅ Track if any size is available
+        let hasAvailableSize = false;
 
         groupedVariants[colorId].sizes.forEach(sizeData => {
           const isOutOfStock = (!sizeData.unlimited_stock && sizeData.stock <= 0);
@@ -522,7 +526,8 @@ function getRandomProducts($limit = 3)
           btn.dataset.price = sizeData.price;
           btn.dataset.mrp = sizeData.mrp_price;
           btn.dataset.stock = sizeData.unlimited_stock ? 'Unlimited' : `${sizeData.stock} ${sizeData.unit_type || 'pcs'}`;
-          btn.dataset.image = sizeData.image;
+          // ✅ FIXED: Assigned the fully resolved image URL
+          btn.dataset.image = sizeData.image; 
 
           if (isOutOfStock) {
             btn.disabled = true;
@@ -538,7 +543,10 @@ function getRandomProducts($limit = 3)
               selectedVariantId = this.dataset.variantId;
 
               document.querySelector('.productPrice').textContent = storeCurrencySymbol + parseFloat(this.dataset.price).toLocaleString();
+              
+              // ✅ FIXED: Update main image on size click
               document.getElementById('mainProductImage').src = this.dataset.image;
+              
               document.getElementById('stockDisplay').textContent = this.dataset.stock;
 
               const inCart = cartVariants.includes(String(selectedVariantId));
@@ -560,7 +568,6 @@ function getRandomProducts($limit = 3)
           sizeContainer.appendChild(btn);
         });
 
-        // ✅ 2. If NO sizes are available, force "Sold Out" state
         if (!hasAvailableSize) {
           addBtn.classList.remove('hidden');
           viewBtn.classList.add('hidden');
@@ -570,7 +577,6 @@ function getRandomProducts($limit = 3)
           addBtn.classList.add('bg-gray-300', 'cursor-not-allowed');
           selectedVariantId = null;
         } else {
-          // ✅ 1. Auto-click first available size
           const firstAvailable = sizeContainer.querySelector('.size-btn:not([disabled])');
           if (firstAvailable) firstAvailable.click();
         }
@@ -653,10 +659,12 @@ function getRandomProducts($limit = 3)
 
           currentVariantId = this.dataset.variantId;
           document.querySelector('.productPrice').textContent = storeCurrencySymbol + parseFloat(this.dataset.price).toLocaleString();
+          
+          // ✅ FIXED: Update image for Basic Variants
           document.getElementById('mainProductImage').src = this.dataset.variantImage;
+          
           document.getElementById('stockDisplay').textContent = this.dataset.stock;
 
-          // ✅ 3. Live check for basic variant
           const inCart = cartVariants.includes(String(currentVariantId));
           
           const stockText = this.dataset.stock;
@@ -722,7 +730,6 @@ function getRandomProducts($limit = 3)
         });
       });
 
-      // ✅ 4. Auto-click logic for basic variants
       if (variantBtns.length > 0) {
         let foundInCart = false;
         variantBtns.forEach(btn => {

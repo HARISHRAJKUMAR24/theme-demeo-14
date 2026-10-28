@@ -61,7 +61,7 @@ $moreCats    = array_slice($parentCats, 4);
                             style="background: <?= htmlspecialchars($headerPrimary) ?>;">
                             <?= strtoupper(substr($storeName, 0, 1)) ?>
                         </div>
-                        <span class="font-serifDisplay text-xl font-bold text-gray-900">
+                        <span class="font-serifDisplay text-xl font-bold text-gray-900 truncate max-w-[200px]">
                             <?= htmlspecialchars($storeName) ?>
                         </span>
                     </div>
@@ -69,51 +69,51 @@ $moreCats    = array_slice($parentCats, 4);
             </a>
 
             <!-- DESKTOP NAVIGATION -->
-            <nav class="hidden items-center gap-4 xl:flex 2xl:gap-5">
+            <nav class="hidden items-center gap-6 xl:flex 2xl:gap-8">
                 <?php foreach ($visibleCats as $cat):
                     $catSubs = $childCatsMap[$cat['id']] ?? [];
                 ?>
                     <?php if (!empty($catSubs)): ?>
                         <div class="group relative">
                             <a href="<?= $storeUrl . 'category/' . $cat['slug'] ?>"
-                                class="flex items-center gap-1 text-[11px] font-semibold uppercase transition hover:text-[<?= htmlspecialchars($headerPrimary) ?>]">
-                                <?= htmlspecialchars($cat['name']) ?>
-                                <svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                class="flex items-center gap-1 text-xs sm:text-sm font-semibold uppercase tracking-wide transition hover:text-[<?= htmlspecialchars($headerPrimary) ?>] max-w-[120px]">
+                                <span class="truncate"><?= htmlspecialchars($cat['name']) ?></span>
+                                <svg class="h-3 w-3 shrink-0" viewBox="0 0 20 20" fill="currentColor">
                                     <path d="m5 7 5 5 5-5" />
                                 </svg>
                             </a>
                             <div class="dropdown-panel absolute right-0 top-full z-50 mt-3 w-52 bg-white py-2 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                                <a href="<?= $storeUrl . 'category/' . $cat['slug'] ?>" class="block px-5 py-3 text-xs hover:bg-gray-50 hover:text-[<?= htmlspecialchars($headerPrimary) ?>]">All <?= htmlspecialchars($cat['name']) ?></a>
+                                <a href="<?= $storeUrl . 'category/' . $cat['slug'] ?>" class="block px-5 py-3 text-sm hover:bg-gray-50 hover:text-[<?= htmlspecialchars($headerPrimary) ?>] truncate">All <?= htmlspecialchars($cat['name']) ?></a>
                                 <?php foreach (array_slice($catSubs, 0, 6) as $sub): ?>
-                                    <a href="<?= $storeUrl . 'category/' . $sub['slug'] ?>" class="block px-5 py-3 text-xs hover:bg-gray-50 hover:text-[<?= htmlspecialchars($headerPrimary) ?>]"><?= htmlspecialchars($sub['name']) ?></a>
+                                    <a href="<?= $storeUrl . 'category/' . $sub['slug'] ?>" class="block px-5 py-3 text-sm hover:bg-gray-50 hover:text-[<?= htmlspecialchars($headerPrimary) ?>] truncate"><?= htmlspecialchars($sub['name']) ?></a>
                                 <?php endforeach; ?>
                             </div>
                         </div>
                     <?php else: ?>
-                        <a href="<?= $storeUrl . 'category/' . $cat['slug'] ?>" class="text-[11px] font-semibold uppercase transition hover:text-[<?= htmlspecialchars($headerPrimary) ?>]"><?= htmlspecialchars($cat['name']) ?></a>
+                        <a href="<?= $storeUrl . 'category/' . $cat['slug'] ?>" class="text-xs sm:text-sm font-semibold uppercase tracking-wide transition hover:text-[<?= htmlspecialchars($headerPrimary) ?>] max-w-[120px] truncate"><?= htmlspecialchars($cat['name']) ?></a>
                     <?php endif; ?>
                 <?php endforeach; ?>
 
                 <?php if (!empty($moreCats)): ?>
                     <div class="group relative">
-                        <button type="button" class="flex items-center gap-1 text-[11px] font-semibold uppercase hover:text-[<?= htmlspecialchars($headerPrimary) ?>]">More <svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                        <button type="button" class="flex items-center gap-1 text-xs sm:text-sm font-semibold uppercase tracking-wide hover:text-[<?= htmlspecialchars($headerPrimary) ?>]">More <svg class="h-3 w-3 shrink-0" viewBox="0 0 20 20" fill="currentColor">
                                 <path d="m5 7 5 5 5-5" />
                             </svg></button>
                         <div class="dropdown-panel absolute right-0 top-full z-50 mt-3 w-56 bg-white py-2 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                             <?php foreach ($moreCats as $cat): ?>
-                                <a href="<?= $storeUrl . 'category/' . $cat['slug'] ?>" class="block px-5 py-3 text-xs hover:bg-gray-50 hover:text-[<?= htmlspecialchars($headerPrimary) ?>]"><?= htmlspecialchars($cat['name']) ?></a>
+                                <a href="<?= $storeUrl . 'category/' . $cat['slug'] ?>" class="block px-5 py-3 text-sm hover:bg-gray-50 hover:text-[<?= htmlspecialchars($headerPrimary) ?>] truncate"><?= htmlspecialchars($cat['name']) ?></a>
                             <?php endforeach; ?>
                         </div>
                     </div>
                 <?php endif; ?>
 
                 <div class="group relative">
-                    <button type="button" class="flex items-center gap-1 text-[11px] font-semibold uppercase hover:text-[<?= htmlspecialchars($headerPrimary) ?>]">Quick Shop <svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                    <button type="button" class="flex items-center gap-1 text-xs sm:text-sm font-semibold uppercase tracking-wide hover:text-[<?= htmlspecialchars($headerPrimary) ?>]">Quick Shop <svg class="h-3 w-3 shrink-0" viewBox="0 0 20 20" fill="currentColor">
                             <path d="m5 7 5 5 5-5" />
                         </svg></button>
                     <div class="dropdown-panel absolute right-0 top-full z-50 mt-3 w-52 bg-white py-2 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                        <a href="<?= $storeUrl ?>shop-all" class="block px-5 py-3 text-xs hover:bg-gray-50 hover:text-[<?= htmlspecialchars($headerPrimary) ?>]">All Products</a>
-                        <a href="<?= $storeUrl ?>new-arrivals" class="block px-5 py-3 text-xs hover:bg-gray-50 hover:text-[<?= htmlspecialchars($headerPrimary) ?>]">New Arrivals</a>
+                        <a href="<?= $storeUrl ?>shop-all" class="block px-5 py-3 text-sm hover:bg-gray-50 hover:text-[<?= htmlspecialchars($headerPrimary) ?>]">All Products</a>
+                        <a href="<?= $storeUrl ?>new-arrivals" class="block px-5 py-3 text-sm hover:bg-gray-50 hover:text-[<?= htmlspecialchars($headerPrimary) ?>]">New Arrivals</a>
                     </div>
                 </div>
             </nav>
@@ -121,15 +121,15 @@ $moreCats    = array_slice($parentCats, 4);
             <!-- RIGHT HEADER ACTIONS -->
             <div class="flex shrink-0 items-center gap-3 sm:gap-4">
                 <?php if (function_exists('isLoggedIn') && isLoggedIn()): ?>
-                    <a href="<?= $storeUrl ?>profile" class="hidden whitespace-nowrap text-[11px] font-semibold hover:text-[<?= htmlspecialchars($headerPrimary) ?>] lg:block">Hi, <?= htmlspecialchars(customer('name') ?: 'Account') ?></a>
+                    <a href="<?= $storeUrl ?>profile" class="hidden whitespace-nowrap text-xs sm:text-sm font-semibold hover:text-[<?= htmlspecialchars($headerPrimary) ?>] lg:block max-w-[150px] truncate">Hi, <?= htmlspecialchars(customer('name') ?: 'Account') ?></a>
                 <?php else: ?>
-                    <a href="<?= $storeUrl ?>login" class="hidden whitespace-nowrap text-[11px] font-semibold hover:text-[<?= htmlspecialchars($headerPrimary) ?>] lg:block">Login / Register</a>
+                    <a href="<?= $storeUrl ?>login" class="hidden whitespace-nowrap text-xs sm:text-sm font-semibold hover:text-[<?= htmlspecialchars($headerPrimary) ?>] lg:block">Login / Register</a>
                 <?php endif; ?>
 
                 <div class="hidden h-[60px] w-px bg-gray-200 lg:block"></div>
 
                 <a href="<?= $storeUrl ?>profile" aria-label="Account" class="hidden hover:text-[<?= htmlspecialchars($headerPrimary) ?>] sm:block">
-                    <svg class="h-[17px] w-[17px]" viewBox="0 0 24 24" fill="currentColor">
+                    <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="currentColor">
                         <circle cx="12" cy="7" r="4" />
                         <path d="M4.5 21v-2a7.5 7.5 0 0 1 15 0v2z" />
                     </svg>
@@ -137,7 +137,7 @@ $moreCats    = array_slice($parentCats, 4);
 
                 <!-- SEARCH ICON -->
                 <button id="headerSearchBtn" aria-label="Search" class="hover:text-[<?= htmlspecialchars($headerPrimary) ?>]">
-                    <svg class="h-[17px] w-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
                         <circle cx="10.8" cy="10.8" r="6.3" />
                         <path d="m16 16 4 4" stroke-linecap="round" />
                     </svg>
@@ -145,10 +145,10 @@ $moreCats    = array_slice($parentCats, 4);
 
                 <!-- WISHLIST ICON -->
                 <a href="<?= $storeUrl ?>wishlists" aria-label="Wishlist" class="relative hidden hover:text-[<?= htmlspecialchars($headerPrimary) ?>] sm:block">
-                    <svg class="h-[17px] w-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
                         <path d="M20.8 8.8c0 4.2-8.8 10-8.8 10S3.2 13 3.2 8.8A4.3 4.3 0 0 1 12 6.6a4.3 4.3 0 0 1 8.8 2.2Z" />
                     </svg>
-                    <span class="wishlistItemsCount absolute -right-2 -top-2 text-[9px] font-bold text-white min-w-[14px] h-[14px] rounded-full items-center justify-center px-1"
+                    <span class="wishlistItemsCount absolute -right-2 -top-2 text-[10px] font-bold text-white min-w-[16px] h-[16px] rounded-full items-center justify-center px-1"
                         style="background: <?= htmlspecialchars($headerPrimary) ?>; display: <?= $wishlist_count > 0 ? 'flex' : 'none' ?>;">
                         <?= $wishlist_count ?>
                     </span>
@@ -156,21 +156,21 @@ $moreCats    = array_slice($parentCats, 4);
 
                 <!-- CART ICON -->
                 <a href="<?= $storeUrl ?>cart" aria-label="Shopping cart" class="relative hover:text-[<?= htmlspecialchars($headerPrimary) ?>]">
-                    <svg class="h-[19px] w-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <svg class="h-[20px] w-[20px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
                         <path d="M2.5 3.5h2l2.4 12h11.8l2.2-8.5H5.3" stroke-linecap="round" stroke-linejoin="round" />
                         <circle cx="9" cy="19.5" r="1.2" />
                         <circle cx="17" cy="19.5" r="1.2" />
                     </svg>
-                    <span class="cartItemsCount absolute -right-2 -top-2 text-[9px] font-bold text-white min-w-[14px] h-[14px] rounded-full items-center justify-center px-1"
+                    <span class="cartItemsCount absolute -right-2 -top-2 text-[10px] font-bold text-white min-w-[16px] h-[16px] rounded-full items-center justify-center px-1"
                         style="background: <?= htmlspecialchars($headerPrimary) ?>; display: <?= $cart_count > 0 ? 'flex' : 'none' ?>;">
                         <?= $cart_count ?>
                     </span>
                 </a>
 
-                <span class="hidden items-center gap-1 text-[10px] font-medium md:flex"><?= htmlspecialchars(strtoupper($storeCurrency)) ?></span>
+                <span class="hidden items-center gap-1 text-xs font-medium md:flex"><?= htmlspecialchars(strtoupper($storeCurrency)) ?></span>
 
                 <button id="mobileMenuButton" aria-label="Open navigation menu" aria-expanded="false" class="xl:hidden">
-                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                    <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
                         <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" />
                     </svg>
                 </button>
@@ -186,9 +186,9 @@ $moreCats    = array_slice($parentCats, 4);
 <div id="mobileMenuBackdrop" class="fixed inset-0 z-[55] bg-black/50 backdrop-blur-sm xl:hidden" style="opacity: 0; visibility: hidden; transition: opacity .25s ease, visibility 0s linear .25s;"></div>
 <nav id="mobileMenu" aria-hidden="true" class="fixed inset-y-0 right-0 z-[60] w-[85vw] max-w-[340px] flex flex-col bg-white shadow-2xl xl:hidden" style="transform: translateX(100%); opacity: 0; visibility: hidden; transition: transform .3s cubic-bezier(.4,0,.2,1), opacity .25s ease, visibility 0s linear .3s; will-change: transform;">
     <div class="flex shrink-0 items-center justify-between border-b border-gray-200 px-5 py-4">
-        <span class="text-sm font-bold uppercase tracking-wider text-gray-900">Menu</span>
-        <button id="closeMobileMenu" aria-label="Close navigation menu" class="w-9 h-9 flex items-center justify-center rounded-full text-gray-500 hover:bg-gray-100 hover:text-[<?= htmlspecialchars($headerPrimary) ?>] transition-colors">
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+        <span class="text-base font-bold uppercase tracking-wider text-gray-900">Menu</span>
+        <button id="closeMobileMenu" aria-label="Close navigation menu" class="w-10 h-10 flex items-center justify-center rounded-full text-gray-500 hover:bg-gray-100 hover:text-[<?= htmlspecialchars($headerPrimary) ?>] transition-colors">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
                 <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
             </svg>
         </button>
@@ -200,44 +200,43 @@ $moreCats    = array_slice($parentCats, 4);
             ?>
                 <?php if (!empty($catSubs)): ?>
                     <div class="mobile-accordion-group">
-                        <button type="button" class="flex w-full items-center justify-between gap-3 px-5 py-4 text-sm font-semibold uppercase text-gray-900 hover:bg-gray-50 hover:text-[<?= htmlspecialchars($headerPrimary) ?>] transition-colors mobile-dropdown-toggle" data-target="mobileSub-<?= (int)$cat['id'] ?>">
+                        <button type="button" class="flex w-full items-center justify-between gap-3 px-5 py-5 text-base font-semibold uppercase text-gray-900 hover:bg-gray-50 hover:text-[<?= htmlspecialchars($headerPrimary) ?>] transition-colors mobile-dropdown-toggle" data-target="mobileSub-<?= (int)$cat['id'] ?>">
                             <span class="truncate text-left"><?= htmlspecialchars($cat['name']) ?></span>
-                            <svg class="h-4 w-4 shrink-0 text-gray-400 transition-transform duration-200 mobile-chevron" viewBox="0 0 20 20" fill="currentColor">
+                            <svg class="h-5 w-5 shrink-0 text-gray-400 transition-transform duration-200 mobile-chevron" viewBox="0 0 20 20" fill="currentColor">
                                 <path d="m5 7 5 5 5-5" />
                             </svg>
                         </button>
                         <div id="mobileSub-<?= (int)$cat['id'] ?>" class="hidden flex-col bg-gray-50/50">
-                            <a href="<?= $storeUrl . 'category/' . $cat['slug'] ?>" class="block px-9 py-3 text-xs uppercase text-gray-600 hover:text-[<?= htmlspecialchars($headerPrimary) ?>] transition-colors">All <?= htmlspecialchars($cat['name']) ?></a>
+                            <a href="<?= $storeUrl . 'category/' . $cat['slug'] ?>" class="block px-9 py-3 text-sm uppercase text-gray-600 hover:text-[<?= htmlspecialchars($headerPrimary) ?>] transition-colors truncate">All <?= htmlspecialchars($cat['name']) ?></a>
                             <?php foreach ($catSubs as $sub): ?>
-                                <a href="<?= $storeUrl . 'category/' . $sub['slug'] ?>" class="block px-9 py-3 text-xs uppercase text-gray-600 hover:text-[<?= htmlspecialchars($headerPrimary) ?>] transition-colors"><?= htmlspecialchars($sub['name']) ?></a>
+                                <a href="<?= $storeUrl . 'category/' . $sub['slug'] ?>" class="block px-9 py-3 text-sm uppercase text-gray-600 hover:text-[<?= htmlspecialchars($headerPrimary) ?>] transition-colors truncate"><?= htmlspecialchars($sub['name']) ?></a>
                             <?php endforeach; ?>
                         </div>
                     </div>
                 <?php else: ?>
-                    <a href="<?= $storeUrl . 'category/' . $cat['slug'] ?>" class="block px-5 py-4 text-sm font-semibold uppercase text-gray-900 hover:bg-gray-50 hover:text-[<?= htmlspecialchars($headerPrimary) ?>] transition-colors"><?= htmlspecialchars($cat['name']) ?></a>
+                    <a href="<?= $storeUrl . 'category/' . $cat['slug'] ?>" class="block px-5 py-5 text-base font-semibold uppercase text-gray-900 hover:bg-gray-50 hover:text-[<?= htmlspecialchars($headerPrimary) ?>] transition-colors truncate"><?= htmlspecialchars($cat['name']) ?></a>
                 <?php endif; ?>
             <?php endforeach; ?>
 
             <div class="mobile-accordion-group">
-                <button type="button" class="flex w-full items-center justify-between gap-3 px-5 py-4 text-sm font-semibold uppercase text-gray-900 hover:bg-gray-50 hover:text-[<?= htmlspecialchars($headerPrimary) ?>] transition-colors mobile-dropdown-toggle" data-target="mobileQuickShop">
+                <button type="button" class="flex w-full items-center justify-between gap-3 px-5 py-5 text-base font-semibold uppercase text-gray-900 hover:bg-gray-50 hover:text-[<?= htmlspecialchars($headerPrimary) ?>] transition-colors mobile-dropdown-toggle" data-target="mobileQuickShop">
                     <span class="truncate text-left">Quick Shop</span>
-                    <svg class="h-4 w-4 shrink-0 text-gray-400 transition-transform duration-200 mobile-chevron" viewBox="0 0 20 20" fill="currentColor">
+                    <svg class="h-5 w-5 shrink-0 text-gray-400 transition-transform duration-200 mobile-chevron" viewBox="0 0 20 20" fill="currentColor">
                         <path d="m5 7 5 5 5-5" />
                     </svg>
                 </button>
                 <div id="mobileQuickShop" class="hidden flex-col bg-gray-50/50">
-                    <a href="<?= $storeUrl ?>shop-all" class="block px-9 py-3 text-xs uppercase text-gray-600 hover:text-[<?= htmlspecialchars($headerPrimary) ?>] transition-colors">All Products</a>
-                    <a href="<?= $storeUrl ?>new-arrivals" class="block px-9 py-3 text-xs uppercase text-gray-600 hover:text-[<?= htmlspecialchars($headerPrimary) ?>] transition-colors">New Arrivals</a>
-                    <a href="<?= $storeUrl ?>shop-all" class="block px-9 py-3 text-xs uppercase text-gray-600 hover:text-[<?= htmlspecialchars($headerPrimary) ?>] transition-colors">Best Sellers</a>
+                    <a href="<?= $storeUrl ?>shop-all" class="block px-9 py-3 text-sm uppercase text-gray-600 hover:text-[<?= htmlspecialchars($headerPrimary) ?>] transition-colors">All Products</a>
+                    <a href="<?= $storeUrl ?>new-arrivals" class="block px-9 py-3 text-sm uppercase text-gray-600 hover:text-[<?= htmlspecialchars($headerPrimary) ?>] transition-colors">New Arrivals</a>
                 </div>
             </div>
         </div>
 
-        <div class="px-5 py-5">
+        <div class="px-5 py-6">
             <?php if (function_exists('isLoggedIn') && isLoggedIn()): ?>
-                <a href="<?= $storeUrl ?>profile" class="block w-full text-center rounded-lg border border-gray-300 px-4 py-3 text-sm font-semibold uppercase text-gray-900 hover:border-[<?= htmlspecialchars($headerPrimary) ?>] hover:text-[<?= htmlspecialchars($headerPrimary) ?>] transition-colors">My Account</a>
+                <a href="<?= $storeUrl ?>profile" class="block w-full text-center rounded-lg border border-gray-300 px-4 py-3 text-sm font-bold uppercase text-gray-900 hover:border-[<?= htmlspecialchars($headerPrimary) ?>] hover:text-[<?= htmlspecialchars($headerPrimary) ?>] transition-colors">My Account</a>
             <?php else: ?>
-                <a href="<?= $storeUrl ?>login" class="block w-full text-center rounded-lg border border-gray-300 px-4 py-3 text-sm font-semibold uppercase text-gray-900 hover:border-[<?= htmlspecialchars($headerPrimary) ?>] hover:text-[<?= htmlspecialchars($headerPrimary) ?>] transition-colors">Login / Register</a>
+                <a href="<?= $storeUrl ?>login" class="block w-full text-center rounded-lg border border-gray-300 px-4 py-3 text-sm font-bold uppercase text-gray-900 hover:border-[<?= htmlspecialchars($headerPrimary) ?>] hover:text-[<?= htmlspecialchars($headerPrimary) ?>] transition-colors">Login / Register</a>
             <?php endif; ?>
         </div>
     </div>
@@ -288,7 +287,7 @@ $moreCats    = array_slice($parentCats, 4);
                     $quickCats = $quickCategories ? array_slice($quickCategories->fetchAll(PDO::FETCH_ASSOC), 0, 5) : [];
                     foreach ($quickCats as $qc):
                     ?>
-                        <a href="<?= $storeUrl ?>category/<?= htmlspecialchars($qc['slug']) ?>" class="px-4 py-2 text-xs tracking-widest uppercase border border-gray-200 text-gray-600 hover:border-[<?= htmlspecialchars($headerPrimary) ?>] hover:text-[<?= htmlspecialchars($headerPrimary) ?>] transition-colors">
+                        <a href="<?= $storeUrl ?>category/<?= htmlspecialchars($qc['slug']) ?>" class="px-4 py-2 text-xs tracking-widest uppercase border border-gray-200 text-gray-600 hover:border-[<?= htmlspecialchars($headerPrimary) ?>] hover:text-[<?= htmlspecialchars($headerPrimary) ?>] transition-colors truncate max-w-[150px]">
                             <?= htmlspecialchars($qc['name']) ?>
                         </a>
                     <?php endforeach; ?>
