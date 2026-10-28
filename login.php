@@ -1,50 +1,17 @@
+<?php include_once __DIR__ . "/includes/files_includes.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login / Register | Archery Asia</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <?php include_once __DIR__ . "/includes/head_links.php"; ?>
     <style>
-        /* dropdown right-to-left animation */
-        .dropdown-panel {
-            transform: translateX(20px);
-            opacity: 0;
-            visibility: hidden;
-            transition: transform 0.25s ease, opacity 0.2s ease, visibility 0s linear 0.2s;
+        /* Phone Number Input Field Full Width Fix */
+        .iti {
+            width: 100% !important;
         }
 
-        .group:hover .dropdown-panel {
-            transform: translateX(0);
-            opacity: 1;
-            visibility: visible;
-            transition: transform 0.25s ease, opacity 0.2s ease, visibility 0s linear 0s;
-        }
-
-        /* mobile menu slide from right */
-        .mobile-menu-slide {
-            transform: translateX(100%);
-            opacity: 0;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-
-        .mobile-menu-slide.open {
-            transform: translateX(0);
-            opacity: 1;
-        }
-
-        /* scrollbar for mobile menu */
-        .mobile-nav-scroll::-webkit-scrollbar {
-            width: 4px;
-        }
-
-        .mobile-nav-scroll::-webkit-scrollbar-thumb {
-            background: #ed143b;
-            border-radius: 4px;
-        }
-
-        /* tab underline animation */
+        /* Tab underline animation */
         .auth-tab {
             position: relative;
             transition: color 0.2s ease;
@@ -57,7 +24,7 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background: #ed143b;
+            background: var(--primary-color);
             transform: scaleX(0);
             transform-origin: left center;
             transition: transform 0.3s ease;
@@ -69,212 +36,20 @@
     </style>
 </head>
 
-<body class="bg-white font-sans text-gray-800 antialiased">
+<body class="font-sans bg-white text-gray-800 min-h-screen antialiased flex flex-col">
 
-    <!-- ================================================== -->
-    <!-- TOP BAR                                             -->
-    <!-- ================================================== -->
-    <div class="bg-[#252a35] text-white">
-        <div
-            class="mx-auto flex h-[30px] max-w-[1360px] items-center justify-between px-4 text-[9px] font-semibold sm:px-8">
-            <div class="flex items-center gap-2">
-                <a href="mailto:support@archeryasia.com" class="hover:text-gray-300">SUPPORT@ARCHERYASIA.COM</a>
-                <span>/</span>
-                <a href="https://wa.me/919345665181" class="hover:text-gray-300">WHATSAPP: +91 9345665181</a>
-            </div>
-            <a href="#coach-account" class="hidden hover:text-gray-300 sm:block">OPEN COACH ACCOUNT</a>
-        </div>
-    </div>
+    <?php include_once __DIR__ . "/includes/nav-bar.php"; ?>
 
-    <!-- ================================================== -->
-    <!-- MAIN HEADER                                         -->
-    <!-- ================================================== -->
-    <header class="relative z-40 bg-white shadow-sm">
-        <div class="mx-auto max-w-[1360px] px-5 sm:px-8">
-            <div class="flex h-[100px] items-center justify-between gap-4 lg:h-[132px]">
-
-                <!-- LOGO -->
-                <a href="./index.html" class="shrink-0">
-                    <img src="https://www.archeryasia.com/cdn/shop/files/Logo.png?v=1696172342" alt="Archery Asia"
-                        class="w-[140px] object-contain sm:w-[175px]">
-                </a>
-
-                <!-- DESKTOP NAVIGATION -->
-                <nav class="hidden items-center gap-4 xl:flex 2xl:gap-5">
-                    <a href="./category-shown.html"
-                        class="text-[11px] font-semibold uppercase transition hover:text-red-600">Bows</a>
-                    <a href="./category-shown.html"
-                        class="text-[11px] font-semibold uppercase transition hover:text-red-600">Arrows</a>
-
-                    <!-- ACCESSORIES DROPDOWN (opens right to left) -->
-                    <div class="group relative">
-                        <a href="./category-shown.html"
-                            class="flex items-center gap-1 text-[11px] font-semibold uppercase hover:text-red-600">
-                            Accessories
-                            <svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="m5 7 5 5 5-5" />
-                            </svg>
-                        </a>
-                        <div class="dropdown-panel absolute right-0 top-full z-50 mt-3 w-52 bg-white py-2 shadow-xl">
-                            <a href="./category-shown.html"
-                                class="block px-5 py-3 text-xs hover:bg-gray-50 hover:text-red-600">All Accessories</a>
-                            <a href="./category-shown.html"
-                                class="block px-5 py-3 text-xs hover:bg-gray-50 hover:text-red-600">Stabilizers</a>
-                            <a href="./category-shown.html"
-                                class="block px-5 py-3 text-xs hover:bg-gray-50 hover:text-red-600">Bowstrings</a>
-                            <a href="./category-shown.html"
-                                class="block px-5 py-3 text-xs hover:bg-gray-50 hover:text-red-600">Quivers</a>
-                        </div>
-                    </div>
-
-                    <!-- QUICK SHOP DROPDOWN (opens right to left) -->
-                    <div class="group relative">
-                        <a href="./category-shown.html"
-                            class="flex items-center gap-1 text-[11px] font-semibold uppercase hover:text-red-600">
-                            Quick Shop
-                            <svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="m5 7 5 5 5-5" />
-                            </svg>
-                        </a>
-                        <div class="dropdown-panel absolute right-0 top-full z-50 mt-3 w-52 bg-white py-2 shadow-xl">
-                            <a href="./category-shown.html"
-                                class="block px-5 py-3 text-xs hover:bg-gray-50 hover:text-red-600">Best Sellers</a>
-                            <a href="./category-shown.html"
-                                class="block px-5 py-3 text-xs hover:bg-gray-50 hover:text-red-600">New Arrivals</a>
-                            <a href="./category-shown.html"
-                                class="block px-5 py-3 text-xs hover:bg-gray-50 hover:text-red-600">Starter Pack</a>
-                        </div>
-                    </div>
-                </nav>
-
-                <!-- RIGHT HEADER ACTIONS -->
-                <div class="flex shrink-0 items-center gap-3 sm:gap-4">
-                    <a href="./login.html"
-                        class="hidden whitespace-nowrap text-[11px] font-semibold hover:text-red-600 lg:block">Login /
-                        Register</a>
-                    <div class="hidden h-[60px] w-px bg-gray-200 lg:block"></div>
-                    <a href="./profile.html" aria-label="Account" class="hidden hover:text-red-600 sm:block">
-                        <svg class="h-[17px] w-[17px]" viewBox="0 0 24 24" fill="currentColor">
-                            <circle cx="12" cy="7" r="4" />
-                            <path d="M4.5 21v-2a7.5 7.5 0 0 1 15 0v2z" />
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="Search" class="hover:text-red-600">
-                        <svg class="h-[17px] w-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.6">
-                            <circle cx="10.8" cy="10.8" r="6.3" />
-                            <path d="m16 16 4 4" stroke-linecap="round" />
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="Wishlist" class="hidden hover:text-red-600 sm:block">
-                        <svg class="h-[17px] w-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.6">
-                            <path
-                                d="M20.8 8.8c0 4.2-8.8 10-8.8 10S3.2 13 3.2 8.8A4.3 4.3 0 0 1 12 6.6a4.3 4.3 0 0 1 8.8 2.2Z" />
-                        </svg>
-                    </a>
-
-                    <a href="./cart.html" aria-label="Shopping cart" class="relative hover:text-red-600">
-                        <svg class="h-[19px] w-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.6">
-                            <path d="M2.5 3.5h2l2.4 12h11.8l2.2-8.5H5.3" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <circle cx="9" cy="19.5" r="1.2" />
-                            <circle cx="17" cy="19.5" r="1.2" />
-                        </svg>
-                        <span class="absolute -right-2 -top-2 text-[9px]">0</span>
-                    </a>
-                    <button class="hidden items-center gap-1 text-[10px] font-medium md:flex">INR <svg class="h-3 w-3"
-                            viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="m5 7 5 5 5-5" />
-                        </svg></button>
-                    <button id="mobileMenuButton" aria-label="Open navigation menu" aria-expanded="false"
-                        class="xl:hidden">
-                        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-                            <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <!-- MOBILE NAVIGATION (slide from right) -->
-            <nav id="mobileMenu"
-                class="fixed inset-y-0 right-0 z-50 hidden w-[280px] flex-col bg-white shadow-2xl transition-transform duration-300 ease-in-out xl:hidden mobile-nav-scroll overflow-y-auto">
-                <div class="flex items-center justify-between border-b border-gray-200 px-5 py-4">
-                    <span class="text-sm font-bold uppercase tracking-wider text-[#292d38]">Menu</span>
-                    <button id="closeMobileMenu" aria-label="Close navigation menu"
-                        class="text-gray-500 hover:text-red-600">
-                        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-                            <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="flex flex-col gap-1 p-4">
-                    <a href="./category-shown.html"
-                        class="rounded px-3 py-3 text-sm font-semibold uppercase hover:bg-gray-50 hover:text-red-600">Bows</a>
-                    <a href="./category-shown.html"
-                        class="rounded px-3 py-3 text-sm font-semibold uppercase hover:bg-gray-50 hover:text-red-600">Arrows</a>
-                    <!-- Accessories with submenu -->
-                    <div>
-                        <button
-                            class="flex w-full items-center justify-between rounded px-3 py-3 text-sm font-semibold uppercase hover:bg-gray-50 hover:text-red-600 mobile-dropdown-toggle"
-                            data-target="mobileAccordion">
-                            Accessories
-                            <svg class="h-4 w-4 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="m5 7 5 5 5-5" />
-                            </svg>
-                        </button>
-                        <div id="mobileAccordion" class="hidden flex-col pl-6">
-                            <a href="./category-shown.html"
-                                class="rounded px-3 py-2 text-xs uppercase hover:text-red-600">All Accessories</a>
-                            <a href="./category-shown.html"
-                                class="rounded px-3 py-2 text-xs uppercase hover:text-red-600">Stabilizers</a>
-                            <a href="./category-shown.html"
-                                class="rounded px-3 py-2 text-xs uppercase hover:text-red-600">Bowstrings</a>
-                            <a href="./category-shown.html"
-                                class="rounded px-3 py-2 text-xs uppercase hover:text-red-600">Quivers</a>
-                        </div>
-                    </div>
-                    <!-- Quick Shop with submenu -->
-                    <div>
-                        <button
-                            class="flex w-full items-center justify-between rounded px-3 py-3 text-sm font-semibold uppercase hover:bg-gray-50 hover:text-red-600 mobile-dropdown-toggle"
-                            data-target="mobileQuickShop">
-                            Quick Shop
-                            <svg class="h-4 w-4 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="m5 7 5 5 5-5" />
-                            </svg>
-                        </button>
-                        <div id="mobileQuickShop" class="hidden flex-col pl-6">
-                            <a href="./category-shown.html"
-                                class="rounded px-3 py-2 text-xs uppercase hover:text-red-600">Best Sellers</a>
-                            <a href="./category-shown.html"
-                                class="rounded px-3 py-2 text-xs uppercase hover:text-red-600">New Arrivals</a>
-                            <a href="./category-shown.html"
-                                class="rounded px-3 py-2 text-xs uppercase hover:text-red-600">Starter Pack</a>
-                        </div>
-                    </div>
-                    <a href="./category-shown.html"
-                        class="rounded px-3 py-3 text-sm font-semibold uppercase hover:bg-gray-50 hover:text-red-600">Shop
-                        All</a>
-                    <a href="./login.html"
-                        class="mt-4 rounded border border-gray-200 px-3 py-3 text-center text-sm font-semibold uppercase hover:border-red-600 hover:text-red-600">Login
-                        / Register</a>
-                </div>
-            </nav>
-
-        </div>
-    </header>
-    <!-- ================= LOGIN / REGISTER PAGE ================= -->
-    <main class="mx-auto max-w-[1360px] px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
+    <!-- ================= LOGIN PAGE ================= -->
+    <main class="flex-grow mx-auto w-full max-w-[1360px] px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
 
         <div class="mx-auto max-w-[480px]">
 
             <!-- PAGE TITLE -->
             <div class="mb-8 text-center">
                 <h1 class="text-2xl font-bold uppercase tracking-tight text-[#292d38] sm:text-[28px]">My Account</h1>
-                <div class="mx-auto mt-3 h-[2px] w-[30px] bg-[#ed143b]"></div>
-                <p class="mt-3 text-sm text-gray-500">Login or create a new account to continue.</p>
+                <div class="mx-auto mt-3 h-[2px] w-[30px]" style="background-color: var(--primary-color);"></div>
+                <p class="mt-3 text-sm text-gray-500">Login to your account to continue.</p>
             </div>
 
             <!-- AUTH CARD -->
@@ -282,454 +57,91 @@
 
                 <!-- TABS -->
                 <div class="flex border-b border-gray-200">
-                    <button type="button" id="loginTab"
-                        class="auth-tab active flex-1 px-4 py-4 text-sm font-semibold uppercase tracking-wide text-[#292d38] transition sm:px-6">
+                    <a href="<?= $storeUrl ?>login" class="auth-tab active flex-1 px-4 py-4 text-center text-sm font-semibold uppercase tracking-wide text-[#292d38] transition sm:px-6">
                         Login
-                    </button>
-                    <button type="button" id="registerTab"
-                        class="auth-tab flex-1 px-4 py-4 text-sm font-semibold uppercase tracking-wide text-gray-500 transition hover:text-[#292d38] sm:px-6">
+                    </a>
+                    <a href="<?= $storeUrl ?>register" class="auth-tab flex-1 px-4 py-4 text-center text-sm font-semibold uppercase tracking-wide text-gray-500 transition hover:text-[#292d38] sm:px-6">
                         Register
-                    </button>
+                    </a>
                 </div>
 
                 <!-- ================= LOGIN FORM ================= -->
-                <form id="loginForm" class="space-y-5 p-6 sm:p-8" novalidate>
+                <form id="form" class="space-y-5 p-6 sm:p-8">
+                    <div id="step1">
 
-                    <div>
-                        <label for="loginEmail"
-                            class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-700">Email
-                            Address</label>
-                        <input type="email" id="loginEmail" required placeholder="you@example.com"
-                            class="h-[46px] w-full rounded border border-gray-200 px-4 text-sm outline-none transition focus:border-red-500">
-                    </div>
-
-                    <div>
-                        <label for="loginPassword"
-                            class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-700">Password</label>
-                        <div class="relative">
-                            <input type="password" id="loginPassword" required placeholder="Enter your password"
-                                class="h-[46px] w-full rounded border border-gray-200 px-4 pr-12 text-sm outline-none transition focus:border-red-500">
-                            <button type="button"
-                                class="toggle-password absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 transition hover:text-red-600"
-                                data-target="loginPassword" aria-label="Show password">
-                                <svg class="h-5 w-5 eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="1.6">
-                                    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"
-                                        stroke-linejoin="round" />
-                                    <circle cx="12" cy="12" r="3" />
-                                </svg>
-                                <svg class="h-5 w-5 eye-closed hidden" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="1.6">
-                                    <path
-                                        d="M3 3l18 18M10.6 10.6a3 3 0 0 0 4.2 4.2M9.9 5.2A9.7 9.7 0 0 1 12 5c6.5 0 10 7 10 7a17 17 0 0 1-3 4M6.2 6.2A17 17 0 0 0 2 12s3.5 7 10 7a9.7 9.7 0 0 0 4-.8"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </button>
+                        <!-- Email / Phone -->
+                        <div class="mb-4" id="emailWrapper" style="display:none;">
+                            <label for="email" class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-700">Email or Phone</label>
+                            <input type="email" name="email" id="email" placeholder="Email or Phone"
+                                class="h-[46px] w-full rounded border border-gray-200 px-4 text-sm outline-none transition focus:border-[var(--primary-color)] email-and-phone">
                         </div>
+
+                        <div class="mb-4" id="phoneWrapper">
+                            <label for="phone" class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-700">Phone or Email</label>
+                            <input type="tel" name="phone[main]" id="phone" placeholder="Phone or Email"
+                                class="h-[46px] w-full rounded border border-gray-200 px-4 text-sm outline-none transition focus:border-[var(--primary-color)] email-and-phone">
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <label for="password" class="block text-xs font-semibold uppercase tracking-wider text-gray-700">Password</label>
+                                <a href="<?= $storeUrl ?>forgot-password" class="text-[var(--primary-color)] text-xs font-semibold hover:underline">Forgot Password?</a>
+                            </div>
+                            <div class="relative">
+                                <input type="password" name="password" id="password" placeholder="Enter a password" required
+                                    class="h-[46px] w-full rounded border border-gray-200 px-4 pr-12 text-sm outline-none transition focus:border-[var(--primary-color)]">
+                               
+                            </div>
+                        </div>
+
+                        <!-- Login Button -->
+                        <button type="button" id="sendOtp"
+                            class="flex h-12 w-full items-center justify-center rounded bg-[var(--primary-color)] text-sm font-semibold uppercase tracking-wider text-white transition hover:opacity-90 login">
+                            Login
+                        </button>
                     </div>
+                </form>
 
-                    <div class="flex items-center justify-between text-sm">
-                        <label class="flex cursor-pointer items-center gap-2">
-                            <input type="checkbox" class="h-4 w-4 accent-[#ed143b]">
-                            <span class="text-gray-600">Remember me</span>
-                        </label>
-                        <a href="#forgot" class="font-medium text-red-600 hover:underline">Forgot password?</a>
-                    </div>
-
-                    <p id="loginMessage" class="hidden text-sm font-medium text-red-600"></p>
-
-                    <button type="submit"
-                        class="flex h-12 w-full items-center justify-center rounded bg-red-600 text-sm font-semibold uppercase tracking-wider text-white transition hover:bg-red-700">
-                        Sign In
-                    </button>
-
-                    <p class="text-center text-xs text-gray-500">
+                <!-- Register Link -->
+                <div class="border-t border-gray-200 p-6 text-center sm:p-8">
+                    <p class="text-sm text-gray-600">
                         Don't have an account?
-                        <button type="button" id="switchToRegister"
-                            class="font-semibold text-red-600 hover:underline">Create one</button>
+                        <a href="<?= $storeUrl ?>register" class="font-semibold text-[var(--primary-color)] hover:underline ml-1">Create one</a>
                     </p>
-
-                </form>
-
-                <!-- ================= REGISTER FORM ================= -->
-                <form id="registerForm" class="hidden space-y-5 p-6 sm:p-8" novalidate>
-
-                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                        <div>
-                            <label for="firstName"
-                                class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-700">First
-                                Name</label>
-                            <input type="text" id="firstName" required placeholder="Rahul"
-                                class="h-[46px] w-full rounded border border-gray-200 px-4 text-sm outline-none transition focus:border-red-500">
-                        </div>
-                        <div>
-                            <label for="lastName"
-                                class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-700">Last
-                                Name</label>
-                            <input type="text" id="lastName" required placeholder="Sharma"
-                                class="h-[46px] w-full rounded border border-gray-200 px-4 text-sm outline-none transition focus:border-red-500">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label for="registerEmail"
-                            class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-700">Email
-                            Address</label>
-                        <input type="email" id="registerEmail" required placeholder="you@example.com"
-                            class="h-[46px] w-full rounded border border-gray-200 px-4 text-sm outline-none transition focus:border-red-500">
-                    </div>
-
-                    <div>
-                        <label for="registerPhone"
-                            class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-700">Phone
-                            Number</label>
-                        <input type="tel" id="registerPhone" required placeholder="+91 98765 43210"
-                            class="h-[46px] w-full rounded border border-gray-200 px-4 text-sm outline-none transition focus:border-red-500">
-                    </div>
-
-                    <div>
-                        <label for="registerPassword"
-                            class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-700">Password</label>
-                        <div class="relative">
-                            <input type="password" id="registerPassword" required placeholder="Create a password"
-                                class="h-[46px] w-full rounded border border-gray-200 px-4 pr-12 text-sm outline-none transition focus:border-red-500">
-                            <button type="button"
-                                class="toggle-password absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 transition hover:text-red-600"
-                                data-target="registerPassword" aria-label="Show password">
-                                <svg class="h-5 w-5 eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="1.6">
-                                    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"
-                                        stroke-linejoin="round" />
-                                    <circle cx="12" cy="12" r="3" />
-                                </svg>
-                                <svg class="h-5 w-5 eye-closed hidden" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="1.6">
-                                    <path
-                                        d="M3 3l18 18M10.6 10.6a3 3 0 0 0 4.2 4.2M9.9 5.2A9.7 9.7 0 0 1 12 5c6.5 0 10 7 10 7a17 17 0 0 1-3 4M6.2 6.2A17 17 0 0 0 2 12s3.5 7 10 7a9.7 9.7 0 0 0 4-.8"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="flex cursor-pointer items-start gap-2 text-xs text-gray-600">
-                            <input type="checkbox" required class="mt-0.5 h-4 w-4 accent-[#ed143b]">
-                            <span>I agree to the <a href="#" class="font-medium text-red-600 hover:underline">Terms of
-                                    Service</a> and <a href="#" class="font-medium text-red-600 hover:underline">Privacy
-                                    Policy</a>.</span>
-                        </label>
-                    </div>
-
-                    <p id="registerMessage" class="hidden text-sm font-medium text-red-600"></p>
-
-                    <button type="submit"
-                        class="flex h-12 w-full items-center justify-center rounded bg-red-600 text-sm font-semibold uppercase tracking-wider text-white transition hover:bg-red-700">
-                        Create Account
-                    </button>
-
-                    <p class="text-center text-xs text-gray-500">
-                        Already have an account?
-                        <button type="button" id="switchToLogin" class="font-semibold text-red-600 hover:underline">Sign
-                            in</button>
-                    </p>
-
-                </form>
+                </div>
 
             </div>
-
-
-
         </div>
-
     </main>
 
-    <!-- ================= JAVASCRIPT ================= -->
+    <?php include_once __DIR__ . "/includes/footer.php"; ?>
+
+    <!-- Js Code For Automatically Take (+91) -->
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        const phoneInputField = document.querySelector("#phone");
+        const phoneInput = window.intlTelInput(phoneInputField, {
+            separateDialCode: true,
+            onlyCountries: ['IN'],
+            preferredCountries: ["<?= getSettings("country") ?>"],
+            hiddenInput: "full",
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
 
-            // ---------- MOBILE MENU ----------
-            const mobileMenuButton = document.getElementById("mobileMenuButton");
-            const mobileMenu = document.getElementById("mobileMenu");
-            const closeMobileMenu = document.getElementById("closeMobileMenu");
-
-            function openMobileMenu() {
-                mobileMenu.classList.remove("hidden");
-                requestAnimationFrame(() => mobileMenu.classList.add("open"));
-                mobileMenuButton.setAttribute("aria-expanded", "true");
-            }
-
-            function closeMobileMenuFunc() {
-                mobileMenu.classList.remove("open");
-                mobileMenuButton.setAttribute("aria-expanded", "false");
-                setTimeout(() => mobileMenu.classList.add("hidden"), 300);
-            }
-
-            mobileMenuButton.addEventListener("click", function (e) {
-                e.stopPropagation();
-                if (mobileMenu.classList.contains("hidden")) openMobileMenu();
-                else closeMobileMenuFunc();
-            });
-
-            closeMobileMenu.addEventListener("click", closeMobileMenuFunc);
-
-            document.addEventListener("click", function (event) {
-                if (!mobileMenu.classList.contains("hidden") &&
-                    !mobileMenu.contains(event.target) &&
-                    event.target !== mobileMenuButton &&
-                    !mobileMenuButton.contains(event.target)) {
-                    closeMobileMenuFunc();
+        // Password Show/Hide
+        document.querySelectorAll(".toggle-password").forEach(function(btn) {
+            btn.addEventListener("click", function() {
+                const targetId = this.getAttribute("data-target");
+                const input = document.getElementById(targetId);
+                if (input.type === "password") {
+                    input.type = "text";
+                } else {
+                    input.type = "password";
                 }
             });
-
-            // ---------- TAB SWITCHING ----------
-            const loginTab = document.getElementById("loginTab");
-            const registerTab = document.getElementById("registerTab");
-            const loginForm = document.getElementById("loginForm");
-            const registerForm = document.getElementById("registerForm");
-
-            function showLogin() {
-                loginTab.classList.add("active", "text-[#292d38]");
-                loginTab.classList.remove("text-gray-500");
-                registerTab.classList.remove("active", "text-[#292d38]");
-                registerTab.classList.add("text-gray-500");
-
-                loginForm.classList.remove("hidden");
-                registerForm.classList.add("hidden");
-            }
-
-            function showRegister() {
-                registerTab.classList.add("active", "text-[#292d38]");
-                registerTab.classList.remove("text-gray-500");
-                loginTab.classList.remove("active", "text-[#292d38]");
-                loginTab.classList.add("text-gray-500");
-
-                registerForm.classList.remove("hidden");
-                loginForm.classList.add("hidden");
-            }
-
-            loginTab.addEventListener("click", showLogin);
-            registerTab.addEventListener("click", showRegister);
-            document.getElementById("switchToRegister").addEventListener("click", showRegister);
-            document.getElementById("switchToLogin").addEventListener("click", showLogin);
-
-            // ---------- PASSWORD SHOW/HIDE ----------
-            document.querySelectorAll(".toggle-password").forEach(function (btn) {
-                btn.addEventListener("click", function () {
-                    const targetId = this.getAttribute("data-target");
-                    const input = document.getElementById(targetId);
-                    const eyeOpen = this.querySelector(".eye-open");
-                    const eyeClosed = this.querySelector(".eye-closed");
-
-                    if (input.type === "password") {
-                        input.type = "text";
-                        eyeOpen.classList.add("hidden");
-                        eyeClosed.classList.remove("hidden");
-                    } else {
-                        input.type = "password";
-                        eyeOpen.classList.remove("hidden");
-                        eyeClosed.classList.add("hidden");
-                    }
-                });
-            });
-
-            // ---------- LOGIN FORM SUBMIT (DEMO) ----------
-            loginForm.addEventListener("submit", function (e) {
-                e.preventDefault();
-                const email = document.getElementById("loginEmail").value.trim();
-                const password = document.getElementById("loginPassword").value.trim();
-                const message = document.getElementById("loginMessage");
-
-                if (!email || !password) {
-                    message.textContent = "Please fill in all fields.";
-                    message.classList.remove("hidden");
-                    return;
-                }
-
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                    message.textContent = "Please enter a valid email address.";
-                    message.classList.remove("hidden");
-                    return;
-                }
-
-                message.classList.add("hidden");
-                alert("Login successful! Redirecting to your account...\n\nEmail: " + email);
-                // window.location.href = "/account";
-            });
-
-            // ---------- REGISTER FORM SUBMIT (DEMO) ----------
-            registerForm.addEventListener("submit", function (e) {
-                e.preventDefault();
-                const firstName = document.getElementById("firstName").value.trim();
-                const lastName = document.getElementById("lastName").value.trim();
-                const email = document.getElementById("registerEmail").value.trim();
-                const phone = document.getElementById("registerPhone").value.trim();
-                const password = document.getElementById("registerPassword").value.trim();
-                const message = document.getElementById("registerMessage");
-
-                if (!firstName || !lastName || !email || !phone || !password) {
-                    message.textContent = "Please fill in all fields.";
-                    message.classList.remove("hidden");
-                    return;
-                }
-
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                    message.textContent = "Please enter a valid email address.";
-                    message.classList.remove("hidden");
-                    return;
-                }
-
-                if (password.length < 6) {
-                    message.textContent = "Password must be at least 6 characters long.";
-                    message.classList.remove("hidden");
-                    return;
-                }
-
-                message.classList.add("hidden");
-                alert("Account created successfully!\n\nWelcome, " + firstName + "!");
-                // window.location.href = "/account";
-            });
-
         });
     </script>
-
-    <!-- ================= ARCHERY ASIA FOOTER ================= -->
-    <footer class="mt-16 w-full bg-[#1b1919] text-white">
-        <div class="mx-auto max-w-[1100px] px-5 pb-8 pt-12 sm:px-8">
-
-            <!-- LOGO & SOCIAL MEDIA -->
-            <div class="mb-12 flex justify-center">
-                <div class="flex w-[300px] flex-col items-center border border-[#484444] p-[6px]">
-                    <div class="flex w-full flex-col items-center border border-[#383434] px-5 py-5">
-                        <a href="/" class="mb-3">
-                            <img src="https://www.archeryasia.com/cdn/shop/files/Asset_1_x86@2x.svg?v=1694454685"
-                                alt="Archery Asia" class="w-[210px] object-contain">
-                        </a>
-                        <div class="flex items-center gap-5 text-[#858585]">
-                            <a href="#" aria-label="Facebook"
-                                class="transition-colors duration-300 hover:text-white"><svg class="h-4 w-4"
-                                    viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M13.4 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.2V13H10v8z" />
-                                </svg></a>
-                            <a href="#" aria-label="Twitter"
-                                class="transition-colors duration-300 hover:text-white"><svg class="h-4 w-4"
-                                    viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M22 5.9a8 8 0 0 1-2.4.7 4.2 4.2 0 0 0 1.8-2.3 8.4 8.4 0 0 1-2.7 1 4.2 4.2 0 0 0-7.2 3.8 11.9 11.9 0 0 1-8.6-4.4 4.2 4.2 0 0 0 1.3 5.6 4.1 4.1 0 0 1-1.9-.5v.1a4.2 4.2 0 0 0 3.4 4.1 4.2 4.2 0 0 1-1.9.1 4.2 4.2 0 0 0 3.9 2.9A8.4 8.4 0 0 1 2.5 19a11.9 11.9 0 0 0 18.3-10c0-.2 0-.4-.1-.6A8.5 8.5 0 0 0 22 5.9z" />
-                                </svg></a>
-                            <a href="#" aria-label="Pinterest"
-                                class="transition-colors duration-300 hover:text-white"><svg class="h-4 w-4"
-                                    viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M12 2a10 10 0 0 0-3.6 19.3c0-.8 0-1.9.2-2.8l1.3-5.5s-.3-.7-.3-1.6c0-1.5.9-2.6 2-2.6.9 0 1.3.7 1.3 1.5 0 .9-.6 2.3-.9 3.6-.3 1.1.5 2 1.6 2 1.9 0 3.3-2.4 3.3-5.2 0-2.1-1.4-3.7-3.9-3.7-2.8 0-4.5 2.1-4.5 4.4 0 .8.2 1.5.6 2 .2.2.2.3.1.6l-.2.8c-.1.3-.3.4-.6.3-1.3-.5-1.9-1.9-1.9-3.4 0-2.5 2.1-5.6 6.4-5.6 3.4 0 5.6 2.5 5.6 5.1 0 3.5-2 6.2-4.9 6.2-1 0-2-.6-2.3-1.3l-.7 2.8c-.2 1-.8 2-1.2 2.7A10 10 0 1 0 12 2z" />
-                                </svg></a>
-                            <a href="#" aria-label="Instagram"
-                                class="transition-colors duration-300 hover:text-white"><svg class="h-4 w-4"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="3" width="18" height="18" rx="5" />
-                                    <circle cx="12" cy="12" r="4" />
-                                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-                                </svg></a>
-                            <a href="#" aria-label="LinkedIn"
-                                class="transition-colors duration-300 hover:text-white"><svg class="h-4 w-4"
-                                    viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M5.2 8.5H2V22h3.2zM3.6 2a1.9 1.9 0 1 0 0 3.8 1.9 1.9 0 0 0 0-3.8zM22 13.8c0-4.1-2.2-6-5.2-6a4.5 4.5 0 0 0-4 2.2V8.5H9.6V22h3.2v-6.7c0-1.8.3-3.5 2.5-3.5s2.2 2 2.2 3.6V22H22z" />
-                                </svg></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FOOTER COLUMNS -->
-            <div class="grid grid-cols-1 gap-x-8 gap-y-9 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_0.9fr_1.15fr_1.65fr]">
-                <div>
-                    <h3 class="mb-5 text-lg font-bold uppercase">Information <span
-                            class="mt-1.5 block h-[2px] w-[30px] bg-[#ed1234]"></span></h3>
-                    <ul class="space-y-3 text-[15px] text-[#858585]">
-                        <li><a href="/pages/about-us" class="transition hover:text-white">» About Archery Asia</a></li>
-                        <li><a href="/pages/careers" class="transition hover:text-white">» Careers</a></li>
-                        <li><a href="/pages/influencers" class="transition hover:text-white">» Influencers</a></li>
-                        <li><a href="/pages/coaches-program" class="transition hover:text-white">» Coaches Program</a>
-                        </li>
-                        <li><a href="/pages/sitemap" class="transition hover:text-white">» Sitemap</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="mb-5 text-lg font-bold uppercase">Quick Shop <span
-                            class="mt-1.5 block h-[2px] w-[30px] bg-[#ed1234]"></span></h3>
-                    <ul class="space-y-3 text-[15px] text-[#858585]">
-                        <li><a href="/collections/all" class="transition hover:text-white">» Catalog</a></li>
-                        <li><a href="/collections/starter-pack" class="transition hover:text-white">» Starter Pack</a>
-                        </li>
-                        <li><a href="/collections/new-arrivals" class="transition hover:text-white">» New Arrivals</a>
-                        </li>
-                        <li><a href="/collections/left-hand" class="transition hover:text-white">» Left Hand</a></li>
-                        <li><a href="/collections/right-hand" class="transition hover:text-white">» Right Hand</a></li>
-                        <li><a href="/collections/clothing" class="transition hover:text-white">» Clothing</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="mb-5 text-lg font-bold uppercase">Service <span
-                            class="mt-1.5 block h-[2px] w-[30px] bg-[#ed1234]"></span></h3>
-                    <ul class="space-y-3 text-[15px] text-[#858585]">
-                        <li><a href="/search" class="transition hover:text-white">» Search</a></li>
-                        <li><a href="/blogs/news" class="transition hover:text-white">» News</a></li>
-                        <li><a href="/pages/help" class="transition hover:text-white">» Help</a></li>
-                        <li><a href="/pages/contact" class="transition hover:text-white">» Contact Us</a></li>
-                        <li><a href="/pages/dealer-login" class="transition hover:text-white">» Dealer Login</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="mb-5 text-lg font-bold uppercase">Useful Links <span
-                            class="mt-1.5 block h-[2px] w-[30px] bg-[#ed1234]"></span></h3>
-                    <ul class="space-y-3 text-[15px] text-[#858585]">
-                        <li><a href="/policies/privacy-policy" class="transition hover:text-white">» Privacy Policy</a>
-                        </li>
-                        <li><a href="/policies/refund-policy" class="transition hover:text-white">» Returns</a></li>
-                        <li><a href="/policies/shipping-policy" class="transition hover:text-white">» Shipping &amp;
-                                Delivery</a></li>
-                        <li><a href="/policies/terms-of-service" class="transition hover:text-white">» Terms of
-                                Service</a></li>
-                        <li><a href="/pages/support" class="transition hover:text-white">» Support</a></li>
-                        <li><a href="/pages/become-a-supplier" class="transition hover:text-white">» Become a
-                                Supplier</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="mb-5 text-lg font-bold uppercase">About the Store <span
-                            class="mt-1.5 block h-[2px] w-[30px] bg-[#ed1234]"></span></h3>
-                    <p class="mb-5 text-[15px] leading-[2.3] text-[#858585]">India's professional archery store. Present
-                        in Thanjavur, Chennai, Bangalore &amp; Mumbai. Delivering all over India, Singapore and the US.
-                    </p>
-                    <div class="space-y-3 text-[14px] leading-relaxed text-[#858585]">
-                        <a href="#" class="flex items-start gap-2 transition hover:text-white"><svg
-                                class="mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="m12 3 10 9h-3v9h-6v-6h-2v6H5v-9H2z" />
-                            </svg><span>Thanjavur &amp; Chennai, Tamil Nadu, India</span></a>
-                        <a href="https://wa.me/919345665181"
-                            class="flex items-center gap-2 transition hover:text-white"><svg class="h-4 w-4 shrink-0"
-                                viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M6.6 2h10.8A2.6 2.6 0 0 1 20 4.6v14.8a2.6 2.6 0 0 1-2.6 2.6H6.6A2.6 2.6 0 0 1 4 19.4V4.6A2.6 2.6 0 0 1 6.6 2ZM12 19.5a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Z" />
-                            </svg><span>+91 93456 65181 (WhatsApp)</span></a>
-                        <a href="mailto:support@archeryasia.com"
-                            class="flex items-center gap-2 transition hover:text-white"><svg class="h-5 w-5 shrink-0"
-                                viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M2 5h20v14H2z" />
-                                <path d="m2 6 10 7 10-7" fill="none" stroke="#1b1919" stroke-width="1.5" />
-                            </svg><span class="break-all">support@archeryasia.com</span></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- COPYRIGHT -->
-            <div class="mt-10 border-t border-white/10 pt-5 text-center text-xs text-[#777777]">© 2026 Archery Asia. All
-                rights reserved.</div>
-        </div>
-    </footer>
-
+    <script src="<?= APP_URL ?>shop/javascripts/login.js"></script>
 </body>
 
 </html>

@@ -11,3 +11,4 @@ include_once __DIR__ . "/../../../config/autoload.php";
 ?>
 <?php include_once __DIR__ . "/../../../config/app_data.php"; ?>
 <?php include_once __DIR__ . "/../includes/components.php"; ?>
+<?php include_once __DIR__ . "/../includes/product-card.php"; ?>
