@@ -137,7 +137,7 @@ $scrollProducts = array_slice($shuffledPool, 19, 10);
         }
 
         .animate-marquee {
-            animation: marquee 25s linear infinite;
+            animation: marquee 60s linear infinite;
             display: flex;
             width: max-content;
         }

@@ -47,31 +47,36 @@ function addToCartSection($id, $product_id, $cookie_id, $hasAdvancedVariants, $h
 
     // View Cart (Hover color, no icon)
     $viewCartHtml = '<a href="' . $storeUrl . 'cart" class="viewCartBtn hidden px-3 py-2 rounded-none text-white transition w-full flex items-center justify-center text-[11px] font-bold uppercase tracking-wider" style="background-color: var(--hover-color);">
-                    View Cart
+                    Already in Cart
                   </a>';
 
+    // ✅ FIX: Use var(--primary) to match the body tag
+    $primaryStyle = 'background-color: var(--primary);';
+
     if ($isMainInCart && !$hasAdvancedVariants && !$hasBasicVariants) {
-        $html .= '<button type="button" class="customAddToCartBtn hidden ' . $btnBase . ' bg-[var(--primary-color)] text-white hover:opacity-90" data-id="' . $id . '" data-variant="" data-advancedvariant="" data-has-advanced-variants="false" data-has-basic-variants="false">Add to Bag</button>';
+        $html .= '<button type="button" class="customAddToCartBtn hidden ' . $btnBase . ' text-white hover:opacity-90" style="' . $primaryStyle . '" data-id="' . $id . '" data-variant="" data-advancedvariant="" data-has-advanced-variants="false" data-has-basic-variants="false">Add Item</button>';
         $html .= str_replace('hidden ', '', $viewCartHtml);
     } else if ($hasAdvancedVariants) {
         $html .= '<button type="button" class="customAddToCartBtn ' . $btnBase . ' bg-gray-200 text-gray-400 cursor-not-allowed" data-id="' . $id . '" data-variant="" data-advancedvariant="" disabled data-has-advanced-variants="true" data-has-basic-variants="' . ($hasBasicVariants ? 'true' : 'false') . '">Select Option</button>';
         $html .= $viewCartHtml;
     } else if ($hasBasicVariants) {
         if ($isMainInCart) {
-            $html .= '<button type="button" class="customAddToCartBtn hidden ' . $btnBase . ' bg-[var(--primary-color)] text-white hover:opacity-90" data-id="' . $id . '" data-variant="" data-advancedvariant="" data-has-advanced-variants="false" data-has-basic-variants="true">Add to Bag</button>';
+            $html .= '<button type="button" class="customAddToCartBtn hidden ' . $btnBase . ' text-white hover:opacity-90" style="' . $primaryStyle . '" data-id="' . $id . '" data-variant="" data-advancedvariant="" data-has-advanced-variants="false" data-has-basic-variants="true">Add Item</button>';
             $html .= str_replace('hidden ', '', $viewCartHtml);
         } else {
-            $btnClass = $isOutOfStock ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-[var(--primary-color)] text-white hover:opacity-90';
-            $btnText = $isOutOfStock ? 'Sold Out' : 'Add to Bag';
+            $btnClass = $isOutOfStock ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'text-white hover:opacity-90';
+            $style = $isOutOfStock ? '' : $primaryStyle;
+            $btnText = $isOutOfStock ? 'Sold Out' : 'Add Item';
             $disabled = $isOutOfStock ? 'disabled' : '';
-            $html .= '<button type="button" class="customAddToCartBtn ' . $btnBase . ' ' . $btnClass . '" data-id="' . $id . '" data-variant="" data-advancedvariant="" ' . $disabled . ' data-has-advanced-variants="false" data-has-basic-variants="true">' . $btnText . '</button>';
+            $html .= '<button type="button" class="customAddToCartBtn ' . $btnBase . ' ' . $btnClass . '" style="' . $style . '" data-id="' . $id . '" data-variant="" data-advancedvariant="" ' . $disabled . ' data-has-advanced-variants="false" data-has-basic-variants="true">' . $btnText . '</button>';
             $html .= $viewCartHtml;
         }
     } else {
-        $btnClass = $isOutOfStock ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-[var(--primary-color)] text-white hover:opacity-90';
-        $btnText = $isOutOfStock ? 'Sold Out' : 'Add to Bag';
+        $btnClass = $isOutOfStock ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'text-white hover:opacity-90';
+        $style = $isOutOfStock ? '' : $primaryStyle;
+        $btnText = $isOutOfStock ? 'Sold Out' : 'Add Item';
         $disabled = $isOutOfStock ? 'disabled' : '';
-        $html .= '<button type="button" class="customAddToCartBtn ' . $btnBase . ' ' . $btnClass . '" data-id="' . $id . '" data-variant="" data-advancedvariant="" ' . $disabled . ' data-has-advanced-variants="false" data-has-basic-variants="false">' . $btnText . '</button>';
+        $html .= '<button type="button" class="customAddToCartBtn ' . $btnBase . ' ' . $btnClass . '" style="' . $style . '" data-id="' . $id . '" data-variant="" data-advancedvariant="" ' . $disabled . ' data-has-advanced-variants="false" data-has-basic-variants="false">' . $btnText . '</button>';
         $html .= $viewCartHtml;
     }
 
@@ -80,7 +85,7 @@ function addToCartSection($id, $product_id, $cookie_id, $hasAdvancedVariants, $h
 }
 
 // =====================
-// PRODUCT CARD FUNCTION (THEME 16 - FLEXIBLE LAYOUT)
+// PRODUCT CARD FUNCTION (THEME 16)
 // =====================
 function getProductHtml($id)
 {
@@ -145,7 +150,7 @@ function getProductHtml($id)
         <i class="fa-solid fa-heart text-sm ' . $btnText . '"></i>  
      </button>';
 
-    // ✅ FLEXIBLE LAYOUT
+    // ✅ FLEXIBLE LAYOUT (No wrapper `.product-card` here, handled in Shop All)
     $html = '<div class="group product-card-wrapper relative bg-white border border-gray-200 hover:border-[var(--primary-color)] transition-all duration-300 h-full overflow-hidden"
     data-id="' . $id . '"
     data-product-id="' . $product_id . '"
@@ -154,7 +159,7 @@ function getProductHtml($id)
     data-combo-count="' . $comboSelectionCount . '"
     data-combo-selections="[]">
             
-            <div class="product-card-inner w-full h-full flex">
+            <div class="product-card-inner w-full h-full flex flex-col">
                 
                 <!-- Image Area -->
                 <div class="product-card-image relative bg-gray-50 flex items-center justify-center p-4 overflow-hidden shrink-0">
@@ -246,7 +251,7 @@ function getProductHtml($id)
             $stockColor = 'text-red-600';
         }
 
-        $html .= '<div class="mt-2 mb-1 text-xs text-gray-500 flex justify-center gap-3">
+        $html .= '<div class="mt-2 mb-1 text-xs text-gray-500 flex justify-center gap-3 product-card-views">
             <span class="flex items-center gap-1"><span class="text-red-500">❤️</span> ' . number_format($visitors) . ' views</span>
             <span class="' . $stockColor . ' font-medium">' . $stockText . '</span>
         </div>';
@@ -254,7 +259,7 @@ function getProductHtml($id)
 
     // Price
     $html .= '<div class="product-card-price mt-2 flex items-center justify-center gap-2">';
-    $html .= '<span class="productPrice text-base font-bold text-[var(--primary-color)]">' . currencyToSymbol($storeCurrency) . number_format($price) . '</span>';
+    $html .= '<span class="productPrice text-base font-bold" style="color: var(--primary);">' . currencyToSymbol($storeCurrency) . number_format($price) . '</span>';
     if ($mrp_price && $mrp_price > $price) {
         $html .= '<span class="productMrp text-xs text-gray-400 line-through">' . currencyToSymbol($storeCurrency) . number_format($mrp_price) . '</span>';
     }

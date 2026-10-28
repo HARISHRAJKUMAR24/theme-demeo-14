@@ -366,11 +366,11 @@ function getRandomProducts($limit = 3)
         <!-- ACTION BUTTONS -->
         <div class="flex flex-col gap-3 sm:flex-row mt-2">
           <button id="addToCartBtn" class="flex h-12 w-full items-center justify-center rounded-md bg-[var(--primary-color)] px-8 text-sm font-semibold text-white transition duration-300 hover:opacity-90 sm:w-[200px] <?= $inCartInitial ? 'hidden' : '' ?>" data-id="<?= $id ?>">
-            Add to Cart
+             Add Item
           </button>
 
           <a id="viewCartBtn" href="<?= $storeUrl ?>cart" class="flex h-12 w-full items-center justify-center rounded-md border border-[var(--primary-color)] bg-white px-8 text-sm font-semibold text-[var(--primary-color)] transition duration-300 hover:bg-[var(--primary-color)] hover:text-white sm:w-[200px] <?= $inCartInitial ? '' : 'hidden' ?>">
-            View Cart
+            Already in Cart
           </a>
 
           <?php if (isLoggedIn()):
@@ -558,7 +558,7 @@ function getRandomProducts($limit = 3)
                 addBtn.classList.remove('hidden');
                 viewBtn.classList.add('hidden');
                 addBtn.disabled = false;
-                addBtn.innerHTML = 'Add to Cart';
+                addBtn.innerHTML = 'Add Item';
                 addBtn.classList.add('bg-[var(--primary-color)]');
                 addBtn.classList.remove('bg-gray-300', 'cursor-not-allowed');
               }
@@ -629,13 +629,13 @@ function getRandomProducts($limit = 3)
               if (window.showCustomToast) window.showCustomToast('Added to cart successfully!', 'success');
               if (typeof getProductCountAndPrice === 'function') getProductCountAndPrice();
             } else {
-              addBtn.innerHTML = 'Add to Cart';
+              addBtn.innerHTML = 'Add Item';
               addBtn.disabled = false;
               if (window.showCustomToast) window.showCustomToast(response?.message || 'Failed', 'error');
             }
           },
           error: function() {
-            addBtn.innerHTML = 'Add to Cart';
+            addBtn.innerHTML = 'Add Item';
             addBtn.disabled = false;
             if (window.showCustomToast) window.showCustomToast('Network error', 'error');
           }
@@ -686,7 +686,7 @@ function getRandomProducts($limit = 3)
             addBtn.classList.remove('hidden');
             viewBtn.classList.add('hidden');
             addBtn.disabled = false;
-            addBtn.innerHTML = 'Add to Cart';
+            addBtn.innerHTML = 'Add Item';
             addBtn.classList.add('bg-[var(--primary-color)]');
             addBtn.classList.remove('bg-gray-300', 'cursor-not-allowed');
           }
@@ -717,13 +717,13 @@ function getRandomProducts($limit = 3)
               if (window.showCustomToast) window.showCustomToast('Added successfully!', 'success');
               if (typeof getProductCountAndPrice === 'function') getProductCountAndPrice();
             } else {
-              addBtn.innerHTML = 'Add to Cart';
+              addBtn.innerHTML = 'Add Item';
               addBtn.disabled = false;
               if (window.showCustomToast) window.showCustomToast(response?.message || 'Failed', 'error');
             }
           },
           error: function() {
-            addBtn.innerHTML = 'Add to Cart';
+            addBtn.innerHTML = 'Add Item';
             addBtn.disabled = false;
             if (window.showCustomToast) window.showCustomToast('Network error', 'error');
           }
@@ -770,13 +770,13 @@ function getRandomProducts($limit = 3)
                 if (window.showCustomToast) window.showCustomToast('Added to cart successfully!', 'success');
                 if (typeof getProductCountAndPrice === 'function') getProductCountAndPrice();
               } else {
-                addBtn.innerHTML = 'Add to Cart';
+                addBtn.innerHTML = 'Add Item';
                 addBtn.disabled = false;
                 if (window.showCustomToast) window.showCustomToast(response?.message || 'Failed', 'error');
               }
             },
             error: function() {
-              addBtn.innerHTML = 'Add to Cart';
+              addBtn.innerHTML = 'Add Item';
               addBtn.disabled = false;
               if (window.showCustomToast) window.showCustomToast('Network error', 'error');
             }

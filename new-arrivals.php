@@ -514,7 +514,7 @@
                             addBtn.classList.remove('bg-[var(--primary-color)]', 'text-white');
                             addBtn.classList.add('bg-gray-200', 'text-gray-400', 'cursor-not-allowed');
                         } else {
-                            addBtn.innerHTML = 'Add to Bag';
+                            addBtn.innerHTML = 'Add Item';
                             addBtn.classList.remove('bg-gray-200', 'text-gray-400', 'cursor-not-allowed');
                             addBtn.classList.add('bg-[var(--primary-color)]', 'text-white');
                         }
