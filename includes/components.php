@@ -76,9 +76,9 @@ if (!function_exists('getLatestArrivalsHtml')) {
                                 $inWish  = in_array($pId, $wishlistIds);
                                 $heartColor = '#ffffff';   // always white
                             ?>
-                                <!-- Reduced height: 200px mobile, 280px desktop -->
+                                <!-- ✅ INCREASED SIZE: 260px mobile, 340px desktop -->
                                 <article class="latest-slide group shrink-0 px-2 sm:px-4" style="width: 33.333%;">
-                                    <div class="relative flex h-[200px] items-center justify-center overflow-hidden bg-white sm:h-[280px]">
+                                    <div class="relative flex h-[260px] items-center justify-center overflow-hidden bg-white sm:h-[340px]">
                                         <a href="<?= htmlspecialchars($pUrl) ?>" class="flex h-full w-full items-center justify-center">
                                             <img src="<?= htmlspecialchars($pImage) ?>"
                                                 alt="<?= htmlspecialchars($pName) ?>"
@@ -88,24 +88,24 @@ if (!function_exists('getLatestArrivalsHtml')) {
                                         </a>
 
                                         <?php if ($isOut): ?>
-                                            <span class="absolute top-2 left-2 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider bg-gray-800 text-white">
+                                            <span class="absolute top-2 left-2 px-2 py-1 text-[10px] font-bold uppercase tracking-wider bg-gray-800 text-white">
                                                 Sold Out
                                             </span>
                                         <?php endif; ?>
 
                                         <!-- Compact action buttons -->
-                                        <div class="latest-actions absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5 transition-all duration-300">
+                                        <div class="latest-actions absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 transition-all duration-300">
 
                                             <!-- WISHLIST (heart) -->
                                             <button type="button"
-                                                class="latest-wishlist-btn flex h-8 w-8 items-center justify-center rounded text-white transition"
+                                                class="latest-wishlist-btn flex h-9 w-9 items-center justify-center rounded text-white transition"
                                                 data-id="<?= $pId ?>"
                                                 data-in-wishlist="<?= $inWish ? '1' : '0' ?>"
                                                 aria-label="<?= $inWish ? 'Remove from wishlist' : 'Add to wishlist' ?>"
                                                 style="background: <?= $accent ?>;"
                                                 onmouseover="this.style.background='<?= $accentHover ?>'"
                                                 onmouseout="this.style.background='<?= $accent ?>'">
-                                                <svg class="h-3.5 w-3.5 latest-heart" viewBox="0 0 24 24"
+                                                <svg class="h-4 w-4 latest-heart" viewBox="0 0 24 24"
                                                     fill="<?= $inWish ? 'currentColor' : 'none' ?>"
                                                     stroke="currentColor" stroke-width="2"
                                                     style="color: <?= $heartColor ?>; transition: all .2s ease;">
@@ -114,11 +114,11 @@ if (!function_exists('getLatestArrivalsHtml')) {
                                             </button>
                                             <!-- QUICK VIEW (eye) -->
                                             <a href="<?= htmlspecialchars($pUrl) ?>" aria-label="Quick view"
-                                                class="flex h-8 w-8 items-center justify-center rounded text-white transition"
+                                                class="flex h-9 w-9 items-center justify-center rounded text-white transition"
                                                 style="background: <?= $accent ?>;"
                                                 onmouseover="this.style.background='<?= $accentHover ?>'"
                                                 onmouseout="this.style.background='<?= $accent ?>'">
-                                                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                     <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" />
                                                     <circle cx="12" cy="12" r="3" />
                                                 </svg>
@@ -126,13 +126,13 @@ if (!function_exists('getLatestArrivalsHtml')) {
 
                                             <!-- COPY LINK -->
                                             <button type="button"
-                                                class="latest-copy-btn flex h-8 w-8 items-center justify-center rounded text-white transition"
+                                                class="latest-copy-btn flex h-9 w-9 items-center justify-center rounded text-white transition"
                                                 data-copy-link="<?= htmlspecialchars($pUrl) ?>"
                                                 aria-label="Copy product link"
                                                 style="background: <?= $accent ?>;"
                                                 onmouseover="this.style.background='<?= $accentHover ?>'"
                                                 onmouseout="this.style.background='<?= $accent ?>'">
-                                                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                                     <rect x="8" y="8" width="12" height="12" rx="2" />
                                                     <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3" />
                                                 </svg>
@@ -141,16 +141,16 @@ if (!function_exists('getLatestArrivalsHtml')) {
                                         </div>
                                     </div>
 
-                                    <!-- Reduced text size and spacing -->
-                                    <div class="px-1 pb-2 pt-3 text-center">
+                                    <!-- ✅ INCREASED TEXT SIZE -->
+                                    <div class="px-1 pb-3 pt-4 text-center">
                                         <a href="<?= htmlspecialchars($pUrl) ?>"
-                                            class="block text-sm font-semibold leading-5 text-[#353943] transition-colors duration-300 hover:text-[<?= $accent ?>] line-clamp-2 min-h-[2.5rem]">
+                                            class="block text-base font-semibold leading-6 text-[#353943] transition-colors duration-300 hover:text-[<?= $accent ?>] line-clamp-2 min-h-[3rem]">
                                             <?= htmlspecialchars($pName) ?>
                                         </a>
-                                        <p class="mt-1.5 text-xs sm:text-sm font-medium text-gray-500">
+                                        <p class="mt-2 text-sm sm:text-base font-medium text-gray-500">
                                             <?= $currencySym . number_format($pPrice, 2) ?>
                                             <?php if ($pMrp > $pPrice): ?>
-                                                <span class="text-[10px] sm:text-xs line-through ml-1"><?= $currencySym . number_format($pMrp, 2) ?></span>
+                                                <span class="text-xs sm:text-sm line-through ml-1"><?= $currencySym . number_format($pMrp, 2) ?></span>
                                             <?php endif; ?>
                                         </p>
                                     </div>
@@ -159,12 +159,12 @@ if (!function_exists('getLatestArrivalsHtml')) {
                         </div>
                     </div>
 
-                    <div id="latestDots" class="mt-5 flex items-center justify-center gap-1.5"></div>
+                    <div id="latestDots" class="mt-6 flex items-center justify-center gap-2"></div>
                 </div>
 
-                <div class="mt-6 text-center">
+                <div class="mt-8 text-center">
                     <a href="<?= $storeUrl ?>shop-all"
-                        class="inline-flex items-center gap-2 border px-6 py-2.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider transition duration-300"
+                        class="inline-flex items-center gap-2 border px-7 py-3 text-xs font-semibold uppercase tracking-wider transition duration-300"
                         style="border-color: <?= $accent ?>; color: <?= $accent ?>;"
                         onmouseover="this.style.borderColor='<?= $accentHover ?>'; this.style.backgroundColor='<?= $accentHover ?>'; this.style.color='#fff';"
                         onmouseout="this.style.borderColor='<?= $accent ?>'; this.style.backgroundColor='transparent'; this.style.color='<?= $accent ?>';">
@@ -242,20 +242,18 @@ if (!function_exists('getLatestArrivalsHtml')) {
                         const dot = document.createElement('button');
                         dot.type = 'button';
                         dot.setAttribute('aria-label', 'Show product group ' + (i + 1));
-                        dot.className = 'h-[8px] w-[8px] rounded-full transition-all duration-300 ' +
+                        dot.className = 'h-[9px] w-[9px] rounded-full transition-all duration-300 ' +
                             (i === currentIndex ? 'scale-110' : 'bg-gray-200');
                         
-                        // Set active dot to primary color
                         if (i === currentIndex) {
                             dot.style.backgroundColor = '<?= $accent ?>';
                         }
 
-                        // Hover color for inactive dots
                         dot.addEventListener('mouseenter', () => {
                             if (i !== currentIndex) dot.style.backgroundColor = '<?= $accentHover ?>';
                         });
                         dot.addEventListener('mouseleave', () => {
-                            if (i !== currentIndex) dot.style.backgroundColor = '#e5e7eb'; // tailwind gray-200
+                            if (i !== currentIndex) dot.style.backgroundColor = '#e5e7eb';
                         });
 
                         dot.addEventListener('click', () => {
@@ -280,7 +278,7 @@ if (!function_exists('getLatestArrivalsHtml')) {
                         if (isActive) {
                             dot.style.backgroundColor = '<?= $accent ?>';
                         } else {
-                            dot.style.backgroundColor = ''; // reset to default class (gray-200)
+                            dot.style.backgroundColor = '';
                         }
                     });
                 }
@@ -349,7 +347,7 @@ if (!function_exists('getLatestArrivalsHtml')) {
                         const original = this.innerHTML;
                         try {
                             await navigator.clipboard.writeText(fullUrl);
-                            this.innerHTML = '<svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+                            this.innerHTML = '<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
                             if (window.showCustomToast) window.showCustomToast('Link copied!', 'success');
                             setTimeout(() => this.innerHTML = original, 1200);
                         } catch (err) {
@@ -397,7 +395,6 @@ if (!function_exists('getLatestArrivalsHtml')) {
 
                                     const heart = self.querySelector('.latest-heart');
                                     if (heart) {
-                                        // Fill = solid when active, none when inactive. Color ALWAYS white.
                                         heart.setAttribute('fill', nowInWishlist ? 'currentColor' : 'none');
                                         heart.style.color = '#ffffff';
                                     }
