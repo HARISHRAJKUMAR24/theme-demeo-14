@@ -309,23 +309,28 @@
     }
     ?>
 
+
     <?php if (!empty($categories)): ?>
-        <!-- ================= ARCHERY CATEGORY BANNERS (THEME 16) ================= -->
+        <!-- ================= RESPONSIVE CATEGORY BANNERS ================= -->
         <section class="bg-white px-3 py-5 sm:px-6 lg:px-7">
             <div class="mx-auto max-w-[1500px]">
 
-                <!-- Force 2 columns on ALL screen sizes for the 2x2 grid -->
-                <div class="grid grid-cols-2 gap-2.5 sm:gap-4 md:gap-5">
+                <!-- Mobile: 1 column | Tablet/Desktop: 2 columns -->
+                <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 md:gap-5">
 
                     <?php foreach ($categories as $index => $cat):
-                        $catImg = !empty($cat['icon']) ? UPLOADS_URL . $cat['icon'] : 'https://via.placeholder.com/1400x600?text=No+Image';
+                        $catImg = !empty($cat['icon'])
+                            ? UPLOADS_URL . $cat['icon']
+                            : 'https://via.placeholder.com/1400x600?text=No+Image';
+
                         $catUrl = $storeUrl . 'category/' . $cat['slug'];
                         $catName = htmlspecialchars($cat['name']);
 
-                        // Split name across lines if it has 2+ words
+                        // Split category name across lines if it has 2+ words
                         $words = preg_split('/\s+/', trim($catName));
+
                         if (count($words) >= 2) {
-                            $mid = (int)ceil(count($words) / 2);
+                            $mid = (int) ceil(count($words) / 2);
                             $line1 = implode(' ', array_slice($words, 0, $mid));
                             $line2 = implode(' ', array_slice($words, $mid));
                             $titleHtml = htmlspecialchars($line1) . '<br>' . htmlspecialchars($line2);
@@ -333,48 +338,59 @@
                             $titleHtml = $catName;
                         }
                     ?>
-                        <!-- Drastically reduced height for mobile, original height for desktop -->
-                        <a href="<?= $catUrl ?>"
-                            class="group relative flex h-[130px] items-center overflow-hidden bg-[#222] sm:h-[220px] lg:h-[300px]">
 
+                        <a href="<?= $catUrl ?>"
+                            class="group relative flex h-[180px] items-center overflow-hidden bg-[#222] sm:h-[220px] lg:h-[300px]">
+
+                            <!-- Category Image -->
                             <img src="<?= $catImg ?>"
                                 alt="<?= $catName ?>"
                                 class="absolute inset-0 h-full w-full object-cover object-center grayscale transition-all duration-700 ease-in-out group-hover:scale-105 group-hover:grayscale-0"
                                 onerror="this.onerror=null; this.src='https://via.placeholder.com/1400x600?text=<?= urlencode($catName) ?>';">
 
+                            <!-- Dark Overlay -->
                             <div class="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-black/10"></div>
 
-                            <!-- Highly compact content box on mobile -->
-                            <div class="relative z-10 w-full max-w-none px-3 py-2 sm:px-8 sm:py-8 lg:px-12">
+                            <!-- Category Content -->
+                            <div class="relative z-10 w-full px-4 py-3 sm:px-8 sm:py-8 lg:px-12">
 
-
-                                <h2 class="mb-1 w-full max-w-none text-[12px] font-extrabold uppercase leading-tight tracking-tight text-white sm:text-xl md:text-2xl lg:text-[24px]">
+                                <!-- Slightly Bigger Responsive Category Name -->
+                                <h2 class="mb-2 w-full text-[16px] font-extrabold uppercase leading-tight tracking-tight text-white sm:text-xl md:text-2xl lg:text-[26px]">
                                     <?= $titleHtml ?>
                                 </h2>
 
-
-
-                                <!-- Hide the redundant category name on mobile to save space -->
-                                <p class="hidden sm:block mb-2 text-[10px] font-medium text-white/85 sm:mb-4 sm:text-sm lg:text-base">
+                                <!-- Category Description -->
+                                <p class="mb-3 hidden text-sm font-medium text-white/85 sm:block lg:text-base">
                                     <?= $catName ?>
                                 </p>
 
-                                <span class="inline-flex items-center gap-1 border-b pb-0.5 text-[9px] font-bold transition-colors duration-300 group-hover:border-white group-hover:text-white sm:gap-2 sm:border-b-2 sm:pb-1 sm:text-sm"
+                                <!-- Shop Now Button -->
+                                <span class="inline-flex items-center gap-1.5 border-b pb-1 text-[11px] font-bold transition-colors duration-300 group-hover:border-white group-hover:text-white sm:gap-2 sm:border-b-2 sm:text-sm"
                                     style="border-color: <?= htmlspecialchars($primary_color) ?>; color: <?= htmlspecialchars($primary_color) ?>;">
+
                                     Shop Now
-                                    <svg class="h-2 w-2 sm:h-4 sm:w-4 transition-transform duration-300 group-hover:translate-x-1"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+
+                                    <svg class="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1 sm:h-4 sm:w-4"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M5 12h14M13 6l6 6-6 6"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
                                     </svg>
                                 </span>
+
                             </div>
                         </a>
+
                     <?php endforeach; ?>
 
                 </div>
             </div>
         </section>
     <?php endif; ?>
+
 
     <!-- Latest Arrivals Carousel — theme 13 backend -->
     <?= getLatestArrivalsHtml(8) ?>
