@@ -32,8 +32,17 @@ function getRandomProducts($limit = 3)
       cursor: crosshair;
     }
 
-    @media (min-width: 640px) { .zoom-container { height: 450px; } }
-    @media (min-width: 1024px) { .zoom-container { height: 650px; } }
+    @media (min-width: 640px) {
+      .zoom-container {
+        height: 450px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .zoom-container {
+        height: 650px;
+      }
+    }
 
     #mainProductImage {
       width: 100%;
@@ -42,14 +51,18 @@ function getRandomProducts($limit = 3)
       transition: transform 0.3s ease-out;
     }
 
-    .zoom-container:hover #mainProductImage { transform: scale(1.8); }
+    .zoom-container:hover #mainProductImage {
+      transform: scale(1.8);
+    }
 
     .zoom-icon {
       transition: opacity 0.3s ease;
       pointer-events: none;
     }
 
-    .zoom-container:hover .zoom-icon { opacity: 0; }
+    .zoom-container:hover .zoom-icon {
+      opacity: 0;
+    }
 
     /* ============================================
            OPTION BUTTONS
@@ -90,11 +103,222 @@ function getRandomProducts($limit = 3)
       opacity: 0.5;
     }
 
+
+    /* ============================================
+       RESPONSIVE PRODUCT QUANTITY & ACTIONS
+       ============================================ */
+    .product-quantity-wrap {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin: 22px 0 20px;
+    }
+
+    .product-quantity-label {
+      min-width: 85px;
+      color: #444;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .product-quantity-control {
+      display: inline-flex;
+      align-items: stretch;
+      height: 42px;
+      overflow: hidden;
+      border: 1px solid #e5e5e5;
+      border-radius: 6px;
+      background: #fff;
+    }
+
+    .product-quantity-control button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      min-width: 42px;
+      border: 0;
+      background: var(--primary-color);
+      color: #fff;
+      font-size: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity .2s ease;
+    }
+
+    .product-quantity-control button:hover {
+      opacity: .85;
+    }
+
+    .product-quantity-control input {
+      width: 58px;
+      min-width: 0;
+      padding: 0;
+      border: 0;
+      border-right: 1px solid #eee;
+      border-left: 1px solid #eee;
+      outline: none;
+      background: #fff;
+      color: #333;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 600;
+      appearance: textfield;
+      -moz-appearance: textfield;
+    }
+
+    .product-quantity-control input::-webkit-inner-spin-button,
+    .product-quantity-control input::-webkit-outer-spin-button {
+      margin: 0;
+      -webkit-appearance: none;
+    }
+
+    .product-action-wrap {
+      display: flex;
+      align-items: stretch;
+      gap: 12px;
+      width: 50%;
+      margin-top: 8px;
+    }
+
+    .product-cart-btn,
+    .product-view-cart-btn {
+      display: flex;
+      flex: 0 0 200px;
+      /* Reduce or increase button width here */
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+      min-height: 48px;
+      padding: 10px 18px;
+      border: 1px solid var(--primary-color);
+      border-radius: 6px;
+      background: var(--primary-color);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+
+    .product-cart-btn:hover {
+      opacity: .88;
+    }
+
+    .product-cart-btn:disabled {
+      cursor: wait;
+      opacity: .65;
+    }
+
+    .product-view-cart-btn {
+      gap: 8px;
+      background: #fff;
+      color: var(--primary-color);
+    }
+
+    .product-view-cart-btn:hover {
+      background: var(--primary-color);
+      color: #fff;
+    }
+
+    .product-wishlist-btn {
+      display: flex;
+      flex: 0 0 48px;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border: 1px solid #e5e5e5;
+      border-radius: 6px;
+      background: #fff;
+      color: #9ca3af;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+
+    .product-wishlist-btn:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    @media (max-width: 480px) {
+      .product-quantity-wrap {
+        justify-content: flex-start;
+        gap: 12px;
+        margin: 18px 0 16px;
+      }
+
+      .product-quantity-label {
+        min-width: auto;
+        font-size: 13px;
+      }
+
+      .product-quantity-control {
+        height: 40px;
+      }
+
+      .product-quantity-control button {
+        width: 38px;
+        min-width: 38px;
+      }
+
+      .product-quantity-control input {
+        width: 48px;
+      }
+
+      .product-action-wrap {
+        gap: 9px;
+      }
+
+      .product-cart-btn,
+      .product-view-cart-btn {
+        min-height: 46px;
+        padding: 9px 10px;
+        font-size: 13px;
+      }
+
+      .product-wishlist-btn {
+        flex-basis: 46px;
+        width: 46px;
+        height: 46px;
+      }
+    }
+
+    @media (max-width: 340px) {
+      .product-quantity-wrap {
+        gap: 8px;
+      }
+
+      .product-quantity-label {
+        font-size: 12px;
+      }
+
+      .product-quantity-control button {
+        width: 34px;
+        min-width: 34px;
+      }
+
+      .product-quantity-control input {
+        width: 42px;
+      }
+    }
+
     /* ============================================
            TABS
            ============================================ */
-    .tab-active { background: #252a35 !important; color: white !important; }
-    .tab-inactive { background: var(--primary-color) !important; color: white !important; }
+    .tab-active {
+      background: #252a35 !important;
+      color: white !important;
+    }
+
+    .tab-inactive {
+      background: var(--primary-color) !important;
+      color: white !important;
+    }
   </style>
   <style>
     :root {
@@ -134,6 +358,13 @@ function getRandomProducts($limit = 3)
   $unit_type = $product['unit_type'] ?? 'pcs';
   $comboEnabled = !empty($product['combo_enabled']) && (int)$product['combo_enabled'] === 1;
   $comboSelectionCount = (int)($product['combo_selection_count'] ?? 0);
+  // Fetch Specifications
+  $specsJson = getData("specifications", "seller_product_specifications", "product_id='$product_id'");
+  $specs = [];
+  if (!empty($specsJson)) {
+    $decoded = json_decode($specsJson, true);
+    if (is_array($decoded)) $specs = $decoded;
+  }
 
   $initialVariantId = isset($_GET['variation']) && $_GET['variation'] != '' && $_GET['variation'] !== 'main' ? $_GET['variation'] : null;
 
@@ -158,7 +389,7 @@ function getRandomProducts($limit = 3)
       $colorName = getData("color_name", "product_colors", "id='$colorId'");
       $colorCode = getData("color_code", "product_colors", "id='$colorId'") ?? '#ccc';
       $size = $bv['size'] ?? '';
-      
+
       // ✅ CRITICAL FIX: If variant image is empty, fallback to main product image
       $variantImage = !empty($bv['image']) ? UPLOADS_URL . $bv['image'] : UPLOADS_URL . $image;
 
@@ -182,18 +413,29 @@ function getRandomProducts($limit = 3)
     }
   }
 
-  $cartVariantsQuery = $db->prepare("SELECT other, advanced_variant FROM customer_cart WHERE customer_id=? AND product_id=?");
-  $cartVariantsQuery->execute([$cookie_id, $id]);
+  // Read the existing cart quantity for this product and its variants.
+  $cartVariantsQuery = $db->prepare("
+    SELECT other, advanced_variant, quantity
+    FROM customer_cart
+    WHERE customer_id=? AND product_id=? AND seller_id=? AND store_id=?
+  ");
+  $cartVariantsQuery->execute([$cookie_id, $id, $sellerId, $storeId]);
   $cartItems = $cartVariantsQuery->fetchAll(PDO::FETCH_ASSOC);
 
   $cartVariants = [];
+  $cartVariantQuantities = [];
   foreach ($cartItems as $item) {
-    if (!empty($item['advanced_variant'])) $cartVariants[] = (string)$item['advanced_variant'];
-    else if (!empty($item['other'])) $cartVariants[] = (string)$item['other'];
-    else $cartVariants[] = 'main';
+    if (!empty($item['advanced_variant'])) $key = (string)$item['advanced_variant'];
+    elseif (!empty($item['other'])) $key = (string)$item['other'];
+    else $key = 'main';
+
+    $cartVariants[] = $key;
+    $cartVariantQuantities[$key] = (int)$item['quantity'];
   }
 
-  $inCartInitial = ($initialVariantId === null) ? in_array('main', $cartVariants) : in_array((string)$initialVariantId, $cartVariants);
+  $inCartInitial = ($initialVariantId === null)
+    ? in_array('main', $cartVariants, true)
+    : in_array((string)$initialVariantId, $cartVariants, true);
 
   if ($unlimited_stock == 1) {
     $mainStockDisplay = "Unlimited stock";
@@ -299,7 +541,8 @@ function getRandomProducts($limit = 3)
                   data-color-name="<?= htmlspecialchars($colorName) ?>"
                   title="<?= htmlspecialchars($colorName) ?>">
                 </button>
-              <?php $firstColor = false; endforeach; ?>
+              <?php $firstColor = false;
+              endforeach; ?>
             </div>
           </div>
 
@@ -322,7 +565,7 @@ function getRandomProducts($limit = 3)
                 data-variant-id="main" data-variant-image="<?= UPLOADS_URL . $image ?>" data-variant-name="<?= htmlspecialchars(!empty($variation) ? $variation : $name) ?>" data-price="<?= $price ?>" data-mrp="<?= $mrp_price ?>" data-stock="<?= $mainStockDisplay ?>" data-in-cart="<?= in_array('main', $cartVariants) ? '1' : '0' ?>">
                 <?= htmlspecialchars(!empty($variation) ? $variation : $name) ?>
               </button>
-              
+
               <?php $basicVariants->execute(); ?>
               <?php while ($bv = $basicVariants->fetch()):
                 $variantId = $bv['id'];
@@ -343,10 +586,24 @@ function getRandomProducts($limit = 3)
 
         <!-- PRODUCT INFORMATION -->
         <div class="mb-6 space-y-2 text-sm sm:space-y-3 mt-6">
+
+          <!-- Dynamic Specifications -->
+          <?php if (!empty($specs)): ?>
+            <?php foreach ($specs as $spec): ?>
+              <div class="flex items-center gap-2">
+                <span class="font-medium text-gray-700 w-[100px]"><?= htmlspecialchars($spec['name']) ?>:</span>
+                <span class="font-medium text-gray-600"><?= htmlspecialchars($spec['value']) ?></span>
+              </div>
+            <?php endforeach; ?>
+          <?php endif; ?>
+
+          <!-- Default Availability (Only shows if not overridden by a custom spec) -->
           <div class="flex items-center gap-2">
-            <span class="font-medium text-gray-700 w-[100px]">Availability:</span>
+            <span class="font-medium text-gray-700 w-[100px] mt-2 mb-2">Availability:</span>
             <span id="stockDisplay" class="font-medium <?= ($total_stocks <= 5 && $unlimited_stock != 1) ? 'text-red-500' : 'text-green-600' ?>"><?= $mainStockDisplay ?></span>
           </div>
+
+          <!-- Views -->
           <div class="flex items-center gap-2">
             <span class="font-medium text-gray-700 w-[100px]">Views:</span>
             <span class="text-gray-600"><?= (int)$visitors ?> times</span>
@@ -354,34 +611,34 @@ function getRandomProducts($limit = 3)
         </div>
 
         <!-- QUANTITY SELECTOR -->
-        <div class="mb-7 flex flex-wrap items-center gap-x-6 gap-y-3 sm:gap-x-8 mt-4">
-          <label for="quantity" class="w-[70px] shrink-0 text-sm font-medium text-gray-700 sm:w-[80px]">Quantity:</label>
-          <div class="inline-flex h-[42px] overflow-hidden rounded-md border border-gray-200">
-            <button type="button" id="quantityMinus" class="flex w-10 items-center justify-center bg-[var(--primary-color)] text-lg font-medium text-white transition hover:opacity-90">−</button>
-            <input type="number" id="quantity" value="1" min="1" max="99" class="h-full w-14 appearance-none border-0 bg-white text-center text-sm text-gray-800 outline-none focus:ring-0">
-            <button type="button" id="quantityPlus" class="flex w-10 items-center justify-center bg-[var(--primary-color)] text-lg font-medium text-white transition hover:opacity-90">+</button>
+        <div class="product-quantity-wrap">
+          <label for="quantity" class="product-quantity-label">Quantity:</label>
+          <div class="product-quantity-control">
+            <button type="button" id="quantityMinus" aria-label="Decrease quantity">−</button>
+            <input type="number" id="quantity" value="<?= $inCartInitial ? (int)($cartVariantQuantities[$initialVariantId === null ? 'main' : (string)$initialVariantId] ?? 1) : 1 ?>" min="1" max="99" inputmode="numeric">
+            <button type="button" id="quantityPlus" aria-label="Increase quantity">+</button>
           </div>
         </div>
 
         <!-- ACTION BUTTONS -->
-        <div class="flex flex-col gap-3 sm:flex-row mt-2">
-          <button id="addToCartBtn" class="flex h-12 w-full items-center justify-center rounded-md bg-[var(--primary-color)] px-8 text-sm font-semibold text-white transition duration-300 hover:opacity-90 sm:w-[200px] <?= $inCartInitial ? 'hidden' : '' ?>" data-id="<?= $id ?>">
-             Add Item
+        <div class="product-action-wrap">
+          <button id="addToCartBtn" type="button" class="product-cart-btn" data-id="<?= $id ?>">
+            <?= $inCartInitial ? 'Update Cart' : 'Add Item' ?>
           </button>
 
-          <a id="viewCartBtn" href="<?= $storeUrl ?>cart" class="flex h-12 w-full items-center justify-center rounded-md border border-[var(--primary-color)] bg-white px-8 text-sm font-semibold text-[var(--primary-color)] transition duration-300 hover:bg-[var(--primary-color)] hover:text-white sm:w-[200px] <?= $inCartInitial ? '' : 'hidden' ?>">
+          <a id="viewCartBtn" href="<?= $storeUrl ?>cart" class="product-view-cart-btn hidden">
             Already in Cart
           </a>
 
           <?php if (isLoggedIn()):
             $inWishlist = getData("id", "customer_wishlists", "customer_id='$customerId' AND product_id='$id' AND other=''") ? true : false;
           ?>
-            <button id="wishlistBtn" data-id="<?= $id ?>" class="w-12 h-12 flex items-center justify-center rounded-md border border-gray-200 shadow-sm transition hover:bg-gray-50 handleWishlist" title="<?= $inWishlist ? 'Remove from Wishlist' : 'Add to Wishlist' ?>">
-              <i class="fa-solid fa-heart text-lg <?= $inWishlist ? 'text-rose-500' : 'text-gray-400' ?>"></i>
+            <button id="wishlistBtn" data-id="<?= $id ?>" class="product-wishlist-btn handleWishlist" title="<?= $inWishlist ? 'Remove from Wishlist' : 'Add to Wishlist' ?>">
+              <i class="fa-solid fa-heart <?= $inWishlist ? 'text-rose-500' : '' ?>"></i>
             </button>
           <?php else: ?>
-            <a href="<?= $storeUrl ?>wishlists" class="w-12 h-12 flex items-center justify-center rounded-md border border-gray-200 shadow-sm transition hover:bg-gray-50" title="Login to add wishlist">
-              <i class="fa-solid fa-heart text-lg text-gray-400"></i>
+            <a href="<?= $storeUrl ?>wishlists" class="product-wishlist-btn" title="Login to add wishlist">
+              <i class="fa-solid fa-heart"></i>
             </a>
           <?php endif; ?>
         </div>
@@ -428,17 +685,152 @@ function getRandomProducts($limit = 3)
     var productId = <?= $id ?>;
     var storeCurrencySymbol = <?= json_encode(currencyToSymbol($storeCurrency)) ?>;
     var groupedVariants = <?= json_encode($groupedVariants) ?>;
-    
+
     // ✅ Array holding live cart variant IDs
     var cartVariants = <?= json_encode($cartVariants) ?>;
 
-    // Quantity Selector
+    // Product-page quantity/cart controller. Shared cart files remain unchanged.
     const qtyInput = document.getElementById('quantity');
+    const addBtn = document.getElementById('addToCartBtn');
+    const viewBtn = document.getElementById('viewCartBtn');
+    const cartVariantQuantities = <?= json_encode($cartVariantQuantities) ?>;
+
+    let selectedCartKey = 'main';
+    let selectedBasicVariant = '';
+    let selectedAdvancedVariant = '';
+    let selectedCartQuantity = 0;
+    let selectedIsInCart = false;
+    let cartRequestRunning = false;
+
+    function selectProductCartVariant(key, basicVariant = '', advancedVariant = '') {
+      selectedCartKey = String(key || 'main');
+      selectedBasicVariant = basicVariant ? String(basicVariant) : '';
+      selectedAdvancedVariant = advancedVariant ? String(advancedVariant) : '';
+      selectedCartQuantity = Number(cartVariantQuantities[selectedCartKey] || 0);
+      selectedIsInCart = selectedCartQuantity > 0;
+      qtyInput.value = selectedIsInCart ? selectedCartQuantity : 1;
+      addBtn.textContent = selectedIsInCart ? 'Update Cart' : 'Add Item';
+      addBtn.disabled = false;
+      addBtn.classList.remove('hidden');
+      viewBtn.classList.add('hidden');
+    }
+
     document.getElementById('quantityMinus').addEventListener('click', function() {
-      if (qtyInput.value > 1) qtyInput.value = parseInt(qtyInput.value) - 1;
+      qtyInput.value = Math.max(1, (parseInt(qtyInput.value, 10) || 1) - 1);
+      addBtn.textContent = selectedIsInCart ? 'Update Cart' : 'Add Item';
+      addBtn.classList.remove('hidden');
+      viewBtn.classList.add('hidden');
     });
+
     document.getElementById('quantityPlus').addEventListener('click', function() {
-      qtyInput.value = parseInt(qtyInput.value) + 1;
+      qtyInput.value = Math.min(99, (parseInt(qtyInput.value, 10) || 1) + 1);
+      addBtn.textContent = selectedIsInCart ? 'Update Cart' : 'Add Item';
+      addBtn.classList.remove('hidden');
+      viewBtn.classList.add('hidden');
+    });
+
+    qtyInput.addEventListener('change', function() {
+      let quantity = parseInt(this.value, 10);
+      if (!Number.isInteger(quantity) || quantity < 1) quantity = 1;
+      this.value = Math.min(99, quantity);
+      addBtn.textContent = selectedIsInCart ? 'Update Cart' : 'Add Item';
+      addBtn.classList.remove('hidden');
+      viewBtn.classList.add('hidden');
+    });
+
+    function productPageAjax(url, data) {
+      return $.ajax({
+        url,
+        type: 'POST',
+        data,
+        dataType: 'json'
+      });
+    }
+
+    async function saveProductPageQuantity(targetQuantity) {
+      let currentQuantity = selectedCartQuantity;
+
+      // Existing add-to-cart endpoint creates a new cart row with quantity 1.
+      if (currentQuantity === 0) {
+        const added = await productPageAjax('shop/ajax/add-to-cart.php', {
+          product_id: productId,
+          quantity: 1,
+          variant: selectedBasicVariant,
+          advanced_variant: selectedAdvancedVariant
+        });
+        if (!added || !added.success) {
+          throw new Error(added?.message || 'Could not add this product.');
+        }
+        currentQuantity = 1;
+      }
+
+      // Use the existing quantity endpoint to reach the requested exact quantity.
+      while (currentQuantity < targetQuantity) {
+        const result = await productPageAjax('shop/ajax/manage-qty.php', {
+          id: productId,
+          type: 'increase',
+          variant: selectedBasicVariant,
+          advancedVariant: selectedAdvancedVariant
+        });
+        if (!result || !result.success) {
+          throw new Error(result?.message || 'Could not increase quantity.');
+        }
+        currentQuantity++;
+      }
+
+      while (currentQuantity > targetQuantity) {
+        const result = await productPageAjax('shop/ajax/manage-qty.php', {
+          id: productId,
+          type: 'decrease',
+          variant: selectedBasicVariant,
+          advancedVariant: selectedAdvancedVariant
+        });
+        if (!result || !result.success) {
+          throw new Error(result?.message || 'Could not decrease quantity.');
+        }
+        currentQuantity--;
+      }
+
+      return currentQuantity;
+    }
+
+    addBtn.addEventListener('click', async function() {
+      if (cartRequestRunning || addBtn.disabled) return;
+
+      let targetQuantity = parseInt(qtyInput.value, 10);
+      if (!Number.isInteger(targetQuantity) || targetQuantity < 1 || targetQuantity > 99) {
+        if (window.showCustomToast) window.showCustomToast('Enter quantity from 1 to 99.', 'error');
+        return;
+      }
+
+      cartRequestRunning = true;
+      addBtn.disabled = true;
+      addBtn.textContent = selectedIsInCart ? 'Updating...' : 'Adding...';
+
+      try {
+        const savedQuantity = await saveProductPageQuantity(targetQuantity);
+        selectedCartQuantity = savedQuantity;
+        selectedIsInCart = true;
+        cartVariantQuantities[selectedCartKey] = savedQuantity;
+
+        addBtn.classList.add('hidden');
+        viewBtn.classList.remove('hidden');
+
+        if (window.showCustomToast) {
+          window.showCustomToast('Cart quantity updated successfully!', 'success');
+        }
+        if (typeof getProductCountAndPrice === 'function') getProductCountAndPrice();
+        if (typeof getCartData === 'function') getCartData();
+      } catch (error) {
+        console.error('Product page cart update:', error);
+        addBtn.textContent = selectedIsInCart ? 'Update Cart' : 'Add Item';
+        addBtn.disabled = false;
+        if (window.showCustomToast) {
+          window.showCustomToast(error.message || 'Cart update failed.', 'error');
+        }
+      } finally {
+        cartRequestRunning = false;
+      }
     });
 
     // ============================================
@@ -481,308 +873,163 @@ function getRandomProducts($limit = 3)
       const revT = document.getElementById('reviewsTab');
 
       if (tab === 'description') {
-        descC.classList.remove('hidden'); revC.classList.add('hidden');
-        descT.classList.add('tab-active'); descT.classList.remove('tab-inactive');
-        revT.classList.add('tab-inactive'); revT.classList.remove('tab-active');
+        descC.classList.remove('hidden');
+        revC.classList.add('hidden');
+        descT.classList.add('tab-active');
+        descT.classList.remove('tab-inactive');
+        revT.classList.add('tab-inactive');
+        revT.classList.remove('tab-active');
       } else {
-        descC.classList.add('hidden'); revC.classList.remove('hidden');
-        revT.classList.add('tab-active'); revT.classList.remove('tab-inactive');
-        descT.classList.add('tab-inactive'); descT.classList.remove('tab-active');
+        descC.classList.add('hidden');
+        revC.classList.remove('hidden');
+        revT.classList.add('tab-active');
+        revT.classList.remove('tab-inactive');
+        descT.classList.add('tab-inactive');
+        descT.classList.remove('tab-active');
       }
     }
 
     // ============================================
-    // VARIANT LOGIC
+    // PRODUCT PAGE VARIANT SELECTION
     // ============================================
-    <?php if ($isAdvanced): ?>
+    <?php if ($isAdvanced && !empty($groupedVariants) && !$comboEnabled): ?>
+
       const colorButtons = document.querySelectorAll('.color-btn');
       const sizeContainer = document.getElementById('sizeContainer');
-      const addBtn = document.getElementById('addToCartBtn');
-      const viewBtn = document.getElementById('viewCartBtn');
-      let selectedVariantId = null;
 
       function renderSizes(colorId) {
         sizeContainer.innerHTML = '';
         if (!groupedVariants[colorId] || !groupedVariants[colorId].sizes) return;
 
-        let hasAvailableSize = false;
+        let firstAvailable = null;
 
         groupedVariants[colorId].sizes.forEach(sizeData => {
-          const isOutOfStock = (!sizeData.unlimited_stock && sizeData.stock <= 0);
-          
-          if (!isOutOfStock) hasAvailableSize = true;
+          const outOfStock = (!Number(sizeData.unlimited_stock) && Number(sizeData.stock) <= 0);
+          const variantId = String(sizeData.id);
+          const button = document.createElement('button');
 
-          const isInCart = cartVariants.includes(String(sizeData.id));
+          button.type = 'button';
+          button.className = 'size-btn product-option rounded-md border px-3 py-2 text-sm transition hover:border-[var(--primary-color)] ' +
+            (outOfStock ? 'out-of-stock' : 'border-gray-200 bg-white text-gray-700');
+          button.textContent = sizeData.size;
+          button.dataset.variantId = variantId;
+          button.dataset.price = sizeData.price;
+          button.dataset.stock = sizeData.unlimited_stock ? 'Unlimited stock' : `${sizeData.stock} ${sizeData.unit_type || 'pcs'}`;
+          button.dataset.image = sizeData.image;
 
-          const btn = document.createElement('button');
-          btn.className = `size-btn product-option rounded-md border px-3 py-2 text-sm transition hover:border-[var(--primary-color)] sm:px-4 
-                    ${isOutOfStock ? 'out-of-stock' : ''} 
-                    ${isInCart ? 'bg-green-50 border-green-500 text-green-700' : 'bg-white text-gray-700 border-gray-200'}`;
-
-          btn.textContent = sizeData.size;
-          btn.dataset.variantId = sizeData.id;
-          btn.dataset.colorId = colorId;
-          btn.dataset.size = sizeData.size;
-          btn.dataset.price = sizeData.price;
-          btn.dataset.mrp = sizeData.mrp_price;
-          btn.dataset.stock = sizeData.unlimited_stock ? 'Unlimited' : `${sizeData.stock} ${sizeData.unit_type || 'pcs'}`;
-          // ✅ FIXED: Assigned the fully resolved image URL
-          btn.dataset.image = sizeData.image; 
-
-          if (isOutOfStock) {
-            btn.disabled = true;
+          if (outOfStock) {
+            button.disabled = true;
           } else {
-            btn.addEventListener('click', function() {
-              sizeContainer.querySelectorAll('.size-btn').forEach(b => {
-                b.classList.remove('selected-option', 'border-[var(--primary-color)]', 'text-[var(--primary-color)]', 'bg-[color-mix(in_srgb,var(--primary-color)_10%,white)]');
-                b.classList.add('border-gray-200', 'text-gray-700', 'bg-white');
+            if (!firstAvailable) firstAvailable = button;
+
+            button.addEventListener('click', function() {
+              sizeContainer.querySelectorAll('.size-btn').forEach(item => {
+                item.classList.remove('selected-option', 'border-[var(--primary-color)]', 'text-[var(--primary-color)]');
+                item.classList.add('border-gray-200', 'text-gray-700', 'bg-white');
               });
-              this.classList.add('selected-option', 'border-[var(--primary-color)]', 'text-[var(--primary-color)]', 'bg-[color-mix(in_srgb,var(--primary-color)_10%,white)]');
+
+              this.classList.add('selected-option', 'border-[var(--primary-color)]', 'text-[var(--primary-color)]');
               this.classList.remove('border-gray-200', 'text-gray-700', 'bg-white');
 
-              selectedVariantId = this.dataset.variantId;
-
-              document.querySelector('.productPrice').textContent = storeCurrencySymbol + parseFloat(this.dataset.price).toLocaleString();
-              
-              // ✅ FIXED: Update main image on size click
-              document.getElementById('mainProductImage').src = this.dataset.image;
-              
+              document.querySelector('.productPrice').textContent =
+                storeCurrencySymbol + Number(this.dataset.price).toLocaleString();
+              mainProductImage.src = this.dataset.image;
               document.getElementById('stockDisplay').textContent = this.dataset.stock;
 
-              const inCart = cartVariants.includes(String(selectedVariantId));
-
-              if (inCart) {
-                addBtn.classList.add('hidden');
-                viewBtn.classList.remove('hidden');
-              } else {
-                addBtn.classList.remove('hidden');
-                viewBtn.classList.add('hidden');
-                addBtn.disabled = false;
-                addBtn.innerHTML = 'Add Item';
-                addBtn.classList.add('bg-[var(--primary-color)]');
-                addBtn.classList.remove('bg-gray-300', 'cursor-not-allowed');
-              }
+              selectProductCartVariant(variantId, '', variantId);
             });
           }
 
-          sizeContainer.appendChild(btn);
+          sizeContainer.appendChild(button);
         });
 
-        if (!hasAvailableSize) {
+        if (firstAvailable) {
+          firstAvailable.click();
+        } else {
+          addBtn.textContent = 'Sold Out';
+          addBtn.disabled = true;
           addBtn.classList.remove('hidden');
           viewBtn.classList.add('hidden');
-          addBtn.disabled = true;
-          addBtn.innerHTML = 'Sold Out';
-          addBtn.classList.remove('bg-[var(--primary-color)]');
-          addBtn.classList.add('bg-gray-300', 'cursor-not-allowed');
-          selectedVariantId = null;
-        } else {
-          const firstAvailable = sizeContainer.querySelector('.size-btn:not([disabled])');
-          if (firstAvailable) firstAvailable.click();
         }
       }
 
-      colorButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-          colorButtons.forEach(b => {
-            b.classList.remove('border-[var(--primary-color)]');
-            b.classList.add('border-gray-200');
+      colorButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          colorButtons.forEach(item => {
+            item.classList.remove('border-[var(--primary-color)]');
+            item.classList.add('border-gray-200');
           });
           this.classList.remove('border-gray-200');
           this.classList.add('border-[var(--primary-color)]');
-
           renderSizes(this.dataset.colorId);
         });
       });
 
-      if (colorButtons.length > 0) {
-        colorButtons[0].click();
-      }
+      if (colorButtons.length) colorButtons[0].click();
 
-      addBtn.addEventListener('click', function() {
-        if (this.disabled || !selectedVariantId) return;
-        this.innerHTML = 'Adding...';
-        this.disabled = true;
+    <?php elseif ($basicVariants && $basicVariants->rowCount() > 0 && !$isAdvanced && !$comboEnabled): ?>
 
-        $.ajax({
-          url: "shop/ajax/add-to-cart.php",
-          type: "POST",
-          data: {
-            product_id: productId,
-            quantity: qtyInput.value,
-            variant: '',
-            advanced_variant: selectedVariantId
-          },
-          success: function(result) {
-            const response = JSON.parse(result);
-            if (response && response.success) {
-              cartVariants.push(String(selectedVariantId));
+      const variantButtons = document.querySelectorAll('.variant-btn');
 
-              const currentSizeBtn = sizeContainer.querySelector(`.size-btn[data-variant-id="${selectedVariantId}"]`);
-              if (currentSizeBtn) {
-                currentSizeBtn.classList.add('bg-green-50', 'border-green-500', 'text-green-700');
-                currentSizeBtn.classList.remove('bg-white', 'text-gray-700', 'border-gray-200');
-              }
-
-              addBtn.classList.add('hidden');
-              viewBtn.classList.remove('hidden');
-              if (window.showCustomToast) window.showCustomToast('Added to cart successfully!', 'success');
-              if (typeof getProductCountAndPrice === 'function') getProductCountAndPrice();
-            } else {
-              addBtn.innerHTML = 'Add Item';
-              addBtn.disabled = false;
-              if (window.showCustomToast) window.showCustomToast(response?.message || 'Failed', 'error');
-            }
-          },
-          error: function() {
-            addBtn.innerHTML = 'Add Item';
-            addBtn.disabled = false;
-            if (window.showCustomToast) window.showCustomToast('Network error', 'error');
-          }
-        });
-      });
-
-    <?php elseif ($basicVariants && $basicVariants->rowCount() > 0 && !$isAdvanced): ?>
-      const variantBtns = document.querySelectorAll('.variant-btn');
-      const addBtn = document.getElementById('addToCartBtn');
-      const viewBtn = document.getElementById('viewCartBtn');
-      let currentVariantId = null;
-
-      variantBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          variantBtns.forEach(b => {
-            b.classList.remove('selected-option', 'border-[var(--primary-color)]', 'text-[var(--primary-color)]');
-            b.classList.add('border-gray-200', 'text-gray-700');
+      variantButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          variantButtons.forEach(item => {
+            item.classList.remove('selected-option', 'border-[var(--primary-color)]', 'text-[var(--primary-color)]');
+            item.classList.add('border-gray-200', 'text-gray-700', 'bg-white');
           });
-          this.classList.add('selected-option', 'border-[var(--primary-color)]', 'text-[var(--primary-color)]');
-          this.classList.remove('border-gray-200', 'text-gray-700');
 
-          currentVariantId = this.dataset.variantId;
-          document.querySelector('.productPrice').textContent = storeCurrencySymbol + parseFloat(this.dataset.price).toLocaleString();
-          
-          // ✅ FIXED: Update image for Basic Variants
-          document.getElementById('mainProductImage').src = this.dataset.variantImage;
-          
+          this.classList.add('selected-option', 'border-[var(--primary-color)]', 'text-[var(--primary-color)]');
+          this.classList.remove('border-gray-200', 'text-gray-700', 'bg-white');
+
+          const variantId = this.dataset.variantId;
+          const stockText = String(this.dataset.stock || '').toLowerCase();
+          const stockNumber = parseFloat(stockText);
+          const outOfStock = !stockText.includes('unlimited') &&
+            !Number.isNaN(stockNumber) && stockNumber <= 0;
+
+          document.querySelector('.productPrice').textContent =
+            storeCurrencySymbol + Number(this.dataset.price).toLocaleString();
+          mainProductImage.src = this.dataset.variantImage;
           document.getElementById('stockDisplay').textContent = this.dataset.stock;
 
-          const inCart = cartVariants.includes(String(currentVariantId));
-          
-          const stockText = this.dataset.stock;
-          let stockNumber = parseInt(stockText);
-          if (stockText.toLowerCase().includes('unlimited')) stockNumber = Infinity;
-          const isOutOfStock = stockNumber < 1;
-
-          if (isOutOfStock) {
+          if (outOfStock) {
+            addBtn.textContent = 'Sold Out';
             addBtn.disabled = true;
-            addBtn.innerHTML = 'Sold Out';
-            addBtn.classList.remove('bg-[var(--primary-color)]');
-            addBtn.classList.add('bg-gray-300', 'cursor-not-allowed');
             addBtn.classList.remove('hidden');
             viewBtn.classList.add('hidden');
-          } else if (inCart) {
-            addBtn.classList.add('hidden');
-            viewBtn.classList.remove('hidden');
-          } else {
-            addBtn.classList.remove('hidden');
-            viewBtn.classList.add('hidden');
-            addBtn.disabled = false;
-            addBtn.innerHTML = 'Add Item';
-            addBtn.classList.add('bg-[var(--primary-color)]');
-            addBtn.classList.remove('bg-gray-300', 'cursor-not-allowed');
+            return;
           }
+
+          addBtn.disabled = false;
+          selectProductCartVariant(
+            variantId === 'main' ? 'main' : variantId,
+            variantId === 'main' ? '' : variantId,
+            ''
+          );
         });
       });
 
-      addBtn.addEventListener('click', function() {
-        if (this.disabled) return;
-        this.innerHTML = 'Adding...';
-        this.disabled = true;
+      if (variantButtons.length) {
+        let initialButton = null;
 
-        $.ajax({
-          url: "shop/ajax/add-to-cart.php",
-          type: "POST",
-          data: {
-            product_id: productId,
-            quantity: qtyInput.value,
-            variant: (currentVariantId === 'main' ? '' : currentVariantId),
-            advanced_variant: ''
-          },
-          success: function(result) {
-            const response = JSON.parse(result);
-            if (response && response.success) {
-              cartVariants.push(String(currentVariantId));
+        <?php if ($initialVariantId !== null): ?>
+          initialButton = Array.from(variantButtons).find(
+            button => button.dataset.variantId === <?= json_encode((string)$initialVariantId) ?>
+          ) || null;
+        <?php endif; ?>
 
-              addBtn.classList.add('hidden');
-              viewBtn.classList.remove('hidden');
-              if (window.showCustomToast) window.showCustomToast('Added successfully!', 'success');
-              if (typeof getProductCountAndPrice === 'function') getProductCountAndPrice();
-            } else {
-              addBtn.innerHTML = 'Add Item';
-              addBtn.disabled = false;
-              if (window.showCustomToast) window.showCustomToast(response?.message || 'Failed', 'error');
-            }
-          },
-          error: function() {
-            addBtn.innerHTML = 'Add Item';
-            addBtn.disabled = false;
-            if (window.showCustomToast) window.showCustomToast('Network error', 'error');
-          }
-        });
-      });
-
-      if (variantBtns.length > 0) {
-        let foundInCart = false;
-        variantBtns.forEach(btn => {
-          if (btn.dataset.inCart === '1') {
-            btn.click();
-            foundInCart = true;
-          }
-        });
-        if (!foundInCart) variantBtns[0].click();
+        if (!initialButton) {
+          initialButton = Array.from(variantButtons).find(
+            button => button.dataset.inCart === '1'
+          ) || variantButtons[0];
+        }
+        initialButton.click();
       }
 
     <?php else: ?>
-      const addBtn = document.getElementById('addToCartBtn');
-      const viewBtn = document.getElementById('viewCartBtn');
 
-      if (addBtn) {
-        addBtn.addEventListener('click', function() {
-          if (this.disabled) return;
-          this.innerHTML = 'Adding...';
-          this.disabled = true;
+      selectProductCartVariant('main', '', '');
 
-          $.ajax({
-            url: "shop/ajax/add-to-cart.php",
-            type: "POST",
-            data: {
-              product_id: productId,
-              quantity: qtyInput.value,
-              variant: '',
-              advanced_variant: ''
-            },
-            success: function(result) {
-              const response = JSON.parse(result);
-              if (response && response.success) {
-                cartVariants.push('main');
-
-                addBtn.classList.add('hidden');
-                viewBtn.classList.remove('hidden');
-                if (window.showCustomToast) window.showCustomToast('Added to cart successfully!', 'success');
-                if (typeof getProductCountAndPrice === 'function') getProductCountAndPrice();
-              } else {
-                addBtn.innerHTML = 'Add Item';
-                addBtn.disabled = false;
-                if (window.showCustomToast) window.showCustomToast(response?.message || 'Failed', 'error');
-              }
-            },
-            error: function() {
-              addBtn.innerHTML = 'Add Item';
-              addBtn.disabled = false;
-              if (window.showCustomToast) window.showCustomToast('Network error', 'error');
-            }
-          });
-        });
-      }
     <?php endif; ?>
   </script>
 </body>

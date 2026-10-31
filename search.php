@@ -11,17 +11,37 @@
             --hover-color: <?= htmlspecialchars(getData("hover_color", "seller_settings", "(seller_id='$sellerId' AND store_id='$storeId')") ?? '#ec4899') ?>;
         }
 
-        .category-scroll { scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; }
-        .category-scroll::-webkit-scrollbar { display: none; }
-        .category-card { transition: all 0.3s ease; }
-        .category-card:hover { transform: translateY(-2px); }
-        
+        .category-scroll {
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .category-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-card {
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-2px);
+        }
+
         .active-category-card {
             background: linear-gradient(135deg, var(--primary), #f59e0b);
             color: white;
         }
-        .active-category-card .category-name { color: white; font-weight: 600; }
-        .active-category-card .category-icon { background: rgba(255, 255, 255, 0.2) !important; }
+
+        .active-category-card .category-name {
+            color: white;
+            font-weight: 600;
+        }
+
+        .active-category-card .category-icon {
+            background: rgba(255, 255, 255, 0.2) !important;
+        }
 
         .sort-dropdown select:focus {
             outline: none;
@@ -43,31 +63,35 @@
         .product-card-wrapper {
             height: 100%;
         }
+
         .product-card-inner {
             display: flex;
             flex-direction: column;
             height: 100%;
         }
+
         .product-card-image {
             width: 100%;
             height: 220px;
             border-bottom: 1px solid #f3f4f6;
         }
+
         .product-card-content {
             text-align: center;
         }
+
         /* Hide description in grid view */
         .product-card-description {
-            display: none !important; 
+            display: none !important;
         }
 
         /* ==================================================== */
         /* ✅ LIST VIEW (Full Width + Horizontal Layout)        */
         /* ==================================================== */
-        
+
         /* Force the wrapper to span the full width of the grid */
         .list-view .product-card-wrapper {
-            grid-column: 1 / -1 !important; 
+            grid-column: 1 / -1 !important;
             width: 100% !important;
             max-width: 100% !important;
         }
@@ -80,7 +104,7 @@
 
         /* Image on the Left */
         .list-view .product-card-image {
-            width: 250px !important; 
+            width: 250px !important;
             height: auto;
             min-height: 220px;
             border-bottom: none;
@@ -91,34 +115,92 @@
         .list-view .product-card-content {
             text-align: left !important;
             padding: 1.5rem 2rem !important;
-            justify-content: flex-start !important; 
+            justify-content: flex-start !important;
             display: flex;
             flex-direction: column;
         }
-        
+
         /* Show description in list view */
         .list-view .product-card-description {
-            display: -webkit-box !important; 
-            -webkit-line-clamp: 2; 
+            display: -webkit-box !important;
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
             margin-bottom: 0.5rem;
         }
-        
+
         /* Fix button and variant widths in list view so they don't stretch */
         .list-view .product-card-variants,
         .list-view .addToCartWrapper {
             max-width: 300px;
         }
-        
+
         /* Adjust price and views alignment for list view */
         .list-view .product-card-price {
             justify-content: flex-start !important;
             margin-top: 0.5rem;
         }
+
         .list-view .text-xs.text-gray-500 {
             justify-content: flex-start !important;
             margin-bottom: 0.5rem;
+        }
+
+        /* Simple category sidebar: compact square thumbnails and clean text links */
+        .category-sidebar-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .category-sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-height: 48px;
+            padding: 7px 2px;
+            color: #374151;
+            text-decoration: none;
+            border-bottom: 1px solid #f1f2f4;
+            transition: color .18s ease, background-color .18s ease;
+        }
+
+        .category-sidebar-link:last-child {
+            border-bottom: 0;
+        }
+
+        .category-sidebar-link:hover {
+            color: var(--primary);
+        }
+
+        .category-sidebar-image,
+        .category-sidebar-placeholder {
+            width: 30px;
+            height: 30px;
+            flex: 0 0 30px;
+            object-fit: contain;
+            background: #f8f8f9;
+        }
+
+        .category-sidebar-placeholder {
+            display: block;
+        }
+
+        .category-sidebar-name {
+            min-width: 0;
+            flex: 1;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1.35;
+        }
+
+        .category-sidebar-arrow {
+            color: #b0b4bc;
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        .category-sidebar-link:hover .category-sidebar-arrow {
+            color: var(--primary);
         }
 
         /* Mobile adjustments for list view */
@@ -126,6 +208,7 @@
             .list-view .product-card-inner {
                 flex-direction: column !important;
             }
+
             .list-view .product-card-image {
                 width: 100% !important;
                 border-right: none;
@@ -169,88 +252,79 @@
     ]);
     ?>
 
-    <!-- Search Header (Solid Primary Color) -->
-    <div class="py-6 text-white" style="background-color: var(--primary);">
-        <div class="container mx-auto px-2 text-center">
-            <div class="flex flex-col items-center justify-center gap-3">
-                <div class="bg-white/20 p-3 rounded-full backdrop-blur-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                </div>
-                <div>
-                    <h1 class="text-2xl sm:text-3xl font-bold uppercase tracking-wide">Search Results</h1>
-                    <p class="opacity-90 mt-2 text-sm font-medium">
-                        <?php
-                        if ($search_products_count > 0) {
-                            echo $search_products_count . " products found for \"" . htmlspecialchars($q) . "\"";
-                        } else {
-                            echo "No products found for \"" . htmlspecialchars($q) . "\"";
-                        }
-                        ?>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Category Navigation -->
-    <?php if (!empty($categories) && $categories->rowCount()): ?>
-        <section class="py-4 bg-white border-b shadow-sm">
-            <div class="container mx-auto px-4">
-                <div id="categoriesScroll" class="category-scroll flex gap-4 overflow-x-auto px-2 py-1 justify-center sm:justify-start">
-                    <?php foreach ($categories as $cat): ?>
-                        <a href="<?= $storeUrl . "category/" . $cat['slug'] ?>" class="category-card flex-shrink-0 flex flex-col items-center text-center w-20 p-2 rounded-lg">
-                            <div class="w-12 h-12 rounded-full mb-2 flex items-center justify-center shadow-sm category-icon" style="background: linear-gradient(to bottom right, var(--primary), #ec4899);">
-                                <?php if (!empty($cat['icon'])): ?>
-                                    <img src="<?= UPLOADS_URL . $cat['icon'] ?>" alt="<?= $cat['name'] ?>" class="w-8 h-8 object-contain rounded-full" onerror="this.style.display='none'; this.parentNode.innerHTML='<?= strtoupper(substr($cat['name'], 0, 1)) ?>';">
-                                <?php else: ?>
-                                    <span class="text-white font-bold"><?= strtoupper(substr($cat['name'], 0, 1)) ?></span>
-                                <?php endif; ?>
-                            </div>
-                            <span class="text-[11px] font-semibold text-gray-700 truncate w-full category-name">
-                                <?= htmlspecialchars($cat['name']) ?>
-                            </span>
-                        </a>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </section>
-    <?php endif; ?>
 
     <!-- Main Content -->
     <div class="py-8">
         <div class="w-full max-w-[1920px] mx-auto px-2 sm:px-4 lg:px-6">
             <div class="flex flex-col gap-4 lg:flex-row">
 
-                <!-- Left Sidebar (Filters) -->
-                <div class="lg:w-[220px] shrink-0">
-                    <div class="bg-white rounded-xl border border-gray-200 p-5 sticky top-24">
-                        <h3 class="text-sm font-bold uppercase tracking-wider text-gray-800 mb-4 border-b pb-3">Price Range</h3>
-                        <form id="priceForm">
-                            <div class="flex flex-col gap-3">
-                                <input type="number" name="min_price" value="<?= isset($_GET['min_price']) ? $_GET['min_price'] : '' ?>" class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:border-[var(--primary)]" placeholder="Min (<?= currencyToSymbol($storeCurrency) ?>)">
-                                <input type="number" name="max_price" value="<?= isset($_GET['max_price']) ? $_GET['max_price'] : '' ?>" class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:border-[var(--primary)]" placeholder="Max (<?= currencyToSymbol($storeCurrency) ?>)">
+                <!-- Left Sidebar: Categories + Price Filter -->
+                <aside class="w-full lg:w-[240px] shrink-0">
+                    <div class="bg-white border border-gray-200 rounded-lg overflow-hidden lg:sticky lg:top-24">
+
+                        <?php if (!empty($categories)): ?>
+                            <div class="px-4 pt-4">
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-gray-800 pb-3 border-b border-gray-100">
+                                    Categories
+                                </h3>
+
+                                <nav class="category-sidebar-list" aria-label="Product categories">
+                                    <?php foreach ($categories as $cat): ?>
+                                        <a
+                                            href="<?= htmlspecialchars($storeUrl . 'category/' . $cat['slug']) ?>"
+                                            class="category-sidebar-link">
+                                            <?php if (!empty($cat['icon'])): ?>
+                                                <img
+                                                    src="<?= htmlspecialchars(UPLOADS_URL . $cat['icon']) ?>"
+                                                    alt=""
+                                                    class="category-sidebar-image"
+                                                    loading="lazy"
+                                                    onerror="this.style.display='none';">
+                                            <?php else: ?>
+                                                <span class="category-sidebar-placeholder"></span>
+                                            <?php endif; ?>
+                                            <span class="category-sidebar-name"><?= htmlspecialchars($cat['name']) ?></span>
+                                            <span class="category-sidebar-arrow">›</span>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </nav>
                             </div>
-                            <button type="submit" class="flex items-center justify-center gap-2 px-3 py-2 text-xs font-bold uppercase tracking-wider text-white transition rounded-lg w-full mt-4 hover:opacity-90" style="background-color: var(--primary);">
-                                Apply Filter
-                            </button>
-                        </form>
+                        <?php endif; ?>
+
+                        <div class="p-4 mt-2 border-t border-gray-100">
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-800 mb-4 pb-3 border-b border-gray-100">
+                                Price Range
+                            </h3>
+                            <form id="priceForm">
+                                <div class="flex flex-col gap-3">
+                                    <input type="number" name="min_price" value="<?= isset($_GET['min_price']) ? htmlspecialchars($_GET['min_price']) : '' ?>" class="w-full px-3 py-2 text-sm border border-gray-200 rounded-md focus:outline-none focus:border-[var(--primary)]" placeholder="Min (<?= currencyToSymbol($storeCurrency) ?>)">
+                                    <input type="number" name="max_price" value="<?= isset($_GET['max_price']) ? htmlspecialchars($_GET['max_price']) : '' ?>" class="w-full px-3 py-2 text-sm border border-gray-200 rounded-md focus:outline-none focus:border-[var(--primary)]" placeholder="Max (<?= currencyToSymbol($storeCurrency) ?>)">
+                                </div>
+                                <button type="submit" class="flex items-center justify-center px-3 py-2 text-xs font-bold uppercase tracking-wider text-white transition rounded-md w-full mt-3 hover:opacity-90" style="background-color: var(--primary);">
+                                    Apply Filter
+                                </button>
+                            </form>
+                        </div>
                     </div>
-                </div>
+                </aside>
 
                 <!-- Right Products Section -->
                 <div class="flex-1 w-full min-w-0">
-                    
+
                     <!-- Toolbar -->
                     <div class="bg-white border border-gray-200 rounded-lg p-3 sm:p-4 mb-6 flex flex-wrap items-center justify-between gap-4">
                         <!-- View Toggles -->
                         <div class="flex items-center gap-1 bg-gray-100 p-1 rounded-md">
                             <button id="gridButton" class="p-1.5 rounded text-white transition" style="background-color: var(--primary);">
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M3 3h7v7H3V3zm11 0h7v7h-7V3zM3 14h7v7H3v-7zm11 0h7v7h-7v-7z"/></svg>
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M3 3h7v7H3V3zm11 0h7v7h-7V3zM3 14h7v7H3v-7zm11 0h7v7h-7v-7z" />
+                                </svg>
                             </button>
                             <button id="listButton" class="p-1.5 rounded text-gray-500 hover:text-gray-800 transition">
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M3 4h4v4H3V4zm6 0h12v4H9V4zM3 10h4v4H3v-4zm6 0h12v4H9v-4zM3 16h4v4H3v-4zm6 0h12v4H9v-4z"/></svg>
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M3 4h4v4H3V4zm6 0h12v4H9V4zM3 10h4v4H3v-4zm6 0h12v4H9v-4zM3 16h4v4H3v-4zm6 0h12v4H9v-4z" />
+                                </svg>
                             </button>
                         </div>
 

@@ -11,6 +11,56 @@
             --hover-color: <?= htmlspecialchars(getData("hover_color", "seller_settings", "(seller_id='$sellerId' AND store_id='$storeId')") ?? '#ec4899') ?>;
         }
 
+        /* Clean category navigation in the Shop All sidebar */
+        .shop-sidebar-categories {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .shop-sidebar-category-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-height: 48px;
+            padding: 7px 2px;
+            color: #4b5563;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid #f1f2f4;
+            transition: color .2s ease, background-color .2s ease;
+        }
+
+        .shop-sidebar-category-link:last-child { border-bottom: 0; }
+        .shop-sidebar-category-link:hover { color: var(--primary); }
+
+        .shop-sidebar-category-image,
+        .shop-sidebar-category-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 30px;
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            background: #f8f8fa;
+            border: 1px solid #eeeeF1;
+        }
+
+        .shop-sidebar-category-placeholder {
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .shop-sidebar-category-arrow {
+            width: 15px;
+            height: 15px;
+            margin-left: auto;
+            flex: 0 0 15px;
+            color: #a1a1aa;
+        }
+
         .sort-dropdown select:focus,
         .page-size-select select:focus {
             outline: none;
@@ -131,24 +181,10 @@
     $products_stmt = getProducts();
     $allProducts = $products_stmt ? $products_stmt->fetchAll(PDO::FETCH_ASSOC) : [];
     $totalProducts = count($allProducts);
-    ?>
 
-    <!-- Header -->
-    <div class="py-8 text-white" style="background-color: var(--primary);">
-        <div class="container mx-auto px-4 text-center">
-            <div class="flex flex-col items-center justify-center gap-3">
-                <div class="bg-white/20 p-3 rounded-full backdrop-blur-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                    </svg>
-                </div>
-                <div>
-                    <h1 class="text-2xl sm:text-3xl font-bold uppercase tracking-wide">Shop All</h1>
-                    <p class="opacity-90 mt-2 text-sm font-medium"><?= $totalProducts ?> Products Available</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    // Categories for the Shop All sidebar (same source as category pages)
+    $sidebarCategories = getCategories(["add_to_menu" => 1, "parent_category" => " "]);
+    ?>
 
     <!-- Main Content -->
     <div class="py-8">
@@ -158,6 +194,26 @@
                 <!-- Left Sidebar (Filters) -->
                 <aside class="lg:w-[250px] shrink-0">
                     <div class="bg-white rounded-xl border border-gray-200 p-5 sticky top-24">
+
+                        <!-- Categories -->
+                        <?php if (!empty($sidebarCategories) && $sidebarCategories->rowCount() > 0): ?>
+                            <div class="mb-6">
+                                <h3 class="text-sm font-bold uppercase tracking-wider text-gray-800 mb-3 border-b border-gray-100 pb-2">Categories</h3>
+                                <nav class="shop-sidebar-categories" aria-label="Product categories">
+                                    <?php foreach ($sidebarCategories as $category): ?>
+                                        <a href="<?= $storeUrl . 'category/' . $category['slug'] ?>" class="shop-sidebar-category-link">
+                                            <?php if (!empty($category['icon'])): ?>
+                                                <img src="<?= UPLOADS_URL . $category['icon'] ?>" alt="" class="shop-sidebar-category-image" loading="lazy">
+                                            <?php else: ?>
+                                                <span class="shop-sidebar-category-placeholder"><?= htmlspecialchars(mb_substr($category['name'], 0, 1)) ?></span>
+                                            <?php endif; ?>
+                                            <span><?= htmlspecialchars($category['name']) ?></span>
+                                            <svg class="shop-sidebar-category-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m7.5 4.5 5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </nav>
+                            </div>
+                        <?php endif; ?>
 
                         <!-- Availability -->
                         <div class="mb-6">

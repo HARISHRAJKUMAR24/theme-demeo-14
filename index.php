@@ -84,7 +84,7 @@
         }
 
         .hero-glass-reflection {
-            animation: glassSweep 2.2s ease-in-out infinite;
+            animation: glassSweep 3s ease-in-out infinite;
         }
 
         /* respect reduced motion */
@@ -109,6 +109,7 @@
             background: #ed143b;
             border-radius: 4px;
         }
+
     </style>
 </head>
 
@@ -188,20 +189,16 @@
     <?php include_once __DIR__ . "/includes/highlights.php"; ?>
 
     <!-- ================================================== -->
-    <!-- Hero Banner                                           -->
+    <!-- ================================================== -->
+    <!-- RESPONSIVE HERO BANNER: FULL IMAGE + FILLED SIDES -->
     <!-- ================================================== -->
     <?php
-    // ==================================================
-    // GLASS MIRROR HERO BANNER — backend wired (Theme 9 columns)
-    // No bg color, object-contain image, reduced height
-    // Bottom shadow + dark gradient overlay removed → clean white
-    // ==================================================
     $heroBanners = [];
     for ($i = 1; $i <= 5; $i++) {
-        $col      = "homepage_banner" . ($i > 1 ? "_$i" : "");
-        $linkCol  = "homepage_banner_link" . ($i > 1 ? "_$i" : "");
+        $col = "homepage_banner" . ($i > 1 ? "_$i" : "");
+        $linkCol = "homepage_banner_link" . ($i > 1 ? "_$i" : "");
 
-        $img  = getData($col,     "seller_banners", "(seller_id = '$sellerId' AND store_id = '$storeId')");
+        $img = getData($col, "seller_banners", "(seller_id = '$sellerId' AND store_id = '$storeId')");
         $link = getData($linkCol, "seller_banners", "(seller_id = '$sellerId' AND store_id = '$storeId')");
 
         if (!empty($img)) {
@@ -210,26 +207,68 @@
     }
     $heroCount = count($heroBanners);
     ?>
-    <?php if ($heroCount > 0): ?>
-        <section id="heroBanner"
-            class="relative isolate w-full overflow-hidden bg-white h-[220px] sm:h-[300px] lg:h-[380px]">
 
-            <!-- Dynamic banner slides (cross-fade) -->
+    <style>
+        /* Show the original banner image at its natural proportions.
+           No cover crop, blur, overlay, or artificial fixed-height frame. */
+        #heroBanner {
+            position: relative;
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            background: transparent;
+        }
+
+        #heroBanner .hero-slide {
+            width: 100%;
+        }
+
+        #heroBanner .hero-slide:first-child {
+            position: relative;
+        }
+
+        #heroBanner .hero-slide:not(:first-child) {
+            position: absolute;
+            inset: 0;
+        }
+
+        #heroBanner .hero-main {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: none;
+            object-fit: initial;
+            object-position: center;
+        }
+
+        #heroBanner a {
+            display: block;
+            width: 100%;
+        }
+        
+    </style>
+
+    <?php if ($heroCount > 0): ?>
+        <section id="heroBanner" class="relative isolate w-full overflow-hidden">
             <?php foreach ($heroBanners as $index => $banner):
-                $opacityCls = $index === 0 ? 'opacity-100 z-0' : 'opacity-0 z-0';
-                $imgSrc     = UPLOADS_URL . $banner['image'];
+                $opacityCls = $index === 0 ? 'opacity-100' : 'opacity-0';
+                $imgSrc = UPLOADS_URL . $banner['image'];
             ?>
-                <div class="hero-slide absolute inset-0 transition-opacity duration-1000 <?= $opacityCls ?>">
+                <div class="hero-slide transition-opacity duration-1000 <?= $opacityCls ?>">
                     <?php if (!empty($banner['link'])): ?>
-                        <a href="<?= htmlspecialchars($banner['link']) ?>" target="_blank" class="block h-full w-full">
+                        <a href="<?= htmlspecialchars($banner['link']) ?>"
+                            target="_blank"
+                            rel="noopener">
                             <img src="<?= htmlspecialchars($imgSrc) ?>"
-                                alt="Hero Banner <?= $index + 1 ?>" <?= $index === 0 ? 'fetchpriority="high"' : 'loading="lazy"' ?>
-                                class="absolute inset-0 h-full w-full object-contain object-center">
+                                alt="Hero Banner <?= $index + 1 ?>"
+                                <?= $index === 0 ? 'fetchpriority="high"' : 'loading="lazy"' ?>
+                                class="hero-main">
                         </a>
                     <?php else: ?>
                         <img src="<?= htmlspecialchars($imgSrc) ?>"
-                            alt="Hero Banner <?= $index + 1 ?>" <?= $index === 0 ? 'fetchpriority="high"' : 'loading="lazy"' ?>
-                            class="absolute inset-0 h-full w-full object-contain object-center">
+                            alt="Hero Banner <?= $index + 1 ?>"
+                            <?= $index === 0 ? 'fetchpriority="high"' : 'loading="lazy"' ?>
+                            class="hero-main">
                     <?php endif; ?>
                 </div>
             <?php endforeach; ?>
@@ -251,25 +290,24 @@
                     (function() {
                         var slides = document.querySelectorAll('#heroBanner .hero-slide');
                         if (slides.length < 2) return;
-                        var idx = 0,
-                            timer = null,
-                            duration = 5000;
+
+                        var idx = 0;
+                        var timer = null;
+                        var duration = 5000;
 
                         function show(i) {
-                            slides.forEach(function(s, j) {
-                                s.classList.toggle('opacity-100', j === i);
-                                s.classList.toggle('opacity-0', j !== i);
+                            slides.forEach(function(slide, j) {
+                                slide.classList.toggle('opacity-100', j === i);
+                                slide.classList.toggle('opacity-0', j !== i);
                             });
                             idx = i;
                         }
 
-                        function next() {
-                            show((idx + 1) % slides.length);
-                        }
-
                         function start() {
                             stop();
-                            timer = setInterval(next, duration);
+                            timer = setInterval(function() {
+                                show((idx + 1) % slides.length);
+                            }, duration);
                         }
 
                         function stop() {
@@ -278,8 +316,10 @@
                                 timer = null;
                             }
                         }
+
                         show(0);
                         start();
+
                         document.addEventListener('visibilitychange', function() {
                             if (document.hidden) stop();
                             else start();

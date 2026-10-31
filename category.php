@@ -137,6 +137,84 @@
       }
     }
 
+    /* Compact left category navigation */
+    .category-sidebar {
+      overflow: hidden;
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .category-sidebar-title {
+      margin: 0;
+      padding: 15px 16px 12px;
+      color: #1f2937;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      border-bottom: 1px solid #edf0f2;
+    }
+
+    .category-sidebar-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .category-sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 8px 14px;
+      color: #374151;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid #f0f1f3;
+      transition: background .2s ease, color .2s ease;
+    }
+
+    .category-sidebar-link:last-child {
+      border-bottom: 0;
+    }
+
+    .category-sidebar-link:hover {
+      color: var(--primary);
+      background: #f8f8fb;
+    }
+
+    .category-sidebar-link.is-active {
+      color: var(--primary);
+      background: color-mix(in srgb, var(--primary) 8%, white);
+      font-weight: 700;
+    }
+
+    .category-sidebar-image,
+    .category-sidebar-placeholder {
+      display: flex;
+      flex: 0 0 28px;
+      width: 28px;
+      height: 28px;
+      align-items: center;
+      justify-content: center;
+      object-fit: contain;
+      border-radius: 3px;
+      background: #f5f5f5;
+    }
+
+    .category-sidebar-placeholder {
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .category-sidebar-name {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
     .hidden-product {
       display: none !important;
     }
@@ -243,60 +321,6 @@
   }
   ?>
 
-  <!-- Category Navigation -->
-  <?php if (!empty($categories) && $categories->rowCount()): ?>
-    <section class="py-4 bg-white border-b shadow-sm">
-      <div class="container mx-auto px-4">
-        <div id="categoriesScroll" class="category-scroll flex gap-4 overflow-x-auto px-2 py-1 justify-center sm:justify-start">
-          <?php foreach ($categories as $category): ?>
-            <?php $isActive = ($category['slug'] === $slug) ? 'active-category-card' : ''; ?>
-            <a href="<?= $storeUrl . "category/" . $category['slug'] ?>"
-              class="category-card flex-shrink-0 flex flex-col items-center text-center w-20 p-2 rounded-lg <?= $isActive ?>">
-              <div class="w-12 h-12 rounded-full mb-2 flex items-center justify-center shadow-sm category-icon"
-                style="background: linear-gradient(to bottom right, var(--primary), #f472b6);">
-                <?php if (!empty($category['icon'])): ?>
-                  <img src="<?= UPLOADS_URL . $category['icon'] ?>" alt="<?= $category['name'] ?>" class="w-8 h-8 object-contain rounded-full" onerror="this.style.display='none'; this.parentNode.innerHTML='<?= strtoupper(substr($category['name'], 0, 1)) ?>';">
-                <?php else: ?>
-                  <span class="text-white font-bold"><?= strtoupper(substr($category['name'], 0, 1)) ?></span>
-                <?php endif; ?>
-              </div>
-              <span class="text-[11px] font-semibold text-gray-700 truncate w-full category-name <?= $isActive ? 'text-white' : '' ?>">
-                <?= htmlspecialchars($category['name']) ?>
-              </span>
-            </a>
-          <?php endforeach; ?>
-        </div>
-      </div>
-    </section>
-  <?php endif; ?>
-
-  <!-- Active Category Header (Solid Primary Color) -->
-  <div class="py-6 text-white" style="background-color: var(--primary);">
-    <div class="container mx-auto px-4 text-center">
-      <div class="flex flex-col items-center justify-center gap-3">
-        <div class="bg-white/20 p-3 rounded-full backdrop-blur-sm">
-          <?php if (!empty($icon)): ?>
-            <img src="<?= UPLOADS_URL . $icon ?>" alt="<?= $name ?>" class="w-10 h-10 object-contain">
-          <?php else: ?>
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-            </svg>
-          <?php endif; ?>
-        </div>
-        <div>
-          <h1 class="text-2xl sm:text-3xl font-bold uppercase tracking-wide"><?= $name ?></h1>
-          <p class="opacity-90 mt-2 text-sm font-medium">
-            <?php if ($products && $products->rowCount() > 0): ?>
-              <?= $products->rowCount() ?> products found
-            <?php else: ?>
-              Discover our collection
-            <?php endif; ?>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Main Content -->
   <div class="py-8">
     <div class="w-full max-w-[1920px] mx-auto px-2 sm:px-4 lg:px-6">
@@ -305,29 +329,28 @@
         <!-- Left Sidebar -->
         <div class="lg:w-[220px] shrink-0">
           <div class="flex flex-col gap-5">
-            <?php
-            // ✅ Sub-categories (Theme 9 style)
-            $sidebar_sub_categories = getCategories(array("parent_category" => $real_parent_id));
-            if ($sidebar_sub_categories && $sidebar_sub_categories->rowCount() > 0) :
-            ?>
-              <div class="py-5 bg-white rounded-xl border border-gray-200">
-                <h3 class="pb-4 text-sm font-bold uppercase tracking-wider text-gray-800 border-b border-gray-100 px-5 mb-4">Sub Categories</h3>
-                <div class="h-auto overflow-y-auto">
-                  <?php foreach ($sidebar_sub_categories as $item) :
-                    $isActiveSub = ($item['id'] == $id) ? 'bg-gray-100 font-bold' : '';
+            <!-- Category Navigation: compact image + category name -->
+            <?php if (!empty($categories)): ?>
+              <div class="category-sidebar bg-white border border-gray-200">
+                <h3 class="category-sidebar-title">Categories</h3>
+                <nav class="category-sidebar-list" aria-label="Product categories">
+                  <?php foreach ($categories as $item):
+                    $isActiveCategory = ((string)$item['id'] === (string)$id);
+                    $categoryImage = !empty($item['icon']) ? UPLOADS_URL . $item['icon'] : '';
                   ?>
-                    <a href="<?= $storeUrl . "category/" . $item['slug'] ?>"
-                      class="transition w-full px-5 h-[50px] flex items-center gap-3 font-medium text-xs border-b border-gray-50 hover:opacity-90 <?= $isActiveSub ?>"
-                      style="color: var(--primary);"
-                      onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--primary) 10%, white)'; this.style.color='var(--hover-color)'"
-                      onmouseout="this.style.backgroundColor=''; this.style.color='var(--primary)'">
-                      <?php if (!empty($item['icon'])): ?>
-                        <img src="<?= UPLOADS_URL . $item['icon'] ?>" alt="<?= $item['name'] ?>" class="w-[20px] h-[20px] object-contain">
+                    <a
+                      href="<?= $storeUrl . "category/" . $item['slug'] ?>"
+                      class="category-sidebar-link <?= $isActiveCategory ? 'is-active' : '' ?>"
+                      <?= $isActiveCategory ? 'aria-current="page"' : '' ?>>
+                      <?php if ($categoryImage): ?>
+                        <img src="<?= htmlspecialchars($categoryImage) ?>" alt="" class="category-sidebar-image" loading="lazy" onerror="this.style.display='none';">
+                      <?php else: ?>
+                        <span class="category-sidebar-placeholder"><?= htmlspecialchars(strtoupper(substr($item['name'], 0, 1))) ?></span>
                       <?php endif; ?>
-                      <?= $item['name'] ?>
+                      <span class="category-sidebar-name"><?= htmlspecialchars($item['name']) ?></span>
                     </a>
                   <?php endforeach; ?>
-                </div>
+                </nav>
               </div>
             <?php endif; ?>
 
